@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>روزیک | Roozik - فضای امن و شاد شما</title>
+
+    <!-- ==================== فونت وزیر ==================== -->
+    <style>
+        @import url('https://cdn.jsdelivr.net/npm/vazir-font@latest/dist/font-face.css');
+
+        /* ==================== متغیرهای CSS برای تم دارک/لایت ==================== */
+        :root {
+            --bg-primary: #f0f2f8;
+            --bg-secondary: #ffffff;
+            --bg-glass: rgba(255, 255, 255, 0.55);
+            --bg-glass-strong: rgba(255, 255, 255, 0.75);
+            --text-primary: #2d2d3f;
+            --text-secondary: #555577;
+            --text-muted: #8888aa;
+            --shadow-soft: 8px 8px 20px rgba(102, 126, 234, 0.12), -6px -6px 16px rgba(255, 255, 255, 0.8);
+            --shadow-hover: 12px 12px 28px rgba(102, 126, 234, 0.18), -8px -8px 22px rgba(255, 255, 255, 0.9);
+            --shadow-inset: inset 4px 4px 10px rgba(102, 126, 234, 0.1), inset -3px -3px 8px rgba(255, 255, 255, 0.7);
+            --border-glass: 1px solid rgba(255, 255, 255, 0.6);
+            --card-bg: rgba(255, 255, 255, 0.6);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-button: linear-gradient(135deg, #667eea 0%, #8b5cf6 50%, #764ba2 100%);
+            --accent: #667eea;
+            --accent2: #764ba2;
+            --particle-color: rgba(102, 126, 234, 0.25);
+            --modal-overlay: rgba(0, 0, 0, 0.5);
+            --input-bg: rgba(255, 255, 255, 0.7);
+            --card-border: rgba(255, 255, 255, 0.5);
+            --tag-bg: rgba(102, 126, 234, 0.1);
+            --divider: rgba(0, 0, 0, 0.08);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --header-bg: rgba(255, 255, 255, 0.7);
+            --nav-active-bg: rgba(102, 126, 234, 0.1);
+            --fab-bg: rgba(255, 255, 255, 0.7);
+            --font-family: 'Vazir', 'Tahoma', sans-serif;
+            --transition-speed: 0.35s;
+        }
+
+        /* ==================== تم دارک ==================== */
+        [data-theme="dark"] {
+            --bg-primary: #1a1a2e;
+            --bg-secondary: #222240;
+            --bg-glass: rgba(30, 30, 55, 0.55);
+            --bg-glass-strong: rgba(25, 25, 50, 0.78);
+            --text-primary: #e0e0f0;
+            --text-secondary: #b0b0cc;
+            --text-muted: #7a7a9e;
+            --shadow-soft: 8px 8px 20px rgba(0, 0, 0, 0.35), -6px -6px 16px rgba(60, 60, 100, 0.15);
+            --shadow-hover: 12px 12px 28px rgba(0, 0, 0, 0.45), -8px -8px 22px rgba(60, 60, 100, 0.2);
+            --shadow-inset: inset 4px 4px 10px rgba(0, 0, 0, 0.3), inset -3px -3px 8px rgba(60, 60, 100, 0.1);
+            --border-glass: 1px solid rgba(255, 255, 255, 0.08);
+            --card-bg: rgba(30, 30, 55, 0.6);
+            --particle-color: rgba(140, 160, 255, 0.3);
+            --modal-overlay: rgba(0, 0, 0, 0.75);
+            --input-bg: rgba(40, 40, 70, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --tag-bg: rgba(140, 160, 255, 0.12);
+            --divider: rgba(255, 255, 255, 0.06);
+            --header-bg: rgba(22, 22, 45, 0.75);
+            --nav-active-bg: rgba(140, 160, 255, 0.15);
+            --fab-bg: rgba(35, 35, 60, 0.75);
+        }
+
+        /* ==================== ریست و پایه ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background var(--transition-speed), color var(--transition-speed);
+            position: relative;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ==================== کانواس ذرات پس‌زمینه ==================== */
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ==================== هدر ==================== */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--header-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: var(--border-glass);
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            transition: all var(--transition-speed);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .header .logo {
+            font-size: 1.7em;
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            user-select: none;
+        }
+        .header .logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* ==================== نویگیشن ==================== */
+        .nav {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            padding: 9px 16px;
+            border-radius: 30px;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+            white-space: nowrap;
+            position: relative;
+            letter-spacing: -0.3px;
+        }
+        .nav a:hover {
+            background: var(--nav-active-bg);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+        .nav a.active {
+            background: var(--gradient-primary);
+            color: #fff;
+            font-weight: 600;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.35);
+        }
+
+        /* آواتار پروفایل در هدر */
+        .header-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 6px 14px;
+            border-radius: 40px;
+            background: var(--card-bg);
+            border: var(--border-glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            box-shadow: var(--shadow-soft);
+            user-select: none;
+        }
+        .header-profile:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+        .header-profile img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+            background: var(--bg-secondary);
+        }
+        .header-profile .hp-name {
+            font-weight: 600;
+            font-size: 0.85em;
+            color: var(--text-primary);
+            max-width: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .header-profile .hp-icon {
+            font-size: 1.5em;
+            color: var(--accent);
+        }
+
+        /* ==================== محتوای اصلی ==================== */
+        .main-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 70vh;
+        }
+
+        /* ==================== بخش‌ها (صفحات) ==================== */
+        .section {
+            display: none;
+            animation: fadeSlideIn 0.5s ease forwards;
+        }
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ==================== کارت‌های شیشه‌ای ==================== */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: var(--border-glass);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-4px);
+        }
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            border-radius: 20px 20px 0 0;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .glass-card:hover::before {
+            opacity: 1;
+        }
+
+        /* ==================== دکمه‌ها ==================== */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-family: var(--font-family);
+            font-weight: 600;
+            font-size: 0.95em;
+            cursor: pointer;
+            border: none;
+            transition: all 0.35s;
+            text-decoration: none;
+            letter-spacing: -0.2px;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary {
+            background: var(--gradient-button);
+            color: #fff;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 35px rgba(102, 126, 234, 0.5);
+        }
+        .btn-primary:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+        /* انیمیشن موج‌دار روی دکمه CTA */
+        .btn-cta {
+            background: var(--gradient-button);
+            color: #fff;
+            font-size: 1.15em;
+            padding: 16px 40px;
+            border-radius: 50px;
+            box-shadow: 0 10px 35px rgba(102, 126, 234, 0.45);
+            animation: wavePulse 2.5s ease-in-out infinite;
+            position: relative;
+        }
+        @keyframes wavePulse {
+            0%,
+            100% {
+                box-shadow: 0 10px 35px rgba(102, 126, 234, 0.45), 0 0 0 0 rgba(102, 126, 234, 0.3);
+            }
+            50% {
+                box-shadow: 0 10px 35px rgba(102, 126, 234, 0.45), 0 0 0 22px rgba(102, 126, 234, 0);
+            }
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+        .btn-outline:hover {
+            background: var(--accent);
+            color: #fff;
+        }
+        .btn-sm {
+            padding: 7px 18px;
+            font-size: 0.8em;
+            border-radius: 25px;
+        }
+        .btn-danger {
+            background: var(--danger);
+            color: #fff;
+        }
+        .btn-success {
+            background: var(--success);
+            color: #fff;
+        }
+
+        /* ==================== فرم‌ها ==================== */
+        input,
+        textarea,
+        select {
+            font-family: var(--font-family);
+            padding: 12px 18px;
+            border-radius: 14px;
+            border: var(--border-glass);
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-size: 0.9em;
+            width: 100%;
+            transition: all 0.3s;
+            outline: none;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        input:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            background: var(--bg-glass-strong);
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.85em;
+            color: var(--text-secondary);
+        }
+
+        /* ==================== مودال ==================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--modal-overlay);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+        .modal {
+            background: var(--bg-glass-strong);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 24px;
+            padding: 25px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            border: var(--border-glass);
+            animation: fadeSlideIn 0.4s ease;
+        }
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            left: 16px;
+            background: var(--card-bg);
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3em;
+            color: var(--text-primary);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-soft);
+            z-index: 10;
+        }
+        .modal-close:hover {
+            background: var(--danger);
+            color: #fff;
+            transform: rotate(90deg);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* ==================== FAB دکمه شناور ==================== */
+        .fab-container {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 150;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .fab-main {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--fab-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: var(--border-glass);
+            box-shadow: var(--shadow-soft);
+            cursor: pointer;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s;
+            color: var(--accent);
+            animation: floatBubble 3s ease-in-out infinite;
+        }
+        @keyframes floatBubble {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        .fab-main:hover {
+            box-shadow: var(--shadow-hover);
+            transform: scale(1.1) translateY(-5px);
+            animation: none;
+        }
+        .fab-panel {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            background: var(--bg-glass-strong);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 18px;
+            border: var(--border-glass);
+            box-shadow: var(--shadow-soft);
+            min-width: 220px;
+            animation: fadeSlideIn 0.35s ease;
+        }
+        .fab-panel.open {
+            display: flex;
+        }
+        .fab-panel .fab-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.25s;
+            font-size: 0.85em;
+            font-weight: 500;
+            color: var(--text-primary);
+            gap: 10px;
+            background: transparent;
+            border: none;
+            font-family: var(--font-family);
+            width: 100%;
+            text-align: right;
+        }
+        .fab-panel .fab-option:hover {
+            background: var(--nav-active-bg);
+        }
+        .fab-panel .fab-option .opt-icon {
+            font-size: 1.2em;
+            width: 30px;
+            text-align: center;
+        }
+        .fab-panel .toggle-switch {
+            width: 44px;
+            height: 24px;
+            background: #ccc;
+            border-radius: 12px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.3s;
+            flex-shrink: 0;
+        }
+        .fab-panel .toggle-switch.active {
+            background: var(--accent);
+        }
+        .fab-panel .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            width: 18px;
+            height: 18px;
+            background: #fff;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        .fab-panel .toggle-switch.active::after {
+            right: 22px;
+        }
+        .fab-panel .divider {
+            height: 1px;
+            background: var(--divider);
+            margin: 4px 0;
+        }
+        .fab-panel .disabled-option {
+            opacity: 0.45;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+
+        /* ==================== صفحه محتوا - تب‌ها ==================== */
+        .content-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .content-tab {
+            padding: 10px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            background: var(--card-bg);
+            color: var(--text-secondary);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .content-tab:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .content-tab.active-tab {
+            background: var(--gradient-primary);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        /* ==================== کارت مقاله ==================== */
+        .article-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 18px;
+            overflow: hidden;
+            border: var(--border-glass);
+            transition: all 0.35s;
+            box-shadow: var(--shadow-soft);
+            cursor: pointer;
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        .article-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: var(--gradient-primary);
+            display: block;
+        }
+        .article-card .article-body {
+            padding: 16px;
+        }
+        .article-card .article-date {
+            font-size: 0.75em;
+            color: var(--text-muted);
+        }
+        .article-card h3 {
+            margin: 6px 0;
+            font-size: 1em;
+            color: var(--text-primary);
+        }
+
+        /* ==================== کارت بازی ==================== */
+        .game-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 18px;
+            padding: 20px;
+            border: var(--border-glass);
+            box-shadow: var(--shadow-soft);
+            transition: all 0.35s;
+            cursor: pointer;
+            text-align: center;
+        }
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        .game-card .game-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        .game-card h3 {
+            font-size: 1em;
+            margin-bottom: 6px;
+        }
+
+        /* ==================== بازی حافظه ==================== */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 380px;
+            margin: 0 auto;
+        }
+        .memory-card {
+            aspect-ratio: 1;
+            background: var(--gradient-primary);
+            border-radius: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            transition: all 0.4s;
+            transform-style: preserve-3d;
+            position: relative;
+            box-shadow: var(--shadow-soft);
+            user-select: none;
+        }
+        .memory-card.flipped {
+            background: var(--bg-glass-strong);
+            box-shadow: var(--shadow-hover);
+        }
+        .memory-card.matched {
+            background: var(--success);
+            pointer-events: none;
+            opacity: 0.7;
+            transform: scale(0.95);
+        }
+        .memory-card .card-inner {
+            transition: transform 0.5s;
+            transform-style: preserve-3d;
+        }
+        .memory-card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* ==================== بازی حدس کلمه ==================== */
+        .word-display {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: 1.8em;
+            letter-spacing: 6px;
+            font-weight: 700;
+            margin: 15px 0;
+        }
+        .word-display span {
+            border-bottom: 3px solid var(--accent);
+            min-width: 30px;
+            text-align: center;
+            padding: 4px 2px;
+        }
+        .keyboard {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            max-width: 400px;
+            margin: 10px auto;
+        }
+        .keyboard button {
+            width: 36px;
+            height: 40px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-family);
+            font-weight: 600;
+            font-size: 0.9em;
+            background: var(--card-bg);
+            color: var(--text-primary);
+            box-shadow: var(--shadow-soft);
+            transition: all 0.2s;
+        }
+        .keyboard button:hover {
+            background: var(--accent);
+            color: #fff;
+        }
+        .keyboard button.used {
+            opacity: 0.35;
+            pointer-events: none;
+            background: #ccc;
+        }
+
+        /* ==================== بازی تیراندازی ==================== */
+        .shooting-area {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            background: var(--bg-secondary);
+            border-radius: 18px;
+            overflow: hidden;
+            cursor: crosshair;
+            border: var(--border-glass);
+        }
+        .shooting-target {
+            position: absolute;
+            width: 45px;
+            height: 45px;
+            background: var(--danger);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.15s;
+            animation: targetPop 0.3s ease;
+            box-shadow: 0 0 18px rgba(239, 68, 68, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            color: #fff;
+            font-weight: 700;
+        }
+        @keyframes targetPop {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        /* ==================== پازل کشویی ==================== */
+        .puzzle-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+        .puzzle-tile {
+            aspect-ratio: 1;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: var(--shadow-soft);
+            user-select: none;
+        }
+        .puzzle-tile.empty {
+            background: transparent;
+            box-shadow: none;
+            cursor: default;
+            border: 2px dashed var(--text-muted);
+            opacity: 0.5;
+        }
+        .puzzle-tile:hover:not(.empty) {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* ==================== فوتر ==================== */
+        .footer {
+            position: relative;
+            z-index: 1;
+            background: var(--bg-glass-strong);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-top: var(--border-glass);
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .footer .footer-links {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+        .footer .footer-link-placeholder {
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 30px;
+            background: var(--card-bg);
+            border: 2px dashed var(--text-muted);
+            color: var(--text-muted);
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-width: 120px;
+            text-align: center;
+        }
+        .footer .footer-link-placeholder:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .footer .footer-banner {
+            width: 100%;
+            max-width: 500px;
+            height: 80px;
+            margin: 16px auto;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 2px dashed var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.85em;
+        }
+        .footer .copyright {
+            color: var(--text-muted);
+            font-size: 0.8em;
+        }
+
+        /* ==================== تایمر پروفایل ==================== */
+        .live-timer {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+        .live-timer .timer-unit {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 14px 16px;
+            text-align: center;
+            min-width: 65px;
+            box-shadow: var(--shadow-soft);
+            border: var(--border-glass);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .live-timer .timer-value {
+            font-size: 1.8em;
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .live-timer .timer-label {
+            font-size: 0.7em;
+            color: var(--text-muted);
+        }
+
+        /* ==================== لودر ==================== */
+        .loader {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        .loader .spinner {
+            width: 44px;
+            height: 44px;
+            border: 4px solid var(--divider);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ==================== ریسپانسیو ==================== */
+        @media (max-width: 768px) {
+            .header {
+                padding: 8px 12px;
+                gap: 8px;
+            }
+            .header .logo {
+                font-size: 1.3em;
+            }
+            .nav a {
+                padding: 7px 11px;
+                font-size: 0.75em;
+            }
+            .memory-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 6px;
+            }
+            .memory-card {
+                font-size: 1.3em;
+            }
+            .modal {
+                width: 95%;
+                padding: 16px;
+                border-radius: 18px;
+            }
+            .fab-container {
+                bottom: 20px;
+                left: 16px;
+            }
+            .fab-main {
+                width: 46px;
+                height: 46px;
+                font-size: 1.2em;
+            }
+            .main-container {
+                padding: 12px;
+            }
+            .shooting-area {
+                height: 250px;
+            }
+            .live-timer .timer-unit {
+                min-width: 50px;
+                padding: 10px;
+            }
+            .live-timer .timer-value {
+                font-size: 1.3em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav {
+                gap: 3px;
+            }
+            .nav a {
+                padding: 6px 9px;
+                font-size: 0.7em;
+                border-radius: 20px;
+            }
+            .memory-grid {
+                grid-template-columns: repeat(3, 1fr);
+                max-width: 260px;
+            }
+            .content-tabs {
+                gap: 4px;
+            }
+            .content-tab {
+                padding: 8px 14px;
+                font-size: 0.78em;
+            }
+            .btn-cta {
+                font-size: 0.95em;
+                padding: 12px 28px;
+            }
+        }
+    </style>
+</head>
+<body data-theme="light">
+
+    <!-- ==================== کانواس ذرات پس‌زمینه ==================== -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- ==================== هدر سایت ==================== -->
+    <header class="header">
+        <div class="logo" onclick="navigateTo('home')" title="روزیک - صفحه اصلی">✨ روزیک</div>
+        <nav class="nav" id="mainNav">
+            <a onclick="navigateTo('home')" data-page="home" class="active" title="خانه">🏠 خانه</a>
+            <a onclick="navigateTo('content')" data-page="content" title="آموزش و مقاله">📚 محتوا</a>
+            <a onclick="navigateTo('games')" data-page="games" title="بازی و سرگرمی">🎮 بازی‌ها</a>
+            <a onclick="navigateTo('profile')" data-page="profile" title="پروفایل کاربری">👤 پروفایل</a>
+            <a onclick="navigateTo('search')" data-page="search" title="جستجو">🔍 سرچ کنیم</a>
+        </nav>
+        <!-- آواتار پروفایل در هدر (سمت چپ در حالت RTL) -->
+        <div class="header-profile" id="headerProfile" onclick="navigateTo('profile')" title="مشاهده پروفایل">
+            <span class="hp-icon">👤</span>
+            <span class="hp-name" id="headerProfileName">میهمان</span>
+            <img id="headerProfileImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%23ddd'/%3E%3Ctext x='20' y='26' text-anchor='middle' font-size='18' fill='%23999'%3E👤%3C/text%3E%3C/svg%3E" alt="آواتار" style="display:none;">
+        </div>
+    </header>
+
+    <!-- ==================== محتوای اصلی ==================== -->
+    <main class="main-container">
+
+        <!-- ========== صفحه خانه ========== -->
+        <section class="section active" id="section-home">
+            <div class="glass-card" style="text-align:center; padding: 40px 25px;">
+                <h1 style="font-size:2.2em; margin-bottom:10px;">🌟 به <span style="background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">روزیک</span> خوش اومدی!</h1>
+                <p style="font-size:1.1em; color:var(--text-secondary); margin-bottom:8px;">
+                    یه فضای امن، شاد و آرامش‌بخش برای <strong>یادگیری</strong> و <strong>سرگرمی</strong> 💜
+                </p>
+                <p style="color:var(--text-muted); margin-bottom:20px;">
+                    اینجا می‌تونی مقاله بخونی، بازی کنی، پروفایل خودت رو بسازی و کلی چیزای باحال کشف کنی!
+                </p>
+                <!-- دکمه CTA با انیمیشن موج‌دار -->
+                <button class="btn btn-cta" onclick="navigateTo('profile')" style="margin:10px;">
+                    🚀 ساخت پروفایل من
+                </button>
+            </div>
+
+            <!-- معرفی سازنده -->
+            <div class="glass-card">
+                <h2 style="text-align:center; margin-bottom:12px;">👨‍💻 سازنده روزیک</h2>
+                <div style="text-align:center;">
+                    <p style="font-size:1.2em; font-weight:700; color:var(--accent);">امیر وای‌زد (Amir YZ)</p>
+                    <p style="color:var(--text-secondary); margin-bottom:14px;">برنامه‌نویس، طراح و خالق روزیک 💡</p>
+                </div>
+                <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+                    <a href="https://rubika.ir/@amiro_m202" target="_blank" class="btn btn-outline btn-sm" style="text-decoration:none;">📱 روبیکا @amiro_m202</a>
+                    <a href="https://t.me/@amiro_m202" target="_blank" class="btn btn-outline btn-sm" style="text-decoration:none;">✈️ تلگرام @amiro_m202</a>
+                    <a href="https://splus.ir/@amiro_m202" target="_blank" class="btn btn-outline btn-sm" style="text-decoration:none;">💬 سروش‌پلاس @amiro_m202</a>
+                    <a href="https://instagram.com/@amiro_m202" target="_blank" class="btn btn-outline btn-sm" style="text-decoration:none;">📷 اینستاگرام @amiro_m202</a>
+                </div>
+            </div>
+
+            <!-- تیزر نسخه‌های بعدی -->
+            <div class="glass-card" style="text-align:center;">
+                <p style="font-size:1.05em; color:var(--text-secondary);">
+                    🎉 <strong>نسخه‌های بیشتری با قابلیت‌های بی‌نظیر در راه‌اند!</strong> منتظر امکانات جدید، بازی‌های هیجان‌انگیزتر و آموزش‌های جذاب باشید...
+                </p>
+            </div>
+        </section>
+
+        <!-- ========== صفحه محتوا (آموزش و مقاله) ========== -->
+        <section class="section" id="section-content">
+            <div class="content-tabs">
+                <button class="content-tab active-tab" onclick="filterContent('girl', this)">🌸 دخترونه</button>
+                <button class="content-tab" onclick="filterContent('boy', this)">🚀 پسرونه</button>
+            </div>
+            <div id="articlesContainer" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:18px;">
+                <!-- مقاله‌ها با جاوااسکریپت رندر می‌شن -->
+            </div>
+        </section>
+
+        <!-- ========== صفحه بازی‌ها ========== -->
+        <section class="section" id="section-games">
+            <h2 style="text-align:center; margin-bottom:20px;">🎮 بازی‌های هیجان‌انگیز</h2>
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:18px;" id="gamesGrid">
+                <!-- کارت بازی حافظه -->
+                <div class="game-card" onclick="openGameModal('memory')">
+                    <div class="game-icon">🧠</div>
+                    <h3>بازی حافظه</h3>
+                    <p style="font-size:0.8em;color:var(--text-muted);">کارت‌های شطرنجی رو جفت کن!</p>
+                    <span class="btn btn-sm btn-primary" style="margin-top:8px;">▶ بازی کن</span>
+                </div>
+                <!-- کارت حدس کلمه -->
+                <div class="game-card" onclick="openGameModal('wordguess')">
+                    <div class="game-icon">📝</div>
+                    <h3>حدس کلمه</h3>
+                    <p style="font-size:0.8em;color:var(--text-muted);">کلمه فارسی رو حدس بزن!</p>
+                    <span class="btn btn-sm btn-primary" style="margin-top:8px;">▶ بازی کن</span>
+                </div>
+                <!-- کارت تیراندازی -->
+                <div class="game-card" onclick="openGameModal('shooting')">
+                    <div class="game-icon">🎯</div>
+                    <h3>تیراندازی با کلیک</h3>
+                    <p style="font-size:0.8em;color:var(--text-muted);">هدف‌های متحرک رو بزن!</p>
+                    <span class="btn btn-sm btn-primary" style="margin-top:8px;">▶ بازی کن</span>
+                </div>
+                <!-- کارت پازل کشویی -->
+                <div class="game-card" onclick="openGameModal('puzzle')">
+                    <div class="game-icon">🧩</div>
+                    <h3>پازل کشویی ۳×۳</h3>
+                    <p style="font-size:0.8em;color:var(--text-muted);">مرتب‌ش کن و برنده شو!</p>
+                    <span class="btn btn-sm btn-primary" style="margin-top:8px;">▶ بازی کن</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== صفحه پروفایل ========== -->
+        <section class="section" id="section-profile">
+            <div id="profileNotLoggedIn">
+                <div class="glass-card" style="max-width:500px;margin:0 auto;">
+                    <h2 style="text-align:center;">🔐 ثبت‌نام / ورود</h2>
+                    <form id="profileForm" onsubmit="handleProfileSubmit(event)">
+                        <div class="form-group">
+                            <label>نام و نام خانوادگی</label>
+                            <input type="text" id="regFullName" placeholder="مثلاً: علی محمدی" required>
+                        </div>
+                        <div class="form-group">
+                            <label>نام کاربری (حداقل ۳ کاراکتر - یونیک)</label>
+                            <input type="text" id="regUsername" placeholder="username" minlength="3" required>
+                            <small id="usernameError" style="color:var(--danger);display:none;">⚠️ این نام کاربری قبلاً ثبت شده</small>
+                        </div>
+                        <div class="form-group">
+                            <label>عکس پروفایل</label>
+                            <input type="file" id="regAvatar" accept="image/*" onchange="previewAvatar(this)">
+                            <div style="text-align:center;margin-top:8px;">
+                                <img id="avatarPreview" src="" alt="پیش‌نمایش" style="width:80px;height:80px;border-radius:50%;object-fit:cover;display:none;border:3px solid var(--accent);">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%;">✨ ثبت‌نام / ورود</button>
+                    </form>
+                </div>
+            </div>
+            <div id="profileLoggedIn" style="display:none;">
+                <div class="glass-card" style="max-width:550px;margin:0 auto;text-align:center;">
+                    <img id="profileAvatarLarge" src="" alt="عکس پروفایل" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:4px solid var(--accent);margin-bottom:12px;">
+                    <h2 id="profileDisplayName">---</h2>
+                    <p style="color:var(--text-muted);">@<span id="profileDisplayUsername">---</span></p>
+                    <p style="font-size:0.8em;color:var(--text-muted);">📅 عضو از: <span id="profileJoinDate">---</span></p>
+                    <!-- تایمر زنده -->
+                    <div class="live-timer" id="liveTimer">
+                        <div class="timer-unit"><div class="timer-value" id="timerDays">0</div><div class="timer-label">روز</div></div>
+                        <div class="timer-unit"><div class="timer-value" id="timerHours">0</div><div class="timer-label">ساعت</div></div>
+                        <div class="timer-unit"><div class="timer-value" id="timerMinutes">0</div><div class="timer-label">دقیقه</div></div>
+                        <div class="timer-unit"><div class="timer-value" id="timerSeconds">0</div><div class="timer-label">ثانیه</div></div>
+                    </div>
+                    <div style="margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                        <button class="btn btn-outline btn-sm" onclick="editProfile()">✏️ ویرایش اطلاعات</button>
+                        <button class="btn btn-danger btn-sm" onclick="logoutProfile()">🚪 خروج از حساب</button>
+                    </div>
+                    <!-- فرم ویرایش (مخفی) -->
+                    <div id="editProfileForm" style="display:none;margin-top:16px;text-align:right;">
+                        <div class="form-group"><label>نام و نام خانوادگی</label><input type="text" id="editFullName"></div>
+                        <div class="form-group"><label>عکس پروفایل جدید</label><input type="file" id="editAvatar" accept="image/*" onchange="previewEditAvatar(this)"><img id="editAvatarPreview" src="" style="width:60px;height:60px;border-radius:50%;object-fit:cover;display:none;margin-top:6px;border:2px solid var(--accent);"></div>
+                        <button class="btn btn-success btn-sm" onclick="saveProfileEdit()">💾 ذخیره تغییرات</button>
+                        <button class="btn btn-outline btn-sm" onclick="cancelEdit()">لغو</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== صفحه جستجو ========== -->
+        <section class="section" id="section-search">
+            <div class="glass-card" style="text-align:center;">
+                <h2>🔍 جستجوی آهنگ و ویدیو</h2>
+                <div style="display:flex;gap:8px;max-width:500px;margin:16px auto;">
+                    <input type="text" id="searchInput" placeholder="نام آهنگ یا ویدیو رو بنویس..." onkeydown="if(event.key==='Enter')performSearch()">
+                    <button class="btn btn-primary" onclick="performSearch()">🔍 جستجو</button>
+                </div>
+                <div id="searchResults" style="text-align:right;margin-top:16px;">
+                    <p style="color:var(--text-muted);">نتایج جستجو اینجا نمایش داده می‌شه...</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== فوتر / صفحه پیشنهادها ==================== -->
+    <footer class="footer" id="section-footer">
+        <div class="footer-links">
+            <!-- جای خالی برای لینک تلگرام -->
+            <a class="footer-link-placeholder" href="https://t.me/+XEt6QQPNLfxiYmI0" title="">✈️  گپ چت تلگرام </a>
+            <!-- جای خالی برای لینک روبیکا -->
+            <a class="footer-link-placeholder" href="#" title="">📱 گپ چت روبیکا (به زودی)</a>
+        </div>
+        <!-- جای خالی بنر تبلیغاتی -->
+        <div class="footer-banner">با ما همراه باشید</div>
+        <p class="copyright">تمامی حقوق برای روزیک محفوظ است © ۲۰۲۶</p>
+    </footer>
+
+    <!-- ==================== FAB دکمه شناور ==================== -->
+    <div class="fab-container" id="fabContainer">
+        <div class="fab-panel" id="fabPanel">
+            <span style="font-weight:700;font-size:0.85em;text-align:center;display:block;color:var(--text-secondary);">⚙️ تنظیمات سریع</span>
+            <!-- تغییر تم -->
+            <button class="fab-option" onclick="toggleTheme()">
+                <span class="opt-icon">🌓</span> تغییر تم (دارک/لایت)
+                <span class="toggle-switch" id="themeToggleSwitch"></span>
+            </button>
+            <div class="divider"></div>
+            <!-- تغییر فونت -->
+            <button class="fab-option" onclick="cycleFont()">
+                <span class="opt-icon">🔤</span> تغییر فونت
+                <span style="font-size:0.75em;color:var(--text-muted);" id="fontIndicator">وزیر</span>
+            </button>
+            <div class="divider"></div>
+            <!-- تغییر زبان -->
+            <button class="fab-option disabled-option" title="به‌زودی فعال می‌شود">
+                <span class="opt-icon">🌐</span> تغییر زبان (فارسی)
+                <span style="font-size:0.7em;color:var(--text-muted);">🔒 غیرفعال</span>
+            </button>
+        </div>
+        <button class="fab-main" id="fabMain" onclick="toggleFabPanel()" title="تنظیمات">⚡</button>
+    </div>
+
+    <!-- ==================== مودال بازی‌ها ==================== -->
+    <div class="modal-overlay" id="gameModalOverlay" style="display:none;" onclick="closeGameModal(event)">
+        <div class="modal" id="gameModal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeGameModal()">✕</button>
+            <div id="gameModalContent">
+                <!-- محتوای بازی اینجا لود می‌شه -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== لودر (مخفی) ==================== -->
+    <div class="loader" id="pageLoader" style="display:none; position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:300;">
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        // ==================== متغیرهای سراسری ====================
+        const APP_KEY = 'roozik_data';
+        let currentPage = 'home';
+        let currentContentFilter = 'girl';
+        let fabPanelOpen = false;
+        let profileData = null;
+        let timerInterval = null;
+        let gameActive = null; // نوع بازی فعال در مودال
+
+        // ==================== مقداردهی اولیه ====================
+        function init() {
+            loadAllData();
+            applyTheme();
+            applyFont();
+            updateHeaderProfile();
+            initParticles();
+            updateNavActive();
+            // بازیابی آخرین صفحه بازدید شده
+            const lastPage = localStorage.getItem('roozik_last_page');
+            if (lastPage && document.getElementById('section-' + lastPage)) {
+                navigateTo(lastPage, false);
+            } else {
+                navigateTo('home', false);
+            }
+            // رندر محتوا
+            renderArticles(currentContentFilter);
+            // اگر پروفایل موجوده، تایمر رو شروع کن
+            if (profileData && profileData.joinTimestamp) {
+                startLiveTimer();
+                showProfileLoggedIn();
+            }
+            // آپدیت سویچ تم در پنل FAB
+            updateThemeSwitch();
+            updateFontIndicator();
+        }
+
+        // ==================== بارگذاری و ذخیره‌سازی دیتا ====================
+        function loadAllData() {
+            const raw = localStorage.getItem(APP_KEY);
+            if (raw) {
+                try {
+                    const data = JSON.parse(raw);
+                    profileData = data.profile || null;
+                    // تنظیمات تم و فونت
+                    if (data.theme) document.body.setAttribute('data-theme', data.theme);
+                    if (data.font) document.body.style.setProperty('--font-family', data.font);
+                } catch (e) {
+                    profileData = null;
+                }
+            }
+        }
+
+        function saveAllData() {
+            const data = {
+                profile: profileData,
+                theme: document.body.getAttribute('data-theme') || 'light',
+                font: document.body.style.getPropertyValue('--font-family') || "'Vazir','Tahoma',sans-serif",
+            };
+            localStorage.setItem(APP_KEY, JSON.stringify(data));
+        }
+
+        // ==================== نویگیشن ====================
+        function navigateTo(pageName, saveLastPage = true) {
+            // نمایش لودر
+            const loader = document.getElementById('pageLoader');
+            loader.style.display = 'flex';
+            // مخفی کردن همه بخش‌ها
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            // نمایش بخش مورد نظر با کمی تأخیر برای انیمیشن
+            setTimeout(() => {
+                const target = document.getElementById('section-' + pageName);
+                if (target) {
+                    target.classList.add('active');
+                    currentPage = pageName;
+                    updateNavActive();
+                    // اسکرول به بالای محتوا
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    // ذخیره آخرین صفحه
+                    if (saveLastPage) {
+                        localStorage.setItem('roozik_last_page', pageName);
+                    }
+                    // رندر محتوا در صورت نیاز
+                    if (pageName === 'content') renderArticles(currentContentFilter);
+                }
+                loader.style.display = 'none';
+            }, 200);
+        }
+
+        function updateNavActive() {
+            document.querySelectorAll('#mainNav a').forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('data-page') === currentPage) {
+                    a.classList.add('active');
+                }
+            });
+        }
+
+        // ==================== ذرات پس‌زمینه (Canvas) ====================
+        function initParticles() {
+            const canvas = document.getElementById('particleCanvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            const maxParticles = 55;
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resize();
+            window.addEventListener('resize', () => {
+                resize();
+                particles = [];
+                createParticles();
+            });
+
+            function createParticles() {
+                particles = [];
+                for (let i = 0; i < maxParticles; i++) {
+                    particles.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        r: Math.random() * 3 + 1.5,
+                        dx: (Math.random() - 0.5) * 0.6,
+                        dy: (Math.random() - 0.5) * 0.6,
+                        alpha: Math.random() * 0.5 + 0.2,
+                        pulse: Math.random() * Math.PI * 2,
+                        pulseSpeed: Math.random() * 0.02 + 0.01,
+                    });
+                }
+            }
+            createParticles();
+
+            function getParticleColor() {
+                const isDark = document.body.getAttribute('data-theme') === 'dark';
+                return isDark ? 'rgba(160,180,255,0.3)' : 'rgba(102,126,234,0.22)';
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                const color = getParticleColor();
+                particles.forEach(p => {
+                    p.x += p.dx;
+                    p.y += p.dy;
+                    p.pulse += p.pulseSpeed;
+                    const currentAlpha = p.alpha + Math.sin(p.pulse) * 0.15;
+                    // بازگشت به صفحه در صورت خروج
+                    if (p.x < -10) p.x = canvas.width + 10;
+                    if (p.x > canvas.width + 10) p.x = -10;
+                    if (p.y < -10) p.y = canvas.height + 10;
+                    if (p.y > canvas.height + 10) p.y = -10;
+                    // رسم ذره
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = color.replace('0.22', String(Math.max(0.05, Math.min(0.5, currentAlpha)))).replace(
+                        '0.3', String(Math.max(0.05, Math.min(0.5, currentAlpha))));
+                    ctx.fill();
+                    // هاله نوری
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r * 2.5, 0, Math.PI * 2);
+                    const glowAlpha = Math.max(0.01, currentAlpha * 0.3);
+                    ctx.fillStyle = color.replace('0.22', String(glowAlpha)).replace('0.3', String(glowAlpha));
+                    ctx.fill();
+                });
+                // خطوط اتصال بین ذرات نزدیک
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 100) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            const lineAlpha = (1 - dist / 100) * 0.12;
+                            ctx.strokeStyle = color.replace('0.22', String(lineAlpha)).replace('0.3', String(lineAlpha));
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        // ==================== FAB Panel ====================
+        function toggleFabPanel() {
+            fabPanelOpen = !fabPanelOpen;
+            const panel = document.getElementById('fabPanel');
+            if (fabPanelOpen) {
+                panel.classList.add('open');
+                document.getElementById('fabMain').textContent = '✕';
+            } else {
+                panel.classList.remove('open');
+                document.getElementById('fabMain').textContent = '⚡';
+            }
+            updateThemeSwitch();
+        }
+
+        function updateThemeSwitch() {
+            const sw = document.getElementById('themeToggleSwitch');
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                sw.classList.add('active');
+            } else {
+                sw.classList.remove('active');
+            }
+        }
+
+        function toggleTheme() {
+            const current = document.body.getAttribute('data-theme') || 'light';
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.body.setAttribute('data-theme', next);
+            saveAllData();
+            updateThemeSwitch();
+        }
+
+        function updateFontIndicator() {
+            const font = document.body.style.getPropertyValue('--font-family') || "'Vazir','Tahoma',sans-serif";
+            const indicator = document.getElementById('fontIndicator');
+            if (font.includes('Vazir')) indicator.textContent = 'وزیر';
+            else if (font.includes('IranSans') || font.includes('Iran')) indicator.textContent = 'ایران‌سنس';
+            else if (font.includes('Tahoma')) indicator.textContent = 'تاهوما';
+            else indicator.textContent = 'سفارشی';
+        }
+
+        function cycleFont() {
+            const current = document.body.style.getPropertyValue('--font-family') || "'Vazir','Tahoma',sans-serif";
+            let next;
+            if (current.includes('Vazir')) {
+                next = "'Tahoma','Vazir',sans-serif";
+            } else if (current.includes('Tahoma')) {
+                next = "'Vazir','Tahoma',sans-serif";
+            } else {
+                next = "'Vazir','Tahoma',sans-serif";
+            }
+            document.body.style.setProperty('--font-family', next);
+            saveAllData();
+            updateFontIndicator();
+        }
+
+        function applyTheme() {
+            const raw = localStorage.getItem(APP_KEY);
+            if (raw) {
+                try {
+                    const data = JSON.parse(raw);
+                    if (data.theme) document.body.setAttribute('data-theme', data.theme);
+                } catch (e) {}
+            }
+        }
+
+        function applyFont() {
+            const raw = localStorage.getItem(APP_KEY);
+            if (raw) {
+                try {
+                    const data = JSON.parse(raw);
+                    if (data.font) document.body.style.setProperty('--font-family', data.font);
+                } catch (e) {}
+            }
+        }
+
+        // بستن پنل FAB با کلیک خارج
+        document.addEventListener('click', function(e) {
+            if (fabPanelOpen) {
+                const fabContainer = document.getElementById('fabContainer');
+                if (!fabContainer.contains(e.target)) {
+                    fabPanelOpen = false;
+                    document.getElementById('fabPanel').classList.remove('open');
+                    document.getElementById('fabMain').textContent = '⚡';
+                }
+            }
+        });
+
+        // ==================== پروفایل ====================
+        function handleProfileSubmit(e) {
+            e.preventDefault();
+            const fullName = document.getElementById('regFullName').value.trim();
+            const username = document.getElementById('regUsername').value.trim();
+            const avatarInput = document.getElementById('regAvatar');
+            const errorEl = document.getElementById('usernameError');
+
+            // اعتبارسنجی نام کاربری
+            if (username.length < 3) {
+                errorEl.textContent = '⚠️ نام کاربری باید حداقل ۳ کاراکتر باشه';
+                errorEl.style.display = 'block';
+                return;
+            }
+            // چک تکراری نبودن نام کاربری (در صورت وجود پروفایل قبلی)
+            if (profileData && profileData.username === username) {
+                // همون کاربر قبلیه - آپدیت
+            } else {
+                // چک در کل (فعلاً فقط یک پروفایل ذخیره می‌شه، پس اگر پروفایل موجود با نام متفاوت باشه خطا میدیم)
+                // برای سادگی: فقط چک می‌کنیم که پروفایل فعلی با نام کاربری دیگه‌ای قبلاً ثبت نشده باشه
+                if (profileData && profileData.username !== username) {
+                    errorEl.textContent = '⚠️ فقط یک پروفایل می‌تواند وجود داشته باشد. ابتدا خارج شوید.';
+                    errorEl.style.display = 'block';
+                    return;
+                }
+            }
+            errorEl.style.display = 'none';
+
+            // پردازش عکس
+            if (avatarInput.files && avatarInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    saveProfileData(fullName, username, ev.target.result);
+                };
+                reader.readAsDataURL(avatarInput.files[0]);
+            } else {
+                // حفظ عکس قبلی یا عکس پیش‌فرض
+                const existingAvatar = profileData ? profileData.avatar : '';
+                saveProfileData(fullName, username, existingAvatar);
+            }
+        }
+
+        function saveProfileData(fullName, username, avatar) {
+            const now = new Date();
+            const joinTimestamp = profileData ? profileData.joinTimestamp : now.toISOString();
+            const joinDateStr = profileData ? profileData.joinDate :
+                now.toLocaleDateString('fa-IR', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            profileData = {
+                fullName: fullName,
+                username: username,
+                avatar: avatar,
+                joinTimestamp: joinTimestamp,
+                joinDate: joinDateStr,
+            };
+            saveAllData();
+            updateHeaderProfile();
+            showProfileLoggedIn();
+            startLiveTimer();
+            document.getElementById('profileForm').reset();
+            document.getElementById('avatarPreview').style.display = 'none';
+            alert('✅ پروفایل با موفقیت ذخیره شد!');
+        }
+
+        function showProfileLoggedIn() {
+            document.getElementById('profileNotLoggedIn').style.display = 'none';
+            document.getElementById('profileLoggedIn').style.display = 'block';
+            if (profileData) {
+                document.getElementById('profileDisplayName').textContent = profileData.fullName;
+                document.getElementById('profileDisplayUsername').textContent = profileData.username;
+                document.getElementById('profileJoinDate').textContent = profileData.joinDate;
+                const avatarImg = document.getElementById('profileAvatarLarge');
+                if (profileData.avatar) {
+                    avatarImg.src = profileData.avatar;
+                    avatarImg.style.display = 'inline-block';
+                } else {
+                    avatarImg.src =
+                        'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="50" fill="%23ddd"/%3E%3Ctext x="50" y="62" text-anchor="middle" font-size="40" fill="%23999"%3E👤%3C/text%3E%3C/svg%3E';
+                    avatarImg.style.display = 'inline-block';
+                }
+            }
+        }
+
+        function updateHeaderProfile() {
+            const nameEl = document.getElementById('headerProfileName');
+            const imgEl = document.getElementById('headerProfileImg');
+            if (profileData) {
+                nameEl.textContent = profileData.fullName.split(' ')[0] || profileData.username;
+                if (profileData.avatar) {
+                    imgEl.src = profileData.avatar;
+                    imgEl.style.display = 'inline-block';
+                } else {
+                    imgEl.style.display = 'none';
+                }
+            } else {
+                nameEl.textContent = 'میهمان';
+                imgEl.style.display = 'none';
+                document.getElementById('profileLoggedIn').style.display = 'none';
+                document.getElementById('profileNotLoggedIn').style.display = 'block';
+            }
+        }
+
+        function startLiveTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            if (!profileData || !profileData.joinTimestamp) return;
+
+            function updateTimer() {
+                const joinTime = new Date(profileData.joinTimestamp).getTime();
+                const now = Date.now();
+                let diff = Math.max(0, now - joinTime);
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                diff -= days * 1000 * 60 * 60 * 24;
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                diff -= hours * 1000 * 60 * 60;
+                const minutes = Math.floor(diff / (1000 * 60));
+                diff -= minutes * 1000 * 60;
+                const seconds = Math.floor(diff / 1000);
+                document.getElementById('timerDays').textContent = days;
+                document.getElementById('timerHours').textContent = hours;
+                document.getElementById('timerMinutes').textContent = minutes;
+                document.getElementById('timerSeconds').textContent = seconds;
+            }
+            updateTimer();
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        function editProfile() {
+            document.getElementById('editProfileForm').style.display = 'block';
+            document.getElementById('editFullName').value = profileData.fullName;
+            document.getElementById('editAvatarPreview').style.display = 'none';
+        }
+
+        function cancelEdit() {
+            document.getElementById('editProfileForm').style.display = 'none';
+        }
+
+        function saveProfileEdit() {
+            const newName = document.getElementById('editFullName').value.trim();
+            if (newName) profileData.fullName = newName;
+            const editAvatarInput = document.getElementById('editAvatar');
+            if (editAvatarInput.files && editAvatarInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    profileData.avatar = ev.target.result;
+                    finishEdit();
+                };
+                reader.readAsDataURL(editAvatarInput.files[0]);
+            } else {
+                finishEdit();
+            }
+        }
+
+        function finishEdit() {
+            saveAllData();
+            updateHeaderProfile();
+            showProfileLoggedIn();
+            document.getElementById('editProfileForm').style.display = 'none';
+            alert('✅ تغییرات ذخیره شد!');
+        }
+
+        function logoutProfile() {
+            if (confirm('آیا مطمئنی که می‌خوای خارج بشی؟')) {
+                profileData = null;
+                saveAllData();
+                updateHeaderProfile();
+                document.getElementById('profileLoggedIn').style.display = 'none';
+                document.getElementById('profileNotLoggedIn').style.display = 'block';
+                if (timerInterval) clearInterval(timerInterval);
+                document.getElementById('profileForm').reset();
+                document.getElementById('avatarPreview').style.display = 'none';
+                alert('👋 خارج شدی. روز خوبی داشته باشی!');
+            }
+        }
+
+        function previewAvatar(input) {
+            const preview = document.getElementById('avatarPreview');
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'inline-block';
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function previewEditAvatar(input) {
+            const preview = document.getElementById('editAvatarPreview');
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'inline-block';
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // ==================== محتوا - مقالات ====================
+        const allArticles = [
+            { id: 1, title: '۱۰ راز برای یادگیری سریع برنامه‌نویسی', category: 'boy', image: '', date: '۱۴۰۴/۰۴/۲۵',
+                excerpt: 'با این ۱۰ تکنیک طلایی، مسیر برنامه‌نویسی رو سریع‌تر طی کن...۱. قانون «۲۰/۸۰» (پارتو) را درک کنید 2.یادگیری معکوس را اجرا کنید3. هرروز کد بزنید و تماشا کنید 4.از تکنیک جعبه سیاه استفاده کنید  ق5.قانون پومودرو را برای تمرکز طلایی استفاده کنید 6با چالش های روزانه کوتاه شروع کنید 7. کپی و استفاده صحسح از کد های درون گیت هاب8. از هوش مصنوعی به عنوان دستیار استفاده کنید نه جایگزین9. قانون 2زبان کافی است را رعایت کنید10. تدریس سریع ترین راه برای یادگیری است', tags: ['برنامه‌نویسی', 'آموزش'] },
+            { id: 2, title: 'چگونه استرس رو مدیریت کنیم؟ (روش‌های علمی)', category: 'girl', image: '', date: '۱۴۰۴/۰۴/۲۰',
+                excerpt: 'استرس دشمن خلاقیته! با روش‌های علمی آرامش رو به زندگی برگردون... 1.🏃‍♂️ فعالیت بدنی منظم(ورزش منظم (به‌ویژه ورزش‌های هوازی) یکی از اثبات‌شده‌ترین روش‌هاست. این کار به بدن کمک می‌کند تا در پاسخ به محرک‌های روزمره، هورمون‌های استرس کمتری ترشح کند و در عین حال با افزایش ترشح اندورفین، حس آرامش ایجاد می‌کند. حتی ترکیب ورزش با ذهن‌آگاهی، مانند پیاده‌روی آگاهانه یا تای چی، تأثیر دوچندانی دارد و می‌تواند عملکرد شناختی را نیز بهبود بخشد.)2.🧠 درمان شناختی-رفتاری (CBT)(CBT به عنوان یک استاندارد طلایی در مدیریت استرس شناخته می‌شود و به شما کمک می‌کند الگوهای فکری منفی را شناسایی و تغییر دهید. نسخه‌های دیجیتال و خودراهبر این درمان نیز مؤثر بوده‌اند؛ به عنوان مثال، یک مطالعه نشان داد که استفاده از یک اپلیکیشن مبتنی بر CBT به مدت ۳ ماه، به طور معنی‌داری استرس ادراک‌شده را کاهش می‌دهد (d = 0.36))', tags: ['مهارت‌های زندگی',
+                'روانشناسی'] },
+            { id: 3, title: 'آشنایی با هوش مصنوعی برای همه', category: 'boy', image: '', date: '۱۴۰۴/۰۴/۱۸',
+                excerpt: 'هوش مصنوعی دیگه فقط برای متخصصا نیست! بیا ببین چطور وارد دنیای AI بشی...', tags: ['هوش مصنوعی',
+                    'علمی'
+                ] },
+            { id: 4, title: 'هنر و خلاقیت در زندگی روزمره', category: 'girl', image: '', date: '۱۴۰۴/۰۴/۱۵',
+                excerpt: 'خلاقیت فقط مخصوص هنرمندا نیست! هر روز می‌تونی یه اثر هنری خلق کنی...(۱. هنر به مثابه «نگاهِ تازه»بزرگ‌ترین هنر در زندگی روزمره، «عادت‌زدایی» است. وقتی مسیر تکراری رفتن به سر کار را با نگاه یک گردشگرمی‌پیمایید، یا وقتی به صدای باد در میان درختان مانند یک سمفونی گوش می‌دهید، در حال خلق هنر هستید. هنریعنی توانایی دیدنِ «معمولی» به‌عنوان «شگفت‌انگیز».۲. خلاقیت در کارهای پیش‌پاافتاده آشپزی: ترکیب ادویه‌ها، چیدنِ رنگ‌ها در بشقاب، یا خلق یک دستور پخت جدید، یک کنشِ هنری است.چیدمان خانه: جابه‌جا کردن یک گلدان، انتخاب نور، یا حتی تا کردن لباس‌ها با دقت، بیانگر حسِ زیبایی‌شناختی شماست)', tags: ['هنر', 'خلاقیت'] },
+            { id: 5, title: 'راهنمای جامع شروع کسب‌وکار اینترنتی', category: 'boy', image: '', date: '۱۴۰۴/۰۴/۱۲',
+                excerpt: 'می‌خوای کسب‌وکار خودت رو راه بندازی؟ این راهنما رو از دست نده...', tags: ['کسب‌وکار', 'اینترنت'] },
+            { id: 6, title: 'رازهای شاد زیستن در دنیای پرمشغله', category: 'girl', image: '', date: '۱۴۰۴/۰۴/۱۰',
+                excerpt: 'شادی یه انتخابه! یاد بگیر چطور تو شرایط سخت هم بخندی...۱. شادی را در «اکنون» جستجو کنید، نه در «پس از آن» (ذهن ما عادت کرده بگوید: «وقتی کارم تمام شود، خوشحال می‌شوم.» اما کارها هرگز تمام نمی‌شوند. راز این است که لذت دمِ دست را ببینید: گرمای چای در دست، صدای باران، لبخند کودکی، یا حتی نفس عمیقی که می‌کشید. شادی در میانِ مشغله‌هاست، نه انتهای آن.)', tags: ['مهارت‌های زندگی', 'شادی'] },
+        ];
+
+        function filterContent(category, tabElement) {
+            currentContentFilter = category;
+            document.querySelectorAll('.content-tab').forEach(t => t.classList.remove('active-tab'));
+            if (tabElement) tabElement.classList.add('active-tab');
+            renderArticles(category);
+        }
+
+        function renderArticles(category) {
+            const container = document.getElementById('articlesContainer');
+            if (!container) return;
+            const filtered = allArticles.filter(a => a.category === category);
+            if (filtered.length === 0) {
+                container.innerHTML = '<p style="text-align:center;color:var(--text-muted);">مقاله‌ای یافت نشد.</p>';
+                return;
+            }
+            container.innerHTML = filtered.map(a => `
+            <div class="article-card" onclick="alert('📖 ${a.title}\\n\\n${a.excerpt}\\n\\n📅 تاریخ: ${a.date}\\n🏷 برچسب‌ها: ${a.tags.join(', ')}\\n\\n(این یک مقاله نمونه است)')">
+              <div style="height:140px;background:var(--gradient-primary);display:flex;align-items:center;justify-content:center;font-size:3em;color:#fff;">📄</div>
+              <div class="article-body">
+                <span class="article-date">📅 ${a.date}</span>
+                <h3>${a.title}</h3>
+                <p style="font-size:0.82em;color:var(--text-muted);">${a.excerpt}</p>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;">${a.tags.map(t=>`<span style="background:var(--tag-bg);padding:3px 10px;border-radius:20px;font-size:0.7em;">#${t}</span>`).join('')}</div>
+                <button class="btn btn-sm btn-outline" style="margin-top:10px;" onclick="event.stopPropagation();alert('📖 ${a.title}\\n\\n${a.excerpt}\\n\\nاین یک مقاله نمونه در سایت روزیک است.')">مشاهده کامل</button>
+              </div>
+            </div>
+          `).join('');
+        }
+
+        // ==================== بازی‌ها - مودال ====================
+        function openGameModal(gameType) {
+            gameActive = gameType;
+            document.getElementById('gameModalOverlay').style.display = 'flex';
+            const content = document.getElementById('gameModalContent');
+            switch (gameType) {
+                case 'memory':
+                    content.innerHTML = buildMemoryGame();
+                    initMemoryGame();
+                    break;
+                case 'wordguess':
+                    content.innerHTML = buildWordGuessGame();
+                    initWordGuessGame();
+                    break;
+                case 'shooting':
+                    content.innerHTML = buildShootingGame();
+                    initShootingGame();
+                    break;
+                case 'puzzle':
+                    content.innerHTML = buildPuzzleGame();
+                    initPuzzleGame();
+                    break;
+            }
+        }
+
+        function closeGameModal(event) {
+            if (event && event.target !== document.getElementById('gameModalOverlay')) return;
+            document.getElementById('gameModalOverlay').style.display = 'none';
+            gameActive = null;
+            // پاکسازی تایمرهای shooting
+            if (window._shootingInterval) clearInterval(window._shootingInterval);
+        }
+
+        // ---- بازی حافظه ----
+        function buildMemoryGame() {
+            return `
+            <h2 style="text-align:center;">🧠 بازی حافظه</h2>
+            <p style="text-align:center;color:var(--text-muted);">کارت‌ها رو جفت کن! امتیاز: <strong id="memScore">0</strong> | حرکت‌ها: <strong id="memMoves">0</strong></p>
+            <div class="memory-grid" id="memoryGrid"></div>
+            <div style="text-align:center;margin-top:12px;"><button class="btn btn-sm btn-primary" onclick="initMemoryGame()">🔄 شروع دوباره</button></div>
+          `;
+        }
+        let memCards = [],
+            memFlipped = [],
+            memMatched = [],
+            memScore = 0,
+            memMoves = 0,
+            memLocked = false;
+
+        function initMemoryGame() {
+            const emojis = ['🌸', '🌟', '🎈', '💎', '🔥', '🍀', '🦋', '🎵'];
+            const pairs = [...emojis, ...emojis];
+            // بر زدن
+            for (let i = pairs.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));
+                [pairs[i], pairs[j]] = [pairs[j], pairs[i]]; }
+            memCards = pairs;
+            memFlipped = [];
+            memMatched = [];
+            memScore = 0;
+            memMoves = 0;
+            memLocked = false;
+            document.getElementById('memScore').textContent = '0';
+            document.getElementById('memMoves').textContent = '0';
+            const grid = document.getElementById('memoryGrid');
+            if (!grid) return;
+            grid.innerHTML = memCards.map((emoji, i) => `
+            <div class="memory-card" data-index="${i}" onclick="flipMemoryCard(this, ${i})">
+              <span style="visibility:hidden;">${emoji}</span>
+            </div>
+          `).join('');
+            // ریست کلاس‌ها
+            document.querySelectorAll('.memory-card').forEach(c => {
+                c.classList.remove('flipped', 'matched');
+                c.querySelector('span').style.visibility = 'hidden';
+            });
+        }
+
+        function flipMemoryCard(cardEl, index) {
+            if (memLocked) return;
+            if (memFlipped.length >= 2) return;
+            if (memMatched.includes(index)) return;
+            if (memFlipped.includes(index)) return;
+            cardEl.classList.add('flipped');
+            cardEl.querySelector('span').style.visibility = 'visible';
+            memFlipped.push(index);
+            if (memFlipped.length === 2) {
+                memMoves++;
+                document.getElementById('memMoves').textContent = memMoves;
+                memLocked = true;
+                const [i1, i2] = memFlipped;
+                if (memCards[i1] === memCards[i2]) {
+                    // جفت شد
+                    memMatched.push(i1, i2);
+                    memScore += 10;
+                    document.getElementById('memScore').textContent = memScore;
+                    document.querySelectorAll('.memory-card')[i1].classList.add('matched');
+                    document.querySelectorAll('.memory-card')[i2].classList.add('matched');
+                    memFlipped = [];
+                    memLocked = false;
+                    // بررسی برد
+                    if (memMatched.length === memCards.length) {
+                        setTimeout(() => alert('🎉 تبریک! همه کارت‌ها رو جفت کردی! امتیاز: ' + memScore), 400);
+                    }
+                } else {
+                    // برگردوندن
+                    setTimeout(() => {
+                        document.querySelectorAll('.memory-card')[i1].classList.remove('flipped');
+                        document.querySelectorAll('.memory-card')[i1].querySelector('span').style.visibility =
+                            'hidden';
+                        document.querySelectorAll('.memory-card')[i2].classList.remove('flipped');
+                        document.querySelectorAll('.memory-card')[i2].querySelector('span').style.visibility =
+                            'hidden';
+                        memFlipped = [];
+                        memLocked = false;
+                    }, 700);
+                }
+            }
+        }
+
+        // ---- بازی حدس کلمه ----
+        const wordList = ['برنامه', 'کامپیوتر', 'هوشمند', 'خلاقیت', 'آرامش', 'ستاره', 'دلفین', 'پروانه', 'کوهستان',
+        'چشمه'];
+        let wgWord = '',
+            wgGuessed = [],
+            wgWrongs = 0;
+
+        function buildWordGuessGame() {
+            return `
+            <h2 style="text-align:center;">📝 حدس کلمه فارسی</h2>
+            <p style="text-align:center;color:var(--text-muted;">اشتباهات: <strong id="wgWrongs">0</strong> از ۶</p>
+            <div class="word-display" id="wgWordDisplay"></div>
+            <div class="keyboard" id="wgKeyboard"></div>
+            <div style="text-align:center;margin-top:12px;"><button class="btn btn-sm btn-primary" onclick="initWordGuessGame()">🔄 کلمه جدید</button></div>
+          `;
+        }
+
+        function initWordGuessGame() {
+            wgWord = wordList[Math.floor(Math.random() * wordList.length)];
+            wgGuessed = [];
+            wgWrongs = 0;
+            document.getElementById('wgWrongs').textContent = '0';
+            renderWordDisplay();
+            renderKeyboard();
+        }
+
+        function renderWordDisplay() {
+            const display = document.getElementById('wgWordDisplay');
+            if (!display) return;
+            display.innerHTML = wgWord.split('').map(ch => {
+                return `<span>${wgGuessed.includes(ch) ? ch : '_'}</span>`;
+            }).join('');
+            // بررسی برد
+            const revealed = wgWord.split('').every(ch => wgGuessed.includes(ch));
+            if (revealed) {
+                setTimeout(() => alert('🎉 آفرین! کلمه رو حدس زدی: ' + wgWord), 300);
+            }
+        }
+
+        function renderKeyboard() {
+            const keyboard = document.getElementById('wgKeyboard');
+            if (!keyboard) return;
+            const letters = 'آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی';
+            keyboard.innerHTML = letters.split('').map(l => {
+                const used = wgGuessed.includes(l);
+                return `<button class="${used ? 'used' : ''}" onclick="guessLetter('${l}')" ${used ? 'disabled' : ''}>${l}</button>`;
+            }).join('');
+        }
+
+        function guessLetter(letter) {
+            if (wgGuessed.includes(letter)) return;
+            wgGuessed.push(letter);
+            if (!wgWord.includes(letter)) {
+                wgWrongs++;
+                document.getElementById('wgWrongs').textContent = wgWrongs;
+                if (wgWrongs >= 6) {
+                    setTimeout(() => alert('😢 باختی! کلمه این بود: ' + wgWord), 300);
+                    renderWordDisplay();
+                    renderKeyboard();
+                    // غیرفعال کردن همه دکمه‌ها
+                    document.querySelectorAll('#wgKeyboard button').forEach(b => b.disabled = true);
+                    return;
+                }
+            }
+            renderWordDisplay();
+            renderKeyboard();
+        }
+
+        // ---- بازی تیراندازی ----
+        function buildShootingGame() {
+            return `
+            <h2 style="text-align:center;">🎯 تیراندازی با کلیک</h2>
+            <p style="text-align:center;color:var(--text-muted;">امتیاز: <strong id="shootScore">0</strong> | زمان: <strong id="shootTime">30</strong> ثانیه</p>
+            <div class="shooting-area" id="shootingArea" onclick="shootAreaClick(event)">
+              <p id="shootStartMsg" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--text-muted);pointer-events:none;">برای شروع کلیک کن!</p>
+            </div>
+            <div style="text-align:center;margin-top:12px;"><button class="btn btn-sm btn-primary" onclick="initShootingGame()">🔄 شروع دوباره</button></div>
+          `;
+        }
+        let shootScore = 0,
+            shootTime = 30,
+            shootActive = false,
+            shootInterval = null,
+            shootTargetInterval = null;
+
+        function initShootingGame() {
+            shootScore = 0;
+            shootTime = 30;
+            shootActive = true;
+            document.getElementById('shootScore').textContent = '0';
+            document.getElementById('shootTime').textContent = '30';
+            document.getElementById('shootStartMsg').style.display = 'none';
+            const area = document.getElementById('shootingArea');
+            // پاکسازی
+            area.querySelectorAll('.shooting-target').forEach(t => t.remove());
+            if (window._shootingInterval) clearInterval(window._shootingInterval);
+            if (shootTargetInterval) clearInterval(shootTargetInterval);
+            // تایمر
+            window._shootingInterval = setInterval(() => {
+                shootTime--;
+                document.getElementById('shootTime').textContent = shootTime;
+                if (shootTime <= 0) {
+                    clearInterval(window._shootingInterval);
+                    clearInterval(shootTargetInterval);
+                    shootActive = false;
+                    area.querySelectorAll('.shooting-target').forEach(t => t.remove());
+                    document.getElementById('shootStartMsg').style.display = 'block';
+                    document.getElementById('shootStartMsg').textContent =
+                        '⏰ زمان تموم شد! امتیاز: ' + shootScore;
+                    alert('⏰ زمان تموم شد! امتیاز نهایی: ' + shootScore);
+                }
+            }, 1000);
+            // تولید هدف
+            shootTargetInterval = setInterval(() => {
+                if (!shootActive) return;
+                spawnTarget();
+            }, 900);
+            spawnTarget();
+        }
+
+        function spawnTarget() {
+            const area = document.getElementById('shootingArea');
+            if (!area || !shootActive) return;
+            // حذف هدف‌های قدیمی (حداکثر ۳ هدف همزمان)
+            const existing = area.querySelectorAll('.shooting-target');
+            if (existing.length >= 3) {
+                existing[0].remove();
+            }
+            const target = document.createElement('div');
+            target.className = 'shooting-target';
+            const maxX = area.clientWidth - 50;
+            const maxY = area.clientHeight - 50;
+            target.style.left = Math.random() * maxX + 'px';
+            target.style.top = Math.random() * maxY + 'px';
+            target.textContent = '🎯';
+            target.onclick = function(e) {
+                e.stopPropagation();
+                if (!shootActive) return;
+                shootScore += 5;
+                document.getElementById('shootScore').textContent = shootScore;
+                target.remove();
+            };
+            area.appendChild(target);
+            // خودکار حذف بعد از 2.5 ثانیه
+            setTimeout(() => {
+                if (target.parentNode) target.remove();
+            }, 2500);
+        }
+
+        function shootAreaClick(e) {
+            if (!shootActive) {
+                initShootingGame();
+            }
+        }
+
+        // ---- پازل کشویی ۳×۳ ----
+        function buildPuzzleGame() {
+            return `
+            <h2 style="text-align:center;">🧩 پازل کشویی ۳×۳</h2>
+            <p style="text-align:center;color:var(--text-muted);">حرکات: <strong id="puzMoves">0</strong></p>
+            <div class="puzzle-grid" id="puzzleGrid"></div>
+            <div style="text-align:center;margin-top:12px;"><button class="btn btn-sm btn-primary" onclick="initPuzzleGame()">🔄 بر زدن دوباره</button></div>
+          `;
+        }
+        let puzTiles = [],
+            puzEmptyIndex = 8,
+            puzMoves = 0;
+
+        function initPuzzleGame() {
+            puzTiles = [1, 2, 3, 4, 5, 6, 7, 8, null];
+            puzEmptyIndex = 8;
+            puzMoves = 0;
+            document.getElementById('puzMoves').textContent = '0';
+            // بر زدن تصادفی با چند حرکت معتبر
+            for (let i = 0; i < 40; i++) {
+                const neighbors = getPuzNeighbors(puzEmptyIndex);
+                const randomNeighbor = neighbors[Math.floor(Math.random() * neighbors.length)];
+                swapPuzTiles(puzEmptyIndex, randomNeighbor);
+                puzEmptyIndex = randomNeighbor;
+            }
+            renderPuzzle();
+        }
+
+        function getPuzNeighbors(index) {
+            const neighbors = [];
+            const row = Math.floor(index / 3);
+            const col = index % 3;
+            if (row > 0) neighbors.push(index - 3);
+            if (row < 2) neighbors.push(index + 3);
+            if (col > 0) neighbors.push(index - 1);
+            if (col < 2) neighbors.push(index + 1);
+            return neighbors;
+        }
+
+        function swapPuzTiles(i, j) {
+            [puzTiles[i], puzTiles[j]] = [puzTiles[j], puzTiles[i]];
+        }
+
+        function renderPuzzle() {
+            const grid = document.getElementById('puzzleGrid');
+            if (!grid) return;
+            grid.innerHTML = puzTiles.map((tile, i) => {
+                if (tile === null) return '<div class="puzzle-tile empty"></div>';
+                return `<div class="puzzle-tile" onclick="movePuzTile(${i})">${tile}</div>`;
+            }).join('');
+            // بررسی برد
+            if (puzTiles.slice(0, 8).every((t, i) => t === i + 1) && puzTiles[8] === null) {
+                setTimeout(() => alert('🎉 تبریک! پازل رو کامل کردی! تعداد حرکات: ' + puzMoves), 350);
+            }
+        }
+
+        function movePuzTile(index) {
+            const neighbors = getPuzNeighbors(puzEmptyIndex);
+            if (neighbors.includes(index)) {
+                swapPuzTiles(index, puzEmptyIndex);
+                puzEmptyIndex = index;
+                puzMoves++;
+                document.getElementById('puzMoves').textContent = puzMoves;
+                renderPuzzle();
+            }
+        }
+
+        // ==================== جستجو ====================
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.trim();
+            const resultsDiv = document.getElementById('searchResults');
+            if (!query) {
+                resultsDiv.innerHTML = '<p style="color:var(--text-muted);">لطفاً یک عبارت جستجو وارد کن.</p>';
+                return;
+            }
+            // شبیه‌سازی نتایج (چون API عمومی بدون کلید محدودیت داره)
+            const mockResults = [
+                { title: `🎵 آهنگ: ${query} - نسخه اصلی`, url: '#', type: 'آهنگ',
+                    desc: 'لینک شبیه‌سازی شده - در نسخه واقعی از API استفاده می‌شه' },
+                { title: `🎬 ویدیو: آموزش ${query} در یوتیوب`, url: '#', type: 'ویدیو',
+                    desc: 'لینک شبیه‌سازی شده - در نسخه واقعی از YouTube API استفاده می‌شه' },
+                { title: `🔊 پادکست: گپ و گفت درباره ${query}`, url: '#', type: 'پادکست',
+                    desc: 'لینک شبیه‌سازی شده - در نسخه واقعی از SoundCloud API استفاده می‌شه' },
+            ];
+            resultsDiv.innerHTML = mockResults.map(r => `
+            <div class="glass-card" style="padding:14px;margin-bottom:10px;cursor:pointer;" onclick="alert('🔗 این یک لینک شبیه‌سازی‌شده است.\\n\\nدر نسخه نهایی، جستجوی واقعی با APIهای عمومی (YouTube/SoundCloud) انجام می‌شه.')">
+              <strong>${r.title}</strong>
+              <span style="font-size:0.7em;background:var(--tag-bg);padding:2px 8px;border-radius:10px;margin-right:8px;">${r.type}</span>
+              <p style="font-size:0.78em;color:var(--text-muted);margin-top:4px;">${r.desc}</p>
+            </div>
+          `).join('') + '<p style="font-size:0.7em;color:var(--text-muted);text-align:center;">⚠️ نتایج شبیه‌سازی‌شده - برای استفاده واقعی، کلید API را اضافه کنید.</p>';
+        }
+
+        // ==================== راه‌اندازی ====================
+        document.addEventListener('DOMContentLoaded', init);
+
+        // ==================== هندلر کلیک روی مودال اورلی ====================
+        document.getElementById('gameModalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeGameModal();
+        });
+
+        // ==================== کلید Escape برای بستن مودال ====================
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                if (document.getElementById('gameModalOverlay').style.display === 'flex') {
+                    closeGameModal();
+                }
+                if (fabPanelOpen) {
+                    fabPanelOpen = false;
+                    document.getElementById('fabPanel').classList.remove('open');
+                    document.getElementById('fabMain').textContent = '⚡';
+                }
+            }
+        });
+
+        console.log('🌟 روزیک (Roozik) - با موفقیت راه‌اندازی شد!');
+        console.log('👨‍💻 ساخته شده توسط امیر وای‌زد (Amir YZ)');
+        console.log('📱 ارتباط: @amiro_m202 در روبیکا، تلگرام، سروش‌پلاس و اینستاگرام');
+        console.log('💡 تمام داده‌ها در localStorage ذخیره می‌شن.');
+        console.log('🎮 برای شروع، پروفایلت رو بساز و از بازی‌ها لذت ببر!');
+    </script>
+</body>
+</html>
