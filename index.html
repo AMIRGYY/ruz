@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>روزیک | Roozik - فضای امن و شاد شما</title>
+    <title>روزیک | Roozik</title>
     <link href="https://cdn.jsdelivr.net/npm/vazir-font@latest/dist/font-face.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/moment-jalaali@0.9.6/build/moment-jalaali.min.js"></script>
     <style>
@@ -41,49 +41,40 @@
         .logo{font-size:1.7em;font-weight:900;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;cursor:pointer;user-select:none}
         .nav{display:flex;gap:6px;flex-wrap:wrap}
         .nav a{text-decoration:none;color:var(--text-secondary);padding:9px 16px;border-radius:30px;font-size:0.9em;font-weight:500;cursor:pointer;white-space:nowrap;transition:all 0.3s}
-        .nav a:hover{background:var(--nav-active-bg);color:var(--accent);transform:translateY(-2px)}
-        .nav a.active{background:var(--gradient-primary);color:#fff;font-weight:600;box-shadow:0 6px 20px rgba(102,126,234,0.35)}
-        .header-profile{display:flex;align-items:center;gap:10px;cursor:pointer;padding:6px 16px;border-radius:40px;background:var(--card-bg);border:var(--border-glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:all 0.3s;box-shadow:var(--shadow-soft)}
-        .header-profile:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}
+        .nav a:hover{background:var(--nav-active-bg);color:var(--accent)}
+        .nav a.active{background:var(--gradient-primary);color:#fff;font-weight:600}
+        .header-profile{display:flex;align-items:center;gap:10px;cursor:pointer;padding:6px 16px;border-radius:40px;background:var(--card-bg);border:var(--border-glass);backdrop-filter:blur(10px);transition:all 0.3s;box-shadow:var(--shadow-soft)}
         .header-profile img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid var(--accent)}
         .main-container{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:24px;min-height:70vh}
-        .section{display:none;animation:fadeSlideIn 0.5s ease forwards}
-        .section.active{display:block}
+        .section{display:none;animation:fadeSlideIn 0.5s ease forwards}.section.active{display:block}
         @keyframes fadeSlideIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-        .glass-card{background:var(--card-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:var(--border-glass);border-radius:20px;padding:24px;margin-bottom:20px;box-shadow:var(--shadow-soft);transition:all 0.4s}
+        .glass-card{background:var(--card-bg);backdrop-filter:blur(16px);border:var(--border-glass);border-radius:20px;padding:24px;margin-bottom:20px;box-shadow:var(--shadow-soft);transition:all 0.4s}
         .glass-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-4px)}
         .btn{display:inline-block;padding:12px 28px;border-radius:40px;font-family:var(--font-family);font-weight:600;font-size:0.95em;cursor:pointer;border:none;transition:all 0.35s;text-decoration:none}
-        .btn-primary{background:var(--gradient-primary);color:#fff;box-shadow:0 8px 25px rgba(102,126,234,0.4)}
-        .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 35px rgba(102,126,234,0.5)}
-        .btn-outline{background:transparent;border:2px solid var(--accent);color:var(--accent)}
-        .btn-outline:hover{background:var(--accent);color:#fff}
-        .btn-sm{padding:8px 18px;font-size:0.8em;border-radius:25px}
-        .btn-danger{background:var(--danger);color:#fff}.btn-success{background:var(--success);color:#fff}.btn-warning{background:var(--warning);color:#fff}
-        .btn-cta{background:var(--gradient-primary);color:#fff;font-size:1.15em;padding:16px 40px;border-radius:50px;box-shadow:0 10px 35px rgba(102,126,234,0.45);animation:wavePulse 2.5s ease-in-out infinite}
-        @keyframes wavePulse{0%,100%{box-shadow:0 10px 35px rgba(102,126,234,0.45),0 0 0 0 rgba(102,126,234,0.3)}50%{box-shadow:0 10px 35px rgba(102,126,234,0.45),0 0 0 22px rgba(102,126,234,0)}}
-        input,textarea,select{font-family:var(--font-family);padding:12px 18px;border-radius:14px;border:var(--border-glass);background:var(--input-bg);color:var(--text-primary);font-size:0.9em;width:100%;transition:all 0.3s;outline:none;margin-bottom:8px}
-        input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(102,126,234,0.1)}
+        .btn-primary{background:var(--gradient-primary);color:#fff}.btn-outline{background:transparent;border:2px solid var(--accent);color:var(--accent)}
+        .btn-sm{padding:8px 18px;font-size:0.8em;border-radius:25px}.btn-danger{background:var(--danger);color:#fff}.btn-success{background:var(--success);color:#fff}.btn-warning{background:var(--warning);color:#fff}
+        .btn-cta{background:var(--gradient-primary);color:#fff;font-size:1.15em;padding:16px 40px;border-radius:50px;animation:wavePulse 2.5s ease-in-out infinite}
+        @keyframes wavePulse{0%,100%{box-shadow:0 10px 35px rgba(102,126,234,0.45)}50%{box-shadow:0 10px 35px rgba(102,126,234,0.45),0 0 0 22px rgba(102,126,234,0.2)}}
+        input,textarea,select{font-family:var(--font-family);padding:12px;border-radius:14px;border:var(--border-glass);background:var(--input-bg);color:var(--text-primary);font-size:0.9em;width:100%;margin-bottom:8px;outline:none}
         .form-group{margin-bottom:16px}.form-group label{display:block;margin-bottom:6px;font-weight:600;font-size:0.85em;color:var(--text-secondary)}
         .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--modal-overlay);z-index:200;display:flex;align-items:center;justify-content:center}
-        .modal{background:var(--bg-glass-strong);backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);border-radius:24px;padding:28px;width:90%;max-width:650px;max-height:85vh;overflow-y:auto;box-shadow:0 25px 60px rgba(0,0,0,0.3);border:var(--border-glass);position:relative}
-        .modal-close{position:absolute;top:14px;left:18px;background:var(--card-bg);border:none;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1.3em;color:var(--text-primary);display:flex;align-items:center;justify-content:center;z-index:10;transition:all 0.3s}
+        .modal{background:var(--bg-glass-strong);backdrop-filter:blur(25px);border-radius:24px;padding:28px;width:90%;max-width:650px;max-height:85vh;overflow-y:auto;border:var(--border-glass);position:relative}
+        .modal-close{position:absolute;top:14px;left:18px;background:var(--card-bg);border:none;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1.3em;color:var(--text-primary);z-index:10}
         .modal-close:hover{background:var(--danger);color:#fff;transform:rotate(90deg)}
-        .fab-container{position:fixed;bottom:30px;left:30px;z-index:150;display:flex;flex-direction:column;align-items:center;gap:10px}
+        .fab-container{position:fixed;bottom:30px;left:30px;z-index:150}
         .fab-main{width:56px;height:56px;border-radius:50%;background:var(--card-bg);backdrop-filter:blur(16px);border:var(--border-glass);box-shadow:var(--shadow-soft);cursor:pointer;font-size:1.5em;display:flex;align-items:center;justify-content:center;color:var(--accent);animation:floatBubble 3s ease-in-out infinite}
         @keyframes floatBubble{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
         .fab-panel{display:none;flex-direction:column;gap:10px;background:var(--bg-glass-strong);backdrop-filter:blur(20px);border-radius:20px;padding:18px;border:var(--border-glass);box-shadow:var(--shadow-soft);min-width:220px}
         .fab-panel.open{display:flex}
-        .fab-option{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:12px;cursor:pointer;font-size:0.85em;background:transparent;border:none;font-family:var(--font-family);width:100%;color:var(--text-primary);transition:all 0.25s}
+        .fab-option{display:flex;align-items:center;justify-content:space-between;padding:10px;border-radius:12px;cursor:pointer;font-size:0.85em;background:transparent;border:none;font-family:var(--font-family);width:100%;color:var(--text-primary)}
         .fab-option:hover{background:var(--nav-active-bg)}
-        .content-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
-        .content-tab{padding:10px 24px;border-radius:30px;cursor:pointer;font-weight:600;font-size:0.9em;border:2px solid transparent;background:var(--card-bg);color:var(--text-secondary);transition:all 0.3s}
+        .content-tabs{display:flex;gap:8px;margin-bottom:20px}
+        .content-tab{padding:10px 24px;border-radius:30px;cursor:pointer;font-weight:600;border:2px solid transparent;background:var(--card-bg);color:var(--text-secondary)}
         .content-tab.active-tab{background:var(--gradient-primary);color:#fff}
         .article-card{background:var(--card-bg);backdrop-filter:blur(12px);border-radius:18px;overflow:hidden;border:var(--border-glass);box-shadow:var(--shadow-soft);cursor:pointer;transition:all 0.35s}
-        .article-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover)}
-        .article-body{padding:18px}
+        .article-card:hover{transform:translateY(-5px)}.article-body{padding:18px}
         .game-card{background:var(--card-bg);backdrop-filter:blur(12px);border-radius:18px;padding:20px;border:var(--border-glass);box-shadow:var(--shadow-soft);cursor:pointer;text-align:center;transition:all 0.35s}
-        .game-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover)}
-        .game-icon{font-size:3em;margin-bottom:10px}
+        .game-card:hover{transform:translateY(-5px)}.game-icon{font-size:3em;margin-bottom:10px}
         .live-timer{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:15px 0}
         .timer-unit{background:var(--card-bg);border-radius:16px;padding:14px 16px;text-align:center;min-width:65px;box-shadow:var(--shadow-soft);border:var(--border-glass)}
         .timer-value{font-size:1.8em;font-weight:900;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
@@ -95,35 +86,28 @@
         .footer-banner{max-width:500px;height:80px;margin:16px auto;background:var(--card-bg);border-radius:16px;border:2px dashed var(--text-muted);display:flex;align-items:center;justify-content:center;color:var(--text-muted)}
         .copyright{color:var(--text-muted);font-size:0.8em;margin-top:8px}
         .chat-container{max-height:400px;overflow-y:auto;padding:10px;background:var(--bg-secondary);border-radius:16px;margin:10px 0}
-        .chat-message{margin:8px 0;padding:10px 14px;border-radius:18px;max-width:75%;word-wrap:break-word}
+        .chat-message{margin:8px 0;padding:10px 14px;border-radius:18px;max-width:75%}
         .chat-message.sent{background:var(--gradient-primary);color:#fff;margin-right:auto}
         .chat-message.received{background:var(--card-bg);margin-left:auto;border:var(--border-glass)}
         .chat-message img,.chat-message video{max-width:200px;border-radius:10px;margin-top:5px}
         .memory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:380px;margin:0 auto}
-        .memory-card{aspect-ratio:1;background:var(--gradient-primary);border-radius:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:2em;transition:all 0.4s;user-select:none}
-        .memory-card.flipped{background:var(--bg-glass-strong)}
-        .memory-card.matched{background:var(--success);pointer-events:none;opacity:0.7}
+        .memory-card{aspect-ratio:1;background:var(--gradient-primary);border-radius:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:2em;transition:all 0.4s}
+        .memory-card.flipped{background:var(--bg-glass-strong)}.memory-card.matched{background:var(--success);pointer-events:none;opacity:0.7}
         .shooting-area{position:relative;width:100%;height:350px;background:var(--bg-secondary);border-radius:18px;overflow:hidden;cursor:crosshair;border:var(--border-glass)}
-        .shooting-target{position:absolute;width:45px;height:45px;background:var(--danger);border-radius:50%;cursor:pointer;animation:targetPop 0.3s ease;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+        .shooting-target{position:absolute;width:45px;height:45px;background:var(--danger);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;animation:targetPop 0.3s ease}
         @keyframes targetPop{from{transform:scale(0)}to{transform:scale(1)}}
         .puzzle-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-width:320px;margin:0 auto}
         .puzzle-tile{aspect-ratio:1;background:var(--gradient-primary);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3em;font-weight:700;color:#fff;cursor:pointer}
         .puzzle-tile.empty{background:transparent;border:2px dashed var(--text-muted);opacity:0.5;cursor:default}
-        .keyboard{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:400px;margin:10px auto}
-        .keyboard button{width:36px;height:40px;border-radius:10px;border:none;cursor:pointer;font-family:var(--font-family);font-weight:600;background:var(--card-bg);color:var(--text-primary)}
-        .keyboard button.used{opacity:0.35;pointer-events:none}
-        .word-display{display:flex;gap:8px;justify-content:center;font-size:1.8em;font-weight:700;margin:15px 0}
-        .word-display span{border-bottom:3px solid var(--accent);min-width:30px;text-align:center}
         .xo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:240px;margin:0 auto}
         .xo-cell{aspect-ratio:1;background:var(--card-bg);border-radius:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:2.5em;font-weight:700;border:var(--border-glass)}
         .snake-ladder-board{display:grid;grid-template-columns:repeat(10,1fr);gap:2px;max-width:400px;margin:10px auto}
         .snake-ladder-cell{aspect-ratio:1;background:var(--card-bg);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.6em;border:1px solid var(--divider)}
-        .snake-ladder-cell.player1{background:var(--accent);color:#fff}
-        .snake-ladder-cell.player2{background:var(--danger);color:#fff}
-        ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:10px}
-        @media(max-width:768px){.header{padding:8px 12px}.nav a{padding:7px 11px;font-size:0.75em}.modal{width:95%;padding:16px}.fab-container{bottom:20px;left:16px}.snake-ladder-board{max-width:320px}.shooting-area{height:250px}}
+        .snake-ladder-cell.player1{background:var(--accent);color:#fff}.snake-ladder-cell.player2{background:var(--danger);color:#fff}
         .search-result-item{padding:12px;margin:8px 0;border-radius:16px;background:var(--card-bg);border:var(--border-glass)}
-        .search-result-item iframe{width:100%;height:180px;border-radius:12px;border:none;margin:8px 0}
+        .search-result-item iframe{width:100%;height:200px;border-radius:12px;border:none;margin:8px 0}
+        ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:10px}
+        @media(max-width:768px){.header{padding:8px 12px}.nav a{padding:7px 11px;font-size:0.75em}.modal{width:95%;padding:16px}.fab-container{bottom:20px;left:16px}}
     </style>
 </head>
 <body data-theme="theme-purple">
@@ -138,43 +122,27 @@
             <a onclick="navigateTo('profile')" data-page="profile">👤 پروفایل</a>
             <a onclick="navigateTo('search')" data-page="search">🔍 سرچ</a>
         </nav>
-        <div class="header-profile" id="headerProfile" onclick="navigateTo('profile')" title="پروفایل">
-            <span style="font-size:1.5em;">👤</span>
-            <span class="hp-name" id="headerProfileName">میهمان</span>
-            <img id="headerProfileImg" src="" alt="آواتار" style="display:none;">
+        <div class="header-profile" id="headerProfile" onclick="navigateTo('profile')">
+            <span>👤</span><span id="headerProfileName">میهمان</span>
+            <img id="headerProfileImg" src="" style="display:none;">
         </div>
     </header>
-
     <main class="main-container">
-        <!-- خانه -->
         <section class="section active" id="section-home">
-            <div class="glass-card" style="text-align:center;padding:40px 25px;">
-                <h1 style="font-size:2.2em;">🌟 به <span style="background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">روزیک</span> خوش اومدی!</h1>
-                <p style="font-size:1.1em;color:var(--text-secondary);">فضای امن، شاد و آرامش‌بخش برای <strong>یادگیری</strong> و <strong>سرگرمی</strong> 💜</p>
-                <p style="color:var(--text-muted);margin:12px 0;">
-                    👀 بازدید کل: <strong id="totalVisits">0</strong> | 👥 کاربران: <strong id="totalUsers">0</strong> | 🟢 آنلاین: <strong id="onlineCount">0</strong>
-                </p>
-                <div class="glass-card" style="display:inline-block;padding:10px 20px;margin:8px;">
-                    🕐 ایران: <strong id="iranTime">--:--:--</strong> | 🌍 جهانی: <strong id="worldTime">--:--:--</strong>
-                </div>
-                <br>
-                <button class="btn btn-cta" onclick="navigateTo('profile')" id="homeCtaBtn">🚀 ساخت پروفایل من</button>
+            <div class="glass-card" style="text-align:center;padding:40px;">
+                <h1>🌟 به <span style="background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">روزیک</span> خوش اومدی!</h1>
+                <p>👀 بازدید: <strong id="totalVisits">0</strong> | 👥 کاربران: <strong id="totalUsers">0</strong> | 🟢 آنلاین: <strong id="onlineCount">0</strong></p>
+                <div class="glass-card" style="display:inline-block;padding:10px 20px;">🕐 ایران: <strong id="iranTime"></strong> | 🌍 <strong id="worldTime"></strong></div>
+                <br><button class="btn btn-cta" onclick="navigateTo('profile')" id="homeCtaBtn">🚀 ساخت پروفایل</button>
             </div>
-            <div class="glass-card" style="text-align:center;">
-                <h2>👨‍💻 سازنده: امیر وای‌زد (Amir YZ)</h2>
-                <p>📱 @amiro_m2026</p>
-                <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px;">
-                    <a href="https://t.me/@amiro_m202" target="_blank" class="btn btn-outline btn-sm">✈️ تلگرام</a>
-                    <a href="https://rubika.ir/@amiro_m202" target="_blank" class="btn btn-outline btn-sm">📱 روبیکا</a>
-                    <a href="https://instagram.com/@amiro_m202" target="_blank" class="btn btn-outline btn-sm">📷 اینستاگرام</a>
-                </div>
+            <div class="glass-card" style="text-align:center;"><h2>👨‍💻 امیر وای‌زد</h2><p>@amiro_m2026</p>
+                <a href="https://t.me/@amiro_m202" target="_blank" class="btn btn-outline btn-sm">✈️ تلگرام</a>
+                <a href="https://rubika.ir/@amiro_m202" target="_blank" class="btn btn-outline btn-sm">📱 روبیکا</a>
             </div>
-            <div class="glass-card"><h3 style="text-align:center;">💱 قیمت لحظه‌ای ارز</h3><div id="currencyRates" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;"></div></div>
-            <div class="glass-card" style="text-align:center;"><h3>📅 امروز</h3><p style="font-size:1.2em;font-weight:700;" id="todayDate">---</p></div>
-            <div class="glass-card"><h3 style="text-align:center;">📰 آخرین خبرهای روزیک</h3><div id="latestNews" style="text-align:center;"></div></div>
+            <div class="glass-card"><h3>💱 قیمت ارز (ریال)</h3><div id="currencyRates" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;"></div></div>
+            <div class="glass-card" style="text-align:center;"><h3>📅 امروز</h3><p id="todayDate"></p></div>
+            <div class="glass-card"><h3>📰 آخرین خبرها</h3><div id="latestNews"></div></div>
         </section>
-
-        <!-- محتوا -->
         <section class="section" id="section-content">
             <div class="content-tabs">
                 <button class="content-tab active-tab" onclick="filterContent('girl',this)">🌸 دخترونه</button>
@@ -182,37 +150,25 @@
             </div>
             <div id="articlesContainer" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;"></div>
         </section>
-
-        <!-- خبرنامه -->
-        <section class="section" id="section-news">
-            <h2 style="text-align:center;margin-bottom:20px;">📰 خبرنامه روزیک</h2>
-            <div id="newsContainer" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;"></div>
-        </section>
-
-        <!-- بازی‌ها -->
-        <section class="section" id="section-games">
-            <h2 style="text-align:center;margin-bottom:20px;">🎮 بازی‌های روزیک</h2>
-            <div id="gamesGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px;"></div>
-        </section>
-
-        <!-- پروفایل -->
+        <section class="section" id="section-news"><h2>📰 خبرنامه</h2><div id="newsContainer" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;"></div></section>
+        <section class="section" id="section-games"><h2>🎮 بازی‌ها</h2><div id="gamesGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px;"></div></section>
         <section class="section" id="section-profile">
             <div id="profileNotLoggedIn" style="max-width:500px;margin:0 auto;">
                 <div class="glass-card" id="registerCard">
-                    <h2 style="text-align:center;">🔐 ثبت‌نام</h2>
+                    <h2>🔐 ثبت‌نام</h2>
                     <form onsubmit="handleRegister(event)">
-                        <div class="form-group"><label>نام و نام خانوادگی</label><input type="text" id="regFullName" required></div>
-                        <div class="form-group"><label>نام کاربری (انگلیسی و عدد - حداقل ۳ کاراکتر)</label><input type="text" id="regUsername" minlength="3" pattern="[a-zA-Z0-9_]+" required></div>
-                        <div class="form-group"><label>رمز عبور (حداقل ۶ کاراکتر)</label><input type="password" id="regPassword" minlength="6" required></div>
-                        <div class="form-group"><label>تکرار رمز</label><input type="password" id="regPasswordConfirm" minlength="6" required></div>
-                        <div class="form-group"><label>عکس (اختیاری)</label><input type="file" id="regAvatar" accept="image/*" onchange="previewAvatar(this)"><img id="avatarPreview" style="width:80px;height:80px;border-radius:50%;object-fit:cover;display:none;margin-top:8px;border:3px solid var(--accent);"></div>
+                        <div class="form-group"><label>نام کامل</label><input type="text" id="regFullName" required></div>
+                        <div class="form-group"><label>نام کاربری (انگلیسی+عدد)</label><input type="text" id="regUsername" required></div>
+                        <div class="form-group"><label>رمز عبور</label><input type="password" id="regPassword" required></div>
+                        <div class="form-group"><label>تکرار رمز</label><input type="password" id="regPasswordConfirm" required></div>
+                        <div class="form-group"><label>عکس</label><input type="file" id="regAvatar" accept="image/*" onchange="previewAvatar(this)"><img id="avatarPreview" style="width:80px;height:80px;border-radius:50%;display:none;margin-top:8px;"></div>
                         <p id="regError" style="color:var(--danger);display:none;"></p>
                         <button type="submit" class="btn btn-primary" style="width:100%;">✨ ثبت‌نام</button>
                     </form>
-                    <p style="text-align:center;margin-top:12px;">حساب داری؟ <a onclick="showLoginForm()" style="color:var(--accent);cursor:pointer;font-weight:600;">ورود</a></p>
+                    <p style="text-align:center;margin-top:12px;"><a onclick="showLoginForm()" style="color:var(--accent);cursor:pointer;">ورود</a></p>
                 </div>
                 <div class="glass-card" id="loginCard" style="display:none;">
-                    <h2 style="text-align:center;">🔑 ورود</h2>
+                    <h2>🔑 ورود</h2>
                     <form onsubmit="handleLogin(event)">
                         <div class="form-group"><label>نام کاربری</label><input type="text" id="loginUsername" required></div>
                         <div class="form-group"><label>رمز عبور</label><input type="password" id="loginPassword" required></div>
@@ -224,576 +180,380 @@
             </div>
             <div id="profileLoggedIn" style="display:none;max-width:550px;margin:0 auto;"></div>
         </section>
-
-        <!-- سرچ -->
         <section class="section" id="section-search">
             <div class="glass-card">
-                <h2 style="text-align:center;">🔍 جستجوی پیشرفته</h2>
-                <div style="display:flex;gap:8px;max-width:700px;margin:16px auto;flex-wrap:wrap;">
-                    <input type="text" id="searchInput" placeholder="نام آهنگ، ویدیو، خواننده..." style="flex:1;min-width:200px;" onkeydown="if(event.key==='Enter')performSearch()">
-                    <select id="searchType" style="width:auto;padding:12px;border-radius:14px;">
-                        <option value="all">🔍 همه</option>
-                        <option value="music">🎵 آهنگ</option>
-                        <option value="video">🎬 ویدیو</option>
-                        <option value="persian">🇮🇷 ایرانی</option>
-                    </select>
-                    <button class="btn btn-primary" onclick="performSearch()">🔍 جستجو</button>
+                <h2>🔍 جستجو</h2>
+                <div style="display:flex;gap:8px;">
+                    <input type="text" id="searchInput" placeholder="نام آهنگ، ویدیو..." style="flex:1;" onkeydown="if(event.key==='Enter')performSearch()">
+                    <select id="searchType"><option value="all">همه</option><option value="music">🎵 آهنگ</option><option value="video">🎬 ویدیو</option><option value="persian">🇮🇷 ایرانی</option></select>
+                    <button class="btn btn-primary" onclick="performSearch()">🔍</button>
                 </div>
                 <div id="searchResults"></div>
             </div>
-            <div class="glass-card" style="margin-top:16px;">
-                <h3 style="text-align:center;">🌤️ آب و هوا</h3>
-                <div style="display:flex;gap:8px;max-width:400px;margin:10px auto;"><input type="text" id="cityInput" placeholder="نام شهر..."><button class="btn btn-sm btn-primary" onclick="getWeather()">بررسی</button></div>
-                <div id="weatherResult" style="text-align:center;margin-top:10px;"></div>
-            </div>
+            <div class="glass-card"><h3>🌤️ آب و هوا</h3><input type="text" id="cityInput" placeholder="نام شهر"><button class="btn btn-sm btn-primary" onclick="getWeather()">بررسی</button><div id="weatherResult"></div></div>
         </section>
     </main>
-
     <footer class="footer">
         <div class="footer-links">
-            <a class="footer-link-btn" href="#" id="footerTelegram" target="_blank">✈️ تلگرام</a>
-            <a class="footer-link-btn" href="#" id="footerRubika" target="_blank">📱 روبیکا</a>
-            <a class="footer-link-btn" href="#" id="footerAdRegister" style="border-color:var(--accent);color:var(--accent);">📢 ثبت تبلیغات</a>
+            <a class="footer-link-btn" href="#" id="footerTelegram">✈️ تلگرام</a>
+            <a class="footer-link-btn" href="#" id="footerRubika">📱 روبیکا</a>
+            <a class="footer-link-btn" href="#" id="footerAdRegister" style="border-color:var(--accent);">📢 ثبت تبلیغات</a>
         </div>
         <div class="footer-banner">🖼️ بنر تبلیغاتی</div>
         <div class="glass-card" style="max-width:600px;margin:16px auto;">
-            <h4 style="text-align:center;">💬 نظرات</h4>
-            <div id="commentsList" style="max-height:250px;overflow-y:auto;margin:8px 0;"></div>
-            <div id="commentFormArea" style="display:none;"><textarea id="commentInput" placeholder="نظرت..." rows="2"></textarea><button class="btn btn-sm btn-primary" onclick="submitComment()">📩 ارسال</button></div>
-            <p id="commentLoginMsg" style="text-align:center;color:var(--text-muted);">برای ثبت نظر <a onclick="navigateTo('profile')" style="color:var(--accent);cursor:pointer;">وارد شو</a></p>
+            <h4>💬 نظرات</h4><div id="commentsList" style="max-height:200px;overflow-y:auto;"></div>
+            <div id="commentFormArea" style="display:none;"><textarea id="commentInput" rows="2"></textarea><button class="btn btn-sm btn-primary" onclick="submitComment()">📩</button></div>
+            <p id="commentLoginMsg">برای نظر <a onclick="navigateTo('profile')" style="color:var(--accent);cursor:pointer;">وارد شو</a></p>
         </div>
-        <div class="glass-card" style="max-width:600px;margin:16px auto;text-align:center;">
-            <h4>📊 نظرسنجی</h4><p id="pollQuestion"></p><div id="pollOptions" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;"></div>
-            <p id="pollTotal" style="font-size:0.8em;color:var(--text-muted);margin-top:8px;"></p>
-        </div>
-        <p class="copyright">© ۲۰۲۶ روزیک | ساخته شده با ❤️ توسط امیر وای‌زد</p>
+        <p class="copyright">© ۲۰۲۶ روزیک | ❤️ امیر وای‌زد</p>
     </footer>
-
-    <div class="fab-container" id="fabContainer">
-        <div class="fab-panel" id="fabPanel">
-            <span style="font-weight:700;text-align:center;color:var(--text-secondary);">⚙️ تنظیمات</span>
-            <button class="fab-option" onclick="cycleTheme()">🎨 تم: <span id="themeName">بنفش</span></button>
-            <button class="fab-option" onclick="cycleFont()">🔤 فونت: <span id="fontName">وزیر</span></button>
-            <button class="fab-option" onclick="toggleLang()">🌐 زبان: <span id="langName">فارسی</span></button>
-        </div>
-        <button class="fab-main" onclick="toggleFabPanel()">⚡</button>
-    </div>
-
-    <div class="modal-overlay" id="gameModalOverlay" style="display:none;" onclick="closeGameModal(event)"><div class="modal" id="gameModal" onclick="event.stopPropagation()"><button class="modal-close" onclick="closeGameModal()">✕</button><div id="gameModalContent"></div></div></div>
-    <div class="modal-overlay" id="chatModalOverlay" style="display:none;" onclick="closeChatModal(event)"><div class="modal" id="chatModal" onclick="event.stopPropagation()"><button class="modal-close" onclick="closeChatModal()">✕</button><div id="chatModalContent"></div></div></div>
-    <div class="modal-overlay" id="adminModalOverlay" style="display:none;" onclick="closeAdminModal(event)"><div class="modal" id="adminModal" onclick="event.stopPropagation()"><button class="modal-close" onclick="closeAdminModal()">✕</button><div id="adminModalContent"></div></div></div>
+    <div class="fab-container"><div class="fab-panel" id="fabPanel">
+        <button class="fab-option" onclick="cycleTheme()">🎨 تم: <span id="themeName">بنفش</span></button>
+        <button class="fab-option" onclick="cycleFont()">🔤 فونت: <span id="fontName">وزیر</span></button>
+        <button class="fab-option" onclick="toggleLang()">🌐 زبان: <span id="langName">فارسی</span></button>
+    </div><button class="fab-main" onclick="toggleFabPanel()">⚡</button></div>
+    <div class="modal-overlay" id="gameModalOverlay" style="display:none;" onclick="closeGameModal(event)"><div class="modal" onclick="event.stopPropagation()"><button class="modal-close" onclick="closeGameModal()">✕</button><div id="gameModalContent"></div></div></div>
+    <div class="modal-overlay" id="chatModalOverlay" style="display:none;" onclick="closeChatModal(event)"><div class="modal" onclick="event.stopPropagation()"><button class="modal-close" onclick="closeChatModal()">✕</button><div id="chatModalContent"></div></div></div>
+    <div class="modal-overlay" id="adminModalOverlay" style="display:none;" onclick="closeAdminModal(event)"><div class="modal" onclick="event.stopPropagation()"><button class="modal-close" onclick="closeAdminModal()">✕</button><div id="adminModalContent"></div></div></div>
 
     <script>
-    // ==================== CONFIG ====================
-    const C = {
-        dbUrl: 'https://jsonkeeper.com/b/AXWI9',
-        currencyKey: '6bd355b3fb83d20667879502',
-        weatherKey: '252f978480e8588821137342cbd19701',
-        adminUser: 'amiro_m2026',
-        currentUser: null,
-        db: null,
-        intervals: [],
-        currentLang: 'fa'
-    };
+    const C={dbUrl:'https://jsonkeeper.com/b/AXWI9',currencyKey:'6bd355b3fb83d20667879502',weatherKey:'252f978480e8588821137342cbd19701',adminUser:'amiro_m2026',currentUser:null,db:null,intervals:[],currentLang:'fa'};
 
-    // ==================== DATABASE ====================
-    async function loadDb() {
-        try {
-            const r = await fetch(C.dbUrl);
-            if (!r.ok) throw new Error('Network error');
-            C.db = await r.json();
-        } catch(e) {
-            C.db = {users:[],articles:[],news:[],comments:[],polls:[{id:1,question:'کدوم بخش رو بیشتر دوست داری؟',options:['بازی‌ها','مقالات','پروفایل','سرچ'],votes:[0,0,0,0],voters:[]}],friendRequests:[],chats:[],socialLinks:{},siteInfo:{totalVisits:0,onlineUsers:0}};
-        }
-        if(!C.db.users) C.db.users=[];
-        if(!C.db.articles) C.db.articles=[];
-        if(!C.db.news) C.db.news=[];
-        if(!C.db.comments) C.db.comments=[];
-        if(!C.db.polls) C.db.polls=[];
-        if(!C.db.friendRequests) C.db.friendRequests=[];
-        if(!C.db.chats) C.db.chats=[];
-        if(!C.db.socialLinks) C.db.socialLinks={};
-        if(!C.db.siteInfo) C.db.siteInfo={totalVisits:0,onlineUsers:0};
+    // ========== DATABASE ==========
+    async function loadDb(){
+        try{const r=await fetch(C.dbUrl);if(!r.ok)throw new Error('err');C.db=await r.json()}catch(e){C.db=getDefaultDb()}
+        if(!C.db.users)C.db.users=[];if(!C.db.articles)C.db.articles=[];if(!C.db.news)C.db.news=[];
+        if(!C.db.comments)C.db.comments=[];if(!C.db.friendRequests)C.db.friendRequests=[];
+        if(!C.db.chats)C.db.chats=[];if(!C.db.siteInfo)C.db.siteInfo={totalVisits:0,onlineUsers:0};
+        if(!C.db.polls)C.db.polls=[{id:1,question:'بخش مورد علاقه؟',options:['بازی','مقاله','پروفایل','سرچ'],votes:[0,0,0,0],voters:[]}];
+        if(!C.db.socialLinks)C.db.socialLinks={telegram:'https://t.me/@amiro_m202',rubika:'https://rubika.ir/@amiro_m202'};
     }
+    function getDefaultDb(){return{users:[],articles:[{id:1,title:'آموزش برنامه‌نویسی',category:'boy',content:'...',author:'امیر',date:'۱۴۰۴/۰۱/۰۱',tags:[]},{id:2,title:'مدیریت استرس',category:'girl',content:'...',author:'امیر',date:'۱۴۰۴/۰۱/۰۱',tags:[]}],news:[],comments:[],friendRequests:[],chats:[],siteInfo:{totalVisits:0,onlineUsers:0},polls:[{id:1,question:'بخش مورد علاقه؟',options:['بازی','مقاله','پروفایل','سرچ'],votes:[0,0,0,0],voters:[]}],socialLinks:{telegram:'https://t.me/@amiro_m202',rubika:'https://rubika.ir/@amiro_m202'}}}
+    async function saveDb(){try{await fetch(C.dbUrl,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(C.db)})}catch(e){console.error('Save error')}}
 
-    async function saveDb() {
-        try {
-            await fetch(C.dbUrl, {method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(C.db)});
-        } catch(e) { console.error('Save error:', e); }
-    }
-
-    // ==================== INIT ====================
-    async function init() {
+    // ========== INIT ==========
+    async function init(){
         await loadDb();
-        C.db.siteInfo.totalVisits = (C.db.siteInfo.totalVisits||0) + 1;
-        C.db.siteInfo.onlineUsers = (C.db.siteInfo.onlineUsers||0) + 1;
+        // بازدید و آنلاین با localStorage برای همگام‌سازی
+        let visits=parseInt(localStorage.getItem('rz_total_visits')||'0');
+        let online=parseInt(localStorage.getItem('rz_online')||'0');
+        visits++;online++;
+        localStorage.setItem('rz_total_visits',visits);
+        localStorage.setItem('rz_online',online);
+        C.db.siteInfo.totalVisits=visits;
+        C.db.siteInfo.onlineUsers=online;
         await saveDb();
         
-        const saved = sessionStorage.getItem('rz_sess');
-        if (saved && C.db.users) {
-            const u = C.db.users.find(x => x.username === saved);
-            if (u) { C.currentUser = u; showProfileUI(); document.getElementById('homeCtaBtn').style.display='none'; }
-        }
+        const saved=sessionStorage.getItem('rz_sess');
+        if(saved&&C.db.users){const u=C.db.users.find(x=>x.username===saved);if(u){C.currentUser=u;showProfileUI();document.getElementById('homeCtaBtn').style.display='none'}}
+        initParticles();startClocks();updateAllUI();loadCurrency();updateDate();
+        renderArticles('girl');renderGames();renderNews();loadComments();updateCommentUI();
         
-        initParticles();
-        startClocks();
-        updateAllUI();
-        loadCurrency();
-        updateDate();
-        renderArticles('girl');
-        renderGames();
-        renderNews();
-        loadComments();
-        loadPoll();
-        updateCommentUI();
-        
-        setInterval(async () => { await loadDb(); updateAllUI(); }, 30000);
-        window.addEventListener('beforeunload', async () => {
-            C.db.siteInfo.onlineUsers = Math.max(0, (C.db.siteInfo.onlineUsers||1) - 1);
-            await saveDb();
-        });
+        setInterval(async()=>{await loadDb();updateAllUI()},15000);
+        window.addEventListener('beforeunload',()=>{let o=parseInt(localStorage.getItem('rz_online')||'1');o=Math.max(0,o-1);localStorage.setItem('rz_online',o)});
     }
 
-    // ==================== NAVIGATION ====================
-    function navigateTo(p) {
-        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-        const t = document.getElementById('section-'+p);
-        if(t) { t.classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
-        document.querySelectorAll('#mainNav a').forEach(a => { a.classList.remove('active'); if(a.getAttribute('data-page')===p) a.classList.add('active'); });
-        if(p==='content') renderArticles('girl');
-        if(p==='news') renderNews();
-        if(p==='games') renderGames();
-        if(p==='home') { loadCurrency(); updateDate(); }
+    // ========== NAVIGATION ==========
+    function navigateTo(p){
+        document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+        const t=document.getElementById('section-'+p);if(t)t.classList.add('active');
+        document.querySelectorAll('#mainNav a').forEach(a=>{a.classList.remove('active');if(a.getAttribute('data-page')===p)a.classList.add('active')});
+        if(p==='content')renderArticles('girl');if(p==='news')renderNews();if(p==='games')renderGames();if(p==='home'){loadCurrency();updateDate()}
     }
 
-    // ==================== PARTICLES ====================
-    function initParticles() {
-        const c = document.getElementById('particleCanvas'), ctx = c.getContext('2d');
-        let ps = [];
-        function rz() { c.width = innerWidth; c.height = innerHeight; }
-        rz(); window.addEventListener('resize', () => { rz(); ps=[]; for(let i=0;i<50;i++) ps.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*3+1,dx:(Math.random()-0.5)*0.6,dy:(Math.random()-0.5)*0.6,a:Math.random()*0.4+0.1}); });
-        for(let i=0;i<50;i++) ps.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*3+1,dx:(Math.random()-0.5)*0.6,dy:(Math.random()-0.5)*0.6,a:Math.random()*0.4+0.1});
-        function an() { ctx.clearRect(0,0,c.width,c.height); ps.forEach(p => { p.x+=p.dx; p.y+=p.dy; if(p.x<0)p.x=c.width; if(p.x>c.width)p.x=0; if(p.y<0)p.y=c.height; if(p.y>c.height)p.y=0; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle=`rgba(102,126,234,${p.a})`; ctx.fill(); }); requestAnimationFrame(an); }
-        an();
-    }
+    // ========== PARTICLES ==========
+    function initParticles(){const c=document.getElementById('particleCanvas'),ctx=c.getContext('2d');let ps=[];function rz(){c.width=innerWidth;c.height=innerHeight}rz();window.addEventListener('resize',()=>{rz();ps=[];for(let i=0;i<50;i++)ps.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*3+1,dx:(Math.random()-0.5)*0.6,dy:(Math.random()-0.5)*0.6})});for(let i=0;i<50;i++)ps.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*3+1,dx:(Math.random()-0.5)*0.6,dy:(Math.random()-0.5)*0.6});function an(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{p.x+=p.dx;p.y+=p.dy;if(p.x<0)p.x=c.width;if(p.x>c.width)p.x=0;if(p.y<0)p.y=c.height;if(p.y>c.height)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(102,126,234,0.2)';ctx.fill()});requestAnimationFrame(an)}an()}
 
-    // ==================== CLOCKS ====================
-    function startClocks() {
-        function up() { const n = new Date(); document.getElementById('iranTime').textContent = n.toLocaleTimeString('fa-IR',{timeZone:'Asia/Tehran'}); document.getElementById('worldTime').textContent = n.toLocaleTimeString('fa-IR',{timeZone:'UTC'}); }
-        up(); setInterval(up, 1000);
-    }
-    function updateDate() { try { document.getElementById('todayDate').textContent = moment().format('dddd، jD jMMMM jYYYY'); } catch(e) {} }
+    // ========== CLOCKS ==========
+    function startClocks(){function up(){const n=new Date();document.getElementById('iranTime').textContent=n.toLocaleTimeString('fa-IR',{timeZone:'Asia/Tehran'});document.getElementById('worldTime').textContent=n.toLocaleTimeString('fa-IR',{timeZone:'UTC'})}up();setInterval(up,1000)}
+    function updateDate(){try{document.getElementById('todayDate').textContent=moment().format('dddd، jD jMMMM jYYYY')}catch(e){}}
 
-    // ==================== CURRENCY ====================
-    async function loadCurrency() {
-        const el = document.getElementById('currencyRates');
-        if(!el) return;
-        try {
-            const r = await fetch(`https://v6.exchangerate-api.com/v6/${C.currencyKey}/latest/USD`);
-            const d = await r.json();
-            const cur = [
-                {code:'USD',name:'دلار',sym:'$'},{code:'EUR',name:'یورو',sym:'€'},
-                {code:'GBP',name:'پوند',sym:'£'},{code:'IRR',name:'تومان',sym:'ت',mul:10},
-                {code:'TRY',name:'لیر',sym:'₺'},{code:'AED',name:'درهم',sym:'د.ا'}
-            ];
-            el.innerHTML = cur.map(c => {
-                let v = d.conversion_rates[c.code];
-                if(c.mul) v *= c.mul;
-                const disp = c.code==='IRR' ? Number(v).toFixed(0) : Number(v).toFixed(2);
-                return `<span style="padding:8px 16px;background:var(--tag-bg);border-radius:20px;font-size:0.85em;">${c.name}: <strong>${Number(disp).toLocaleString('fa-IR')} ${c.sym}</strong></span>`;
+    // ========== CURRENCY (ریال) ==========
+    async function loadCurrency(){
+        const el=document.getElementById('currencyRates');if(!el)return;
+        try{
+            const r=await fetch(`https://v6.exchangerate-api.com/v6/${C.currencyKey}/latest/USD`);
+            const d=await r.json();
+            const cur=[{code:'USD',name:'دلار'},{code:'EUR',name:'یورو'},{code:'GBP',name:'پوند'},{code:'TRY',name:'لیر'},{code:'AED',name:'درهم'}];
+            el.innerHTML=cur.map(c=>{
+                const rial=(d.conversion_rates[c.code]*d.conversion_rates.IRR).toFixed(0);
+                return `<span style="padding:8px 16px;background:var(--tag-bg);border-radius:20px;font-size:0.85em;">${c.name}: <strong>${Number(rial).toLocaleString('fa-IR')} ریال</strong></span>`;
             }).join('');
-        } catch(e) { el.innerHTML = '<span style="color:var(--danger);">⚠️ خطا در دریافت قیمت ارز - دوباره تلاش کنید</span>'; }
+        }catch(e){el.innerHTML='<span>⚠️ خطا</span>'}
     }
 
-    // ==================== WEATHER ====================
-    async function getWeather() {
-        const city = document.getElementById('cityInput').value.trim();
-        const r = document.getElementById('weatherResult');
-        if(!city) { r.innerHTML='لطفاً نام شهر را وارد کنید'; return; }
-        r.innerHTML='⏳';
-        try {
-            const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${C.weatherKey}&units=metric&lang=fa`);
-            const d = await res.json();
-            if(d.cod===200) r.innerHTML = `<strong>${d.name}</strong>: ${d.main.temp}°C | ${d.weather[0].description} | 💧${d.main.humidity}%`;
-            else r.innerHTML = '❌ شهر یافت نشد';
-        } catch(e) { r.innerHTML = '⚠️ خطا'; }
+    // ========== WEATHER ==========
+    async function getWeather(){const city=document.getElementById('cityInput').value.trim();const r=document.getElementById('weatherResult');if(!city)return;r.innerHTML='⏳';try{const res=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${C.weatherKey}&units=metric&lang=fa`);const d=await res.json();r.innerHTML=d.cod===200?`<strong>${d.name}</strong>: ${d.main.temp}°C | ${d.weather[0].description}`:'❌ یافت نشد'}catch(e){r.innerHTML='⚠️ خطا'}}
+
+    // ========== SEARCH (ایرانی + خارجی) ==========
+    async function performSearch(){
+        const q=document.getElementById('searchInput').value.trim(),type=document.getElementById('searchType').value,div=document.getElementById('searchResults');
+        if(!q){div.innerHTML='<p>عبارت را وارد کنید</p>';return}
+        div.innerHTML='<p>⏳ در حال جستجو...</p>';let h='';
+        
+        // آپارات (ایرانی)
+        if(type==='all'||type==='persian'||type==='video'){
+            try{
+                const r=await fetch(`https://www.aparat.com/api/fa/v1/video/video/search/text/${encodeURIComponent(q)}?per_page=5`);
+                const d=await r.json();
+                if(d.data?.videos?.length){h+='<h4>🇮🇷 آپارات</h4>';d.data.videos.forEach(v=>{h+=`<div class="search-result-item"><strong>${v.title}</strong><iframe src="https://www.aparat.com/embed/${v.uid}" allowfullscreen></iframe><a href="https://www.aparat.com/v/${v.uid}" target="_blank" class="btn btn-sm btn-outline">▶️ تماشا</a></div>`})}
+            }catch(e){}
+        }
+        // iTunes
+        if(type==='all'||type==='persian'||type==='music'){
+            try{
+                const r=await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&limit=10`);
+                const d=await r.json();
+                if(d.results?.length){h+='<h4>🎵 آهنگ‌ها</h4>';d.results.forEach(i=>{h+=`<div class="search-result-item"><strong>${i.trackName}</strong> - ${i.artistName}${i.previewUrl?`<audio controls style="width:100%"><source src="${i.previewUrl}"></audio>`:''}<a href="${i.trackViewUrl}" target="_blank" class="btn btn-sm btn-outline">🎧</a>${i.previewUrl?`<a href="${i.previewUrl}" download class="btn btn-sm btn-primary">📥</a>`:''}</div>`})}
+            }catch(e){}
+        }
+        // Dailymotion
+        if(type==='all'||type==='video'){
+            try{
+                const r=await fetch(`https://api.dailymotion.com/videos?search=${encodeURIComponent(q)}&limit=5`);
+                const d=await r.json();
+                if(d.list?.length){h+='<h4>🎬 Dailymotion</h4>';d.list.forEach(i=>{h+=`<div class="search-result-item"><strong>${i.title}</strong><iframe src="https://www.dailymotion.com/embed/video/${i.id}" allowfullscreen></iframe><a href="https://www.dailymotion.com/video/${i.id}" target="_blank" class="btn btn-sm btn-outline">▶️</a></div>`})}
+            }catch(e){}
+        }
+        div.innerHTML=h||'<p>❌ نتیجه‌ای یافت نشد</p>';
     }
 
-    // ==================== SEARCH (ایرانی + خارجی) ====================
-    async function performSearch() {
-        const q = document.getElementById('searchInput').value.trim();
-        const type = document.getElementById('searchType').value;
-        const div = document.getElementById('searchResults');
-        if(!q) { div.innerHTML='<p style="text-align:center;">عبارت جستجو را وارد کنید</p>'; return; }
-        div.innerHTML='<p style="text-align:center;">⏳ در حال جستجو...</p>';
-        let h = '';
-
-        // جستجوی ایرانی (آپارات)
-        if(type==='all' || type==='persian' || type==='video') {
-            try {
-                // استفاده از API آپارات
-                const r = await fetch(`https://www.aparat.com/api/fa/v1/video/video/search/text/${encodeURIComponent(q)}?per_page=5`);
-                const d = await r.json();
-                if(d.data?.videos?.length) {
-                    h += '<h4>🇮🇷 ویدیوهای آپارات</h4>';
-                    d.data.videos.forEach(v => {
-                        h += `<div class="search-result-item">
-                            <strong>${v.title || 'بدون عنوان'}</strong>
-                            <iframe src="https://www.aparat.com/embed/${v.uid}" allowfullscreen></iframe>
-                            <a href="https://www.aparat.com/v/${v.uid}" target="_blank" class="btn btn-sm btn-outline">▶️ تماشا در آپارات</a>
-                        </div>`;
-                    });
-                }
-            } catch(e) { /* skip */ }
-        }
-
-        // جستجوی iTunes (آهنگ)
-        if(type==='all' || type==='persian' || type==='music') {
-            try {
-                const r = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&limit=10&country=ir`);
-                const d = await r.json();
-                if(d.results?.length) {
-                    h += '<h4>🎵 آهنگ‌ها (iTunes)</h4>';
-                    d.results.forEach(i => {
-                        h += `<div class="search-result-item">
-                            <strong>${i.trackName}</strong> - ${i.artistName}
-                            ${i.previewUrl ? `<audio controls style="width:100%;margin:8px 0;"><source src="${i.previewUrl}"></audio>` : ''}
-                            <a href="${i.trackViewUrl}" target="_blank" class="btn btn-sm btn-outline">🎧 صفحه آهنگ</a>
-                            ${i.previewUrl ? `<a href="${i.previewUrl}" download class="btn btn-sm btn-primary">📥 دانلود</a>` : ''}
-                        </div>`;
-                    });
-                }
-            } catch(e) { /* skip */ }
-        }
-
-        // جستجوی Dailymotion (خارجی)
-        if(type==='all' || type==='video') {
-            try {
-                const r = await fetch(`https://api.dailymotion.com/videos?search=${encodeURIComponent(q)}&limit=5&family_filter=true`);
-                const d = await r.json();
-                if(d.list?.length) {
-                    h += '<h4>🎬 ویدیوهای Dailymotion</h4>';
-                    d.list.forEach(i => {
-                        h += `<div class="search-result-item">
-                            <strong>${i.title}</strong>
-                            <iframe src="https://www.dailymotion.com/embed/video/${i.id}" allowfullscreen></iframe>
-                            <a href="https://www.dailymotion.com/video/${i.id}" target="_blank" class="btn btn-sm btn-outline">▶️ تماشا</a>
-                        </div>`;
-                    });
-                }
-            } catch(e) { /* skip */ }
-        }
-
-        div.innerHTML = h || '<p style="text-align:center;">❌ نتیجه‌ای یافت نشد - عبارت دیگری را امتحان کنید</p>';
-    }
-
-    // ==================== PROFILE ====================
-    function handleRegister(e) {
+    // ========== PROFILE ==========
+    function handleRegister(e){
         e.preventDefault();
-        const name = document.getElementById('regFullName').value.trim();
-        const user = document.getElementById('regUsername').value.trim().toLowerCase();
-        const pass = document.getElementById('regPassword').value;
-        const pass2 = document.getElementById('regPasswordConfirm').value;
-        const err = document.getElementById('regError');
-        err.style.display='none';
+        const name=document.getElementById('regFullName').value.trim();
+        const user=document.getElementById('regUsername').value.trim().toLowerCase();
+        const pass=document.getElementById('regPassword').value;
+        const pass2=document.getElementById('regPasswordConfirm').value;
+        const err=document.getElementById('regError');err.style.display='none';
         
-        if(!name) { err.textContent='نام الزامیست'; err.style.display='block'; return; }
-        if(user.length<3||!/^[a-zA-Z0-9_]+$/.test(user)) { err.textContent='نام کاربری نامعتبر (فقط انگلیسی و عدد)'; err.style.display='block'; return; }
-        if(pass.length<6) { err.textContent='رمز حداقل ۶ کاراکتر'; err.style.display='block'; return; }
-        if(!/[a-zA-Z]/.test(pass)||!/[0-9]/.test(pass)) { err.textContent='رمز باید شامل حروف و عدد باشد'; err.style.display='block'; return; }
-        if(pass!==pass2) { err.textContent='رمزها مطابقت ندارند'; err.style.display='block'; return; }
+        if(!name||user.length<3||!/^[a-zA-Z0-9_]+$/.test(user)){err.textContent='نام کاربری نامعتبر (فقط انگلیسی و عدد، حداقل ۳ کاراکتر)';err.style.display='block';return}
+        if(pass.length<6||!/[a-zA-Z]/.test(pass)||!/[0-9]/.test(pass)){err.textContent='رمز باید حداقل ۶ کاراکتر و شامل حروف و عدد باشد';err.style.display='block';return}
+        if(pass!==pass2){err.textContent='رمزها مطابقت ندارند';err.style.display='block';return}
         
-        // چک تکراری نبودن - بررسی دقیق
-        const exists = (C.db.users||[]).find(u => u.username.toLowerCase() === user.toLowerCase());
-        if(exists) { err.textContent='❌ این نام کاربری قبلاً ثبت شده! نام دیگری انتخاب کنید'; err.style.display='block'; return; }
+        // چک تکراری
+        const exists=(C.db.users||[]).find(u=>u.username.toLowerCase()===user.toLowerCase());
+        if(exists){err.textContent='❌ این نام کاربری قبلاً ثبت شده! لطفاً وارد شوید یا نام دیگری انتخاب کنید';err.style.display='block';return}
         
-        const avInput = document.getElementById('regAvatar');
-        const save = (av) => {
-            const nu = {
-                username:user, password:btoa(pass), fullName:name, avatar:av,
-                role:user===C.adminUser?'admin':'user',
-                joinDate:new Date().toLocaleDateString('fa-IR'),
-                joinTimestamp:new Date().toISOString(),
-                friends:[], friendRequests:[], gameStats:{}, settings:{theme:'theme-purple'}
-            };
-            if(!C.db.users) C.db.users=[];
-            C.db.users.push(nu);
-            C.db.siteInfo.totalVisits=(C.db.siteInfo.totalVisits||0)+1;
-            saveDb().then(()=>{
-                C.currentUser=nu; sessionStorage.setItem('rz_sess',user);
-                showProfileUI(); document.getElementById('homeCtaBtn').style.display='none';
-                updateAllUI(); alert('✅ ثبت‌نام موفق! به روزیک خوش آمدی 🎉');
-            });
+        const avInput=document.getElementById('regAvatar');
+        const save=(av)=>{
+            const nu={username:user,password:btoa(pass),fullName:name,avatar:av,role:user===C.adminUser?'admin':'user',joinDate:new Date().toLocaleDateString('fa-IR'),joinTimestamp:new Date().toISOString(),friends:[],friendRequests:[]};
+            C.db.users.push(nu);saveDb().then(()=>{C.currentUser=nu;sessionStorage.setItem('rz_sess',user);showProfileUI();document.getElementById('homeCtaBtn').style.display='none';updateAllUI();alert('✅ ثبت‌نام موفق!')});
         };
-        if(avInput.files?.[0]) { const r=new FileReader(); r.onload=e=>save(e.target.result); r.readAsDataURL(avInput.files[0]); }
-        else save('');
+        if(avInput.files?.[0]){const r=new FileReader();r.onload=e=>save(e.target.result);r.readAsDataURL(avInput.files[0])}else save('');
     }
 
-    function handleLogin(e) {
+    function handleLogin(e){
         e.preventDefault();
-        const user = document.getElementById('loginUsername').value.trim().toLowerCase();
-        const pass = document.getElementById('loginPassword').value;
-        const err = document.getElementById('loginError');
-        err.style.display='none';
-        const u = (C.db.users||[]).find(x => x.username.toLowerCase() === user.toLowerCase());
-        if(!u) { err.textContent='نام کاربری یافت نشد'; err.style.display='block'; return; }
-        if(u.password !== btoa(pass)) { err.textContent='رمز عبور اشتباه است'; err.style.display='block'; return; }
-        C.currentUser=u; sessionStorage.setItem('rz_sess',u.username);
-        showProfileUI(); document.getElementById('homeCtaBtn').style.display='none'; updateCommentUI();
+        const user=document.getElementById('loginUsername').value.trim().toLowerCase();
+        const pass=document.getElementById('loginPassword').value;
+        const u=(C.db.users||[]).find(x=>x.username.toLowerCase()===user.toLowerCase());
+        if(!u){document.getElementById('loginError').textContent='نام کاربری یافت نشد';document.getElementById('loginError').style.display='block';return}
+        if(u.password!==btoa(pass)){document.getElementById('loginError').textContent='رمز اشتباه';document.getElementById('loginError').style.display='block';return}
+        C.currentUser=u;sessionStorage.setItem('rz_sess',u.username);showProfileUI();document.getElementById('homeCtaBtn').style.display='none';updateCommentUI();
     }
 
-    function showProfileUI() {
-        document.getElementById('profileNotLoggedIn').style.display='none';
-        document.getElementById('registerCard').style.display='block';
-        document.getElementById('loginCard').style.display='none';
-        const d=document.getElementById('profileLoggedIn'); d.style.display='block';
-        const u=C.currentUser;
-        if(!u) return;
-        d.innerHTML=`<div class="glass-card" style="text-align:center;">
-            <img src="${u.avatar||'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%23ddd%22/><text x=%2250%22 y=%2265%22 text-anchor=%22middle%22 font-size=%2240%22>👤</text></svg>'}" style="width:100px;height:100px;border-radius:50%;border:4px solid var(--accent);">
-            <h2>${u.fullName}</h2><p>@${u.username} ${u.role==='admin'?'👑':''}</p>
-            <p>📅 ${u.joinDate}</p>
+    function showProfileUI(){
+        document.getElementById('profileNotLoggedIn').style.display='none';document.getElementById('profileLoggedIn').style.display='block';
+        const u=C.currentUser;if(!u)return;
+        document.getElementById('profileLoggedIn').innerHTML=`<div class="glass-card" style="text-align:center;">
+            <img src="${u.avatar||'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%23ddd%22/><text x=%2250%22 y=%2265%22 text-anchor=%22middle%22 font-size=%2240%22>👤</text></svg>'}" style="width:100px;height:100px;border-radius:50%;border:4px solid var(--accent);">
+            <h2>${u.fullName}</h2><p>@${u.username} ${u.role==='admin'?'👑':''}</p><p>📅 ${u.joinDate}</p>
             <div class="live-timer" id="profileTimer"></div>
-            <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px;">
-                <button class="btn btn-outline btn-sm" onclick="openFriends()">👥 دوستان (${(u.friends||[]).length})</button>
-                ${u.role==='admin'?'<button class="btn btn-warning btn-sm" onclick="openAdmin()">⚙️ مدیریت</button>':''}
-                <button class="btn btn-danger btn-sm" onclick="logout()">🚪 خروج</button>
-            </div></div>`;
-        startTimer(); updateHeader();
+            <button class="btn btn-outline btn-sm" onclick="openFriends()">👥 دوستان (${(u.friends||[]).length})</button>
+            ${u.role==='admin'?'<button class="btn btn-warning btn-sm" onclick="openAdmin()">⚙️ مدیریت</button>':''}
+            <button class="btn btn-danger btn-sm" onclick="logout()">🚪 خروج</button></div>`;
+        startTimer();updateHeader();
     }
 
-    function startTimer() {
-        if(!C.currentUser?.joinTimestamp) return;
-        const si = setInterval(()=>{
-            const el=document.getElementById('profileTimer'); if(!el){clearInterval(si);return;}
-            const diff=Date.now()-new Date(C.currentUser.joinTimestamp).getTime();
-            el.innerHTML=[
-                {v:Math.floor(diff/86400000),l:'روز'},{v:Math.floor((diff%86400000)/3600000),l:'ساعت'},
-                {v:Math.floor((diff%3600000)/60000),l:'دقیقه'},{v:Math.floor((diff%60000)/1000),l:'ثانیه'}
-            ].map(x=>`<div class="timer-unit"><div class="timer-value">${x.v}</div><div class="timer-label">${x.l}</div></div>`).join('');
-        },1000);
-    }
+    function startTimer(){if(!C.currentUser?.joinTimestamp)return;setInterval(()=>{const el=document.getElementById('profileTimer');if(!el)return;const diff=Date.now()-new Date(C.currentUser.joinTimestamp).getTime();el.innerHTML=[{v:Math.floor(diff/86400000),l:'روز'},{v:Math.floor((diff%86400000)/3600000),l:'ساعت'},{v:Math.floor((diff%3600000)/60000),l:'دقیقه'},{v:Math.floor((diff%60000)/1000),l:'ثانیه'}].map(x=>`<div class="timer-unit"><div class="timer-value">${x.v}</div><div class="timer-label">${x.l}</div></div>`).join('')},1000)}
+    function updateHeader(){const n=document.getElementById('headerProfileName'),i=document.getElementById('headerProfileImg');if(C.currentUser){n.textContent=C.currentUser.fullName.split(' ')[0];if(C.currentUser.avatar){i.src=C.currentUser.avatar;i.style.display='inline-block'}}else{n.textContent='میهمان';i.style.display='none'}}
+    function logout(){if(confirm('خارج میشی؟')){C.currentUser=null;sessionStorage.removeItem('rz_sess');document.getElementById('profileLoggedIn').style.display='none';document.getElementById('profileNotLoggedIn').style.display='block';document.getElementById('homeCtaBtn').style.display='inline-block';updateHeader();updateCommentUI()}}
+    function showLoginForm(){document.getElementById('registerCard').style.display='none';document.getElementById('loginCard').style.display='block'}
+    function showRegisterForm(){document.getElementById('registerCard').style.display='block';document.getElementById('loginCard').style.display='none'}
+    function previewAvatar(i){const p=document.getElementById('avatarPreview');if(i.files?.[0]){const r=new FileReader();r.onload=e=>{p.src=e.target.result;p.style.display='inline-block'};r.readAsDataURL(i.files[0])}}
 
-    function updateHeader() {
-        const n=document.getElementById('headerProfileName'),i=document.getElementById('headerProfileImg');
-        if(C.currentUser){n.textContent=C.currentUser.fullName.split(' ')[0];if(C.currentUser.avatar){i.src=C.currentUser.avatar;i.style.display='inline-block';}}
-        else{n.textContent='میهمان';i.style.display='none';}
-    }
-
-    function logout() {
-        if(confirm('خارج میشی؟')) {
-            C.currentUser=null; sessionStorage.removeItem('rz_sess');
-            document.getElementById('profileLoggedIn').style.display='none';
-            document.getElementById('profileNotLoggedIn').style.display='block';
-            document.getElementById('homeCtaBtn').style.display='inline-block';
-            updateHeader(); updateCommentUI();
-        }
-    }
-
-    function showLoginForm(){document.getElementById('registerCard').style.display='none';document.getElementById('loginCard').style.display='block';}
-    function showRegisterForm(){document.getElementById('registerCard').style.display='block';document.getElementById('loginCard').style.display='none';}
-    function previewAvatar(i){const p=document.getElementById('avatarPreview');if(i.files?.[0]){const r=new FileReader();r.onload=e=>{p.src=e.target.result;p.style.display='inline-block';};r.readAsDataURL(i.files[0]);}}
-
-    // ==================== FRIENDS & CHAT ====================
-    function openFriends() {
+    // ========== FRIENDS & CHAT ==========
+    function openFriends(){
         document.getElementById('chatModalOverlay').style.display='flex';
         const c=document.getElementById('chatModalContent');
-        c.innerHTML=`<h3>👥 دوستان</h3>
-            <div style="display:flex;gap:8px;"><input type="text" id="fsInput" placeholder="نام کاربری..."><button class="btn btn-sm btn-primary" onclick="searchFriend()">🔍</button></div>
-            <div id="fsResult"></div><h4>📩 درخواست‌ها</h4><div id="reqList"></div><h4>👫 دوستان</h4><div id="friendList"></div>`;
+        c.innerHTML=`<h3>👥 دوستان</h3><input type="text" id="fsInput" placeholder="نام کاربری..."><button class="btn btn-sm btn-primary" onclick="searchFriend()">🔍</button>
+        <div id="fsResult"></div><h4>📩 درخواست‌ها</h4><div id="reqList"></div><h4>👫 دوستان</h4><div id="friendList"></div>`;
         updateFriendsUI();
     }
 
-    function searchFriend() {
+    function searchFriend(){
         const q=document.getElementById('fsInput').value.trim().toLowerCase();
         const d=document.getElementById('fsResult');
         const f=(C.db.users||[]).find(u=>u.username.toLowerCase()===q&&u.username!==C.currentUser.username);
-        if(f) {
+        if(f){
             const af=(C.currentUser.friends||[]).includes(f.username);
-            d.innerHTML=af?`<p>✅ ${f.fullName} دوست شماست</p>`:`<div class="glass-card" style="padding:10px;"><strong>${f.fullName}</strong> (@${f.username}) <button class="btn btn-sm btn-primary" onclick="sendReq('${f.username}')">➕ درخواست</button></div>`;
-        } else d.innerHTML='<p>❌ یافت نشد</p>';
+            const ar=(C.db.friendRequests||[]).find(r=>r.from===C.currentUser.username&&r.to===f.username);
+            if(af)d.innerHTML=`<p>✅ ${f.fullName} دوست شماست</p>`;
+            else if(ar)d.innerHTML=`<p>⏳ قبلاً درخواست دادی</p>`;
+            else d.innerHTML=`<div class="glass-card"><strong>${f.fullName}</strong> (@${f.username}) <button class="btn btn-sm btn-primary" onclick="sendReq('${f.username}')">➕</button></div>`;
+        }else d.innerHTML='<p>❌ یافت نشد</p>';
     }
 
-    function sendReq(to) {
-        if(!C.db.friendRequests) C.db.friendRequests=[];
-        if(C.db.friendRequests.find(r=>r.from===C.currentUser.username&&r.to===to)){alert('قبلاً درخواست دادی');return;}
+    function sendReq(to){
+        if(!C.db.friendRequests)C.db.friendRequests=[];
+        if(C.db.friendRequests.find(r=>r.from===C.currentUser.username&&r.to===to)){alert('قبلاً درخواست دادی');return}
         C.db.friendRequests.push({from:C.currentUser.username,to,status:'pending',date:new Date().toISOString()});
-        saveDb().then(()=>{alert('✅ ارسال شد');updateFriendsUI();});
+        saveDb().then(()=>{alert('✅ ارسال شد');updateFriendsUI()});
     }
 
-    function updateFriendsUI() {
+    function updateFriendsUI(){
         const rl=document.getElementById('reqList'),fl=document.getElementById('friendList');
-        if(!rl||!fl) return;
+        if(!rl||!fl)return;
         const reqs=(C.db.friendRequests||[]).filter(r=>r.to===C.currentUser.username&&r.status==='pending');
-        rl.innerHTML=reqs.length?reqs.map(r=>`<div class="glass-card" style="padding:8px;margin:4px;">${r.from} می‌خواد دوست بشه <button class="btn btn-sm btn-success" onclick="accReq('${r.from}')">✅</button><button class="btn btn-sm btn-danger" onclick="rejReq('${r.from}')">❌</button></div>`).join(''):'<p>درخواستی نیست</p>';
+        rl.innerHTML=reqs.length?reqs.map(r=>`<div class="glass-card">${r.from} می‌خواد دوست بشه <button class="btn btn-sm btn-success" onclick="accReq('${r.from}')">✅</button><button class="btn btn-sm btn-danger" onclick="rejReq('${r.from}')">❌</button></div>`).join(''):'<p>درخواستی نیست</p>';
         const frs=C.currentUser.friends||[];
-        fl.innerHTML=frs.length?frs.map(f=>`<div class="glass-card" style="padding:8px;margin:4px;cursor:pointer;" onclick="openChat('${f}')">👤 ${f} 💬 چت</div>`).join(''):'<p>دوستی نداری</p>';
+        fl.innerHTML=frs.length?frs.map(f=>`<div class="glass-card" style="cursor:pointer;" onclick="openChat('${f}')">👤 ${f} 💬</div>`).join(''):'<p>دوستی نداری</p>';
     }
 
-    function accReq(from) {
-        if(!C.currentUser.friends) C.currentUser.friends=[];
-        C.currentUser.friends.push(from);
+    function accReq(from){
+        if(!C.currentUser.friends)C.currentUser.friends=[];C.currentUser.friends.push(from);
         const fu=(C.db.users||[]).find(u=>u.username===from);
-        if(fu){if(!fu.friends)fu.friends=[];fu.friends.push(C.currentUser.username);}
-        C.db.friendRequests=(C.db.friendRequests||[]).filter(r=>!(r.from===from&&r.to===C.currentUser.username));
-        saveDb().then(()=>{updateFriendsUI();});
-    }
-
-    function rejReq(from) {
+        if(fu){if(!fu.friends)fu.friends=[];fu.friends.push(C.currentUser.username)}
         C.db.friendRequests=(C.db.friendRequests||[]).filter(r=>!(r.from===from&&r.to===C.currentUser.username));
         saveDb().then(()=>updateFriendsUI());
     }
 
-    function openChat(friend) {
-        const c=document.getElementById('chatModalContent');
-        c.innerHTML=`<h3>💬 ${friend}</h3><div class="chat-container" id="chatMsgs"></div>
-            <div style="display:flex;gap:8px;"><input type="text" id="chatInput" placeholder="پیام..."><input type="file" id="chatFile" accept="image/*,video/*" onchange="sendCF('${friend}')"><button class="btn btn-sm btn-primary" onclick="sendCM('${friend}')">📩</button></div>`;
+    function rejReq(from){C.db.friendRequests=(C.db.friendRequests||[]).filter(r=>!(r.from===from&&r.to===C.currentUser.username));saveDb().then(()=>updateFriendsUI())}
+
+    function openChat(friend){
+        document.getElementById('chatModalContent').innerHTML=`<h3>💬 ${friend}</h3><div class="chat-container" id="chatMsgs"></div>
+        <div style="display:flex;gap:8px;"><input type="text" id="chatInput"><input type="file" id="chatFile" accept="image/*,video/*" onchange="sendCF('${friend}')"><button class="btn btn-sm btn-primary" onclick="sendCM('${friend}')">📩</button></div>`;
         loadChat(friend);
     }
 
-    function loadChat(friend) {
+    function loadChat(friend){
         const key=[C.currentUser.username,friend].sort().join('_');
         const msgs=(C.db.chats||[]).filter(m=>m.chatKey===key);
         const d=document.getElementById('chatMsgs');
-        if(d){d.innerHTML=msgs.map(m=>`<div class="chat-message ${m.from===C.currentUser.username?'sent':'received'}"><small>${m.from}</small><br>${m.text||''}${m.file?(m.fileType==='image'?`<img src="${m.file}">`:`<video src="${m.file}" controls width="200"></video>`):''}</div>`).join('');d.scrollTop=d.scrollHeight;}
+        if(d)d.innerHTML=msgs.map(m=>`<div class="chat-message ${m.from===C.currentUser.username?'sent':'received'}"><small>${m.from}</small><br>${m.text||''}${m.file?(m.fileType==='image'?`<img src="${m.file}">`:`<video src="${m.file}" controls width="200"></video>`):''}</div>`).join('');
     }
 
-    function sendCM(friend) {
-        const i=document.getElementById('chatInput'); if(!i.value.trim()) return;
+    function sendCM(friend){
+        const i=document.getElementById('chatInput');if(!i.value.trim())return;
         const key=[C.currentUser.username,friend].sort().join('_');
-        if(!C.db.chats) C.db.chats=[];
-        C.db.chats.push({chatKey:key,from:C.currentUser.username,to:friend,text:i.value.trim(),file:null,fileType:null,timestamp:Date.now()});
-        i.value=''; saveDb().then(()=>loadChat(friend));
+        if(!C.db.chats)C.db.chats=[];C.db.chats.push({chatKey:key,from:C.currentUser.username,to:friend,text:i.value.trim()});
+        i.value='';saveDb().then(()=>loadChat(friend));
     }
 
-    function sendCF(friend) {
-        const fi=document.getElementById('chatFile'); if(!fi.files?.[0]) return;
-        const r=new FileReader(); r.onload=function(e){
+    function sendCF(friend){
+        const fi=document.getElementById('chatFile');if(!fi.files?.[0])return;
+        const r=new FileReader();r.onload=function(e){
             const key=[C.currentUser.username,friend].sort().join('_');
-            C.db.chats.push({chatKey:key,from:C.currentUser.username,to:friend,text:'',file:e.target.result,fileType:fi.files[0].type.startsWith('image/')?'image':'video',timestamp:Date.now()});
-            fi.value=''; saveDb().then(()=>loadChat(friend));
-        }; r.readAsDataURL(fi.files[0]);
+            C.db.chats.push({chatKey:key,from:C.currentUser.username,to:friend,file:e.target.result,fileType:fi.files[0].type.startsWith('image/')?'image':'video'});
+            fi.value='';saveDb().then(()=>loadChat(friend));
+        };r.readAsDataURL(fi.files[0]);
     }
 
-    function closeChatModal(e){if(e&&e.target!==document.getElementById('chatModalOverlay'))return;document.getElementById('chatModalOverlay').style.display='none';}
+    function closeChatModal(e){if(e&&e.target!==document.getElementById('chatModalOverlay'))return;document.getElementById('chatModalOverlay').style.display='none'}
 
-    // ==================== ADMIN ====================
-    function openAdmin() {
-        if(!C.currentUser||C.currentUser.role!=='admin'){alert('⛔ دسترسی غیرمجاز');return;}
+    // ========== ADMIN ==========
+    function openAdmin(){
+        if(!C.currentUser||C.currentUser.role!=='admin')return;
         document.getElementById('adminModalOverlay').style.display='flex';
         const c=document.getElementById('adminModalContent');
-        c.innerHTML=`<h3>👑 پنل مدیریت</h3>
-            <p>👥 کاربران: <strong>${(C.db.users||[]).length}</strong> | 👀 بازدید: <strong>${C.db.siteInfo.totalVisits||0}</strong></p>
-            <h4>👤 پروفایل‌های ثبت‌شده</h4><div style="max-height:250px;overflow-y:auto;">${(C.db.users||[]).map(u=>`<p>👤 ${u.fullName} (@${u.username}) - ${u.role} - 📅 ${u.joinDate}</p>`).join('')}</div>
-            <h4>📝 مقالات</h4>${(C.db.articles||[]).map(a=>`<p>📄 ${a.title} <button class="btn btn-sm btn-danger" onclick="delArt(${a.id})">❌</button></p>`).join('')}
-            <button class="btn btn-sm btn-primary" onclick="addArt()">➕ مقاله جدید</button>
-            <h4>📰 خبرنامه</h4>${(C.db.news||[]).map(n=>`<p>📰 ${n.title} <button class="btn btn-sm btn-danger" onclick="delNews(${n.id})">❌</button></p>`).join('')}
-            <button class="btn btn-sm btn-primary" onclick="addNews()">➕ خبر جدید</button>
-            <div id="adminForm"></div>`;
+        c.innerHTML=`<h3>👑 مدیریت</h3><p>کاربران: ${(C.db.users||[]).length} | بازدید: ${localStorage.getItem('rz_total_visits')||0}</p>
+        <h4>👤 پروفایل‌ها</h4>${(C.db.users||[]).map(u=>`<p>👤 ${u.fullName} (@${u.username}) - ${u.role}</p>`).join('')}
+        <h4>📝 مقالات</h4>${(C.db.articles||[]).map(a=>`<p>📄 ${a.title} <button class="btn btn-sm btn-danger" onclick="delArt(${a.id})">❌</button></p>`).join('')}
+        <button class="btn btn-sm btn-primary" onclick="addArt()">➕ مقاله</button>
+        <h4>📰 خبرها</h4>${(C.db.news||[]).map(n=>`<p>📰 ${n.title} <button class="btn btn-sm btn-danger" onclick="delNews(${n.id})">❌</button></p>`).join('')}
+        <button class="btn btn-sm btn-primary" onclick="addNews()">➕ خبر</button><div id="adminForm"></div>`;
     }
 
-    function addArt(){document.getElementById('adminForm').innerHTML=`<div class="glass-card"><input type="text" id="aTitle" placeholder="عنوان"><select id="aCat"><option value="girl">دخترونه</option><option value="boy">پسرونه</option></select><textarea id="aContent" placeholder="متن"></textarea><button class="btn btn-sm btn-success" onclick="saveArt()">💾 ذخیره</button></div>`;}
-    function saveArt(){const t=document.getElementById('aTitle').value,ct=document.getElementById('aCat').value,cn=document.getElementById('aContent').value;if(!t||!cn){alert('عنوان و متن الزامیست');return;}C.db.articles.push({id:Date.now(),title:t,category:ct,content:cn,author:C.currentUser.fullName,date:new Date().toLocaleDateString('fa-IR'),tags:[]});saveDb().then(()=>{alert('✅ ذخیره شد');openAdmin();});}
-    function delArt(id){C.db.articles=C.db.articles.filter(a=>a.id!==id);saveDb().then(()=>openAdmin());}
-    function addNews(){document.getElementById('adminForm').innerHTML=`<div class="glass-card"><input type="text" id="nTitle" placeholder="عنوان خبر"><textarea id="nContent" placeholder="متن خبر"></textarea><button class="btn btn-sm btn-success" onclick="saveNews()">💾 ذخیره</button></div>`;}
-    function saveNews(){const t=document.getElementById('nTitle').value,cn=document.getElementById('nContent').value;if(!t||!cn){alert('عنوان و متن الزامیست');return;}if(!C.db.news)C.db.news=[];C.db.news.push({id:Date.now(),title:t,content:cn,author:C.currentUser.fullName,date:new Date().toLocaleDateString('fa-IR')});saveDb().then(()=>{alert('✅ ذخیره شد');openAdmin();});}
-    function delNews(id){C.db.news=C.db.news.filter(n=>n.id!==id);saveDb().then(()=>openAdmin());}
-    function closeAdminModal(e){if(e&&e.target!==document.getElementById('adminModalOverlay'))return;document.getElementById('adminModalOverlay').style.display='none';}
+    function addArt(){document.getElementById('adminForm').innerHTML=`<input type="text" id="aTitle" placeholder="عنوان"><select id="aCat"><option value="girl">دخترونه</option><option value="boy">پسرونه</option></select><textarea id="aContent" placeholder="متن"></textarea><button class="btn btn-sm btn-success" onclick="saveArt()">💾 ذخیره</button>`}
+    function saveArt(){const t=document.getElementById('aTitle').value,cat=document.getElementById('aCat').value,cn=document.getElementById('aContent').value;if(!t||!cn)return;C.db.articles.push({id:Date.now(),title:t,category:cat,content:cn,author:C.currentUser.fullName,date:new Date().toLocaleDateString('fa-IR')});saveDb().then(()=>{alert('✅ ذخیره شد');openAdmin()})}
+    function delArt(id){C.db.articles=C.db.articles.filter(a=>a.id!==id);saveDb().then(()=>openAdmin())}
+    function addNews(){document.getElementById('adminForm').innerHTML=`<input type="text" id="nTitle" placeholder="عنوان"><textarea id="nContent" placeholder="متن"></textarea><button class="btn btn-sm btn-success" onclick="saveNews()">💾</button>`}
+    function saveNews(){const t=document.getElementById('nTitle').value,cn=document.getElementById('nContent').value;if(!t||!cn)return;C.db.news.push({id:Date.now(),title:t,content:cn,author:C.currentUser.fullName,date:new Date().toLocaleDateString('fa-IR')});saveDb().then(()=>{alert('✅ ذخیره شد');openAdmin()})}
+    function delNews(id){C.db.news=C.db.news.filter(n=>n.id!==id);saveDb().then(()=>openAdmin())}
+    function closeAdminModal(e){if(e&&e.target!==document.getElementById('adminModalOverlay'))return;document.getElementById('adminModalOverlay').style.display='none'}
 
-    // ==================== COMMENTS ====================
-    function updateCommentUI(){const f=document.getElementById('commentFormArea'),l=document.getElementById('commentLoginMsg');if(C.currentUser){f.style.display='block';l.style.display='none';}else{f.style.display='none';l.style.display='block';}}
-    function loadComments(){const d=document.getElementById('commentsList');if(!d)return;d.innerHTML=((C.db.comments||[]).slice(-20).reverse()).map(c=>`<div class="glass-card" style="padding:8px;margin:4px;"><strong>${c.fullName}</strong> (@${c.username})<br>${c.text}<br><small>📅 ${c.date}</small></div>`).join('')||'<p style="text-align:center;">هنوز نظری نیست</p>';}
-    function submitComment(){if(!C.currentUser){alert('باید وارد حساب بشی');return;}const t=document.getElementById('commentInput').value.trim();if(!t)return;C.db.comments.push({username:C.currentUser.username,fullName:C.currentUser.fullName,text:t,date:new Date().toLocaleDateString('fa-IR')});document.getElementById('commentInput').value='';saveDb().then(()=>loadComments());}
+    // ========== COMMENTS ==========
+    function updateCommentUI(){document.getElementById('commentFormArea').style.display=C.currentUser?'block':'none';document.getElementById('commentLoginMsg').style.display=C.currentUser?'none':'block'}
+    function loadComments(){const d=document.getElementById('commentsList');if(d)d.innerHTML=((C.db.comments||[]).slice(-20)).map(c=>`<div class="glass-card"><strong>${c.fullName}</strong> (@${c.username}): ${c.text}<br><small>${c.date}</small></div>`).join('')}
+    function submitComment(){if(!C.currentUser)return;const t=document.getElementById('commentInput').value.trim();if(!t)return;C.db.comments.push({username:C.currentUser.username,fullName:C.currentUser.fullName,text:t,date:new Date().toLocaleDateString('fa-IR')});document.getElementById('commentInput').value='';saveDb().then(()=>loadComments())}
 
-    // ==================== POLL ====================
-    function loadPoll(){const p=(C.db.polls||[])[0];if(!p)return;document.getElementById('pollQuestion').textContent=p.question;const tv=p.votes.reduce((a,b)=>a+b,0);document.getElementById('pollTotal').textContent=`کل آرا: ${tv}`;document.getElementById('pollOptions').innerHTML=p.options.map((o,i)=>{const pct=tv>0?Math.round((p.votes[i]/tv)*100):0;return`<button class="btn btn-sm btn-outline" onclick="votePoll(${i})">${o} (${p.votes[i]})<div style="height:3px;background:var(--gradient-primary);width:${pct}%;margin-top:4px;"></div></button>`;}).join('');}
-    function votePoll(i){const p=(C.db.polls||[])[0];if(!p)return;const k=C.currentUser?C.currentUser.username:'guest_'+Date.now();if((p.voters||[]).includes(k)){alert('قبلاً رأی دادی');return;}p.voters.push(k);p.votes[i]++;saveDb().then(()=>loadPoll());}
+    // ========== ARTICLES ==========
+    function renderArticles(cat){const c=document.getElementById('articlesContainer');if(!c)return;const a=(C.db.articles||[]).filter(x=>x.category===cat);c.innerHTML=a.length?a.map(x=>`<div class="article-card" onclick="alert('${x.title}\\n\\n${x.content}')"><div style="height:140px;background:var(--gradient-primary);display:flex;align-items:center;justify-content:center;font-size:3em;color:#fff;">📄</div><div class="article-body"><h3>${x.title}</h3><p>${x.content.substring(0,80)}...</p></div></div>`).join(''):'<p>مقاله‌ای نیست</p>'}
+    function filterContent(cat,tab){document.querySelectorAll('.content-tab').forEach(t=>t.classList.remove('active-tab'));if(tab)tab.classList.add('active-tab');renderArticles(cat)}
 
-    // ==================== ARTICLES ====================
-    function renderArticles(cat){const c=document.getElementById('articlesContainer');if(!c)return;const a=(C.db.articles||[]).filter(x=>x.category===cat);c.innerHTML=a.length?a.map(x=>`<div class="article-card" onclick="alert('📖 ${x.title}\\n\\n${x.content}')"><div style="height:140px;background:var(--gradient-primary);display:flex;align-items:center;justify-content:center;font-size:3em;color:#fff;">📄</div><div class="article-body"><small>📅 ${x.date}</small><h3>${x.title}</h3><p>${x.content.substring(0,80)}...</p></div></div>`).join(''):'<p style="text-align:center;">مقاله‌ای نیست</p>';}
-    function filterContent(cat,tab){document.querySelectorAll('.content-tab').forEach(t=>t.classList.remove('active-tab'));if(tab)tab.classList.add('active-tab');renderArticles(cat);}
+    // ========== NEWS ==========
+    function renderNews(){const c=document.getElementById('newsContainer'),l=document.getElementById('latestNews');const n=(C.db.news||[]).slice().reverse();if(c)c.innerHTML=n.length?n.map(x=>`<div class="glass-card"><h3>📰 ${x.title}</h3><p>${x.content}</p><small>${x.date}</small></div>`).join(''):'<p>خبری نیست</p>';if(l)l.innerHTML=n.slice(0,3).map(x=>`<p>📰 ${x.title} - ${x.date}</p>`).join('')||'<p>خبری نیست</p>'}
 
-    // ==================== NEWS ====================
-    function renderNews(){const c=document.getElementById('newsContainer'),l=document.getElementById('latestNews');const n=(C.db.news||[]).slice().reverse();if(c)c.innerHTML=n.length?n.map(x=>`<div class="glass-card"><h3>📰 ${x.title}</h3><p>${x.content}</p><small>✍️ ${x.author} | 📅 ${x.date}</small></div>`).join(''):'<p style="text-align:center;">خبری نیست</p>';if(l)l.innerHTML=n.slice(0,3).map(x=>`<p>📰 <strong>${x.title}</strong> - ${x.date}</p>`).join('')||'<p>خبری نیست</p>';}
+    // ========== GAMES ==========
+    const gamesList=[{id:'memory',name:'حافظه',icon:'🧠'},{id:'wordguess',name:'حدس کلمه',icon:'📝'},{id:'shooting',name:'تیراندازی',icon:'🎯'},{id:'puzzle',name:'پازل',icon:'🧩'},{id:'xo',name:'دوز',icon:'⭕'},{id:'snakeladder',name:'مار و پله',icon:'🐍'},{id:'snake',name:'هزارپا',icon:'🐍'},{id:'rps',name:'سنگ کاغذ قیچی',icon:'✂️'}];
+    function renderGames(){const g=document.getElementById('gamesGrid');if(g)g.innerHTML=gamesList.map(x=>`<div class="game-card" onclick="openGame('${x.id}')"><div class="game-icon">${x.icon}</div><h3>${x.name}</h3><span class="btn btn-sm btn-primary">▶️</span></div>`).join('')}
+    function openGame(t){document.getElementById('gameModalOverlay').style.display='flex';const c=document.getElementById('gameModalContent');switch(t){case'memory':c.innerHTML=bMem();initMem();break;case'wordguess':c.innerHTML=bWG();initWG();break;case'shooting':c.innerHTML=bSh();initSh();break;case'puzzle':c.innerHTML=bPuz();initPuz();break;case'xo':c.innerHTML=bXO();initXO();break;case'snakeladder':c.innerHTML=bSL();initSL();break;case'snake':c.innerHTML=bSn();initSn();break;case'rps':c.innerHTML=bRPS();break}}
+    function closeGameModal(e){if(e&&e.target!==document.getElementById('gameModalOverlay'))return;document.getElementById('gameModalOverlay').style.display='none';C.intervals.forEach(i=>clearInterval(i))}
 
-    // ==================== GAMES ====================
-    const gamesList=[{id:'memory',name:'حافظه',icon:'🧠'},{id:'wordguess',name:'حدس کلمه',icon:'📝'},{id:'shooting',name:'تیراندازی',icon:'🎯'},{id:'puzzle',name:'پازل ۴×۴',icon:'🧩'},{id:'xo',name:'دوز',icon:'⭕'},{id:'snakeladder',name:'مار و پله',icon:'🐍'},{id:'snake',name:'هزارپا',icon:'🐍'},{id:'rps',name:'سنگ کاغذ قیچی',icon:'✂️'}];
-    function renderGames(){const g=document.getElementById('gamesGrid');if(g)g.innerHTML=gamesList.map(x=>`<div class="game-card" onclick="openGame('${x.id}')"><div class="game-icon">${x.icon}</div><h3>${x.name}</h3><span class="btn btn-sm btn-primary">▶️</span></div>`).join('');}
-    function openGame(t){document.getElementById('gameModalOverlay').style.display='flex';const c=document.getElementById('gameModalContent');switch(t){case'memory':c.innerHTML=bMem();initMem();break;case'wordguess':c.innerHTML=bWG();initWG();break;case'shooting':c.innerHTML=bSh();initSh();break;case'puzzle':c.innerHTML=bPuz();initPuz();break;case'xo':c.innerHTML=bXO();initXO();break;case'snakeladder':c.innerHTML=bSL();initSL();break;case'snake':c.innerHTML=bSn();initSn();break;case'rps':c.innerHTML=bRPS();break;}}
-    function closeGameModal(e){if(e&&e.target!==document.getElementById('gameModalOverlay'))return;document.getElementById('gameModalOverlay').style.display='none';C.intervals.forEach(i=>clearInterval(i));C.intervals=[];}
-
-    // Memory
-    function bMem(){return`<h2>🧠 حافظه</h2><p>امتیاز: <strong id="ms">0</strong></p><div class="memory-grid" id="mg"></div><button class="btn btn-sm btn-primary" onclick="initMem()">🔄</button>`;}
+    function bMem(){return`<h2>🧠 حافظه</h2><p>امتیاز: <strong id="ms">0</strong></p><div class="memory-grid" id="mg"></div><button class="btn btn-sm btn-primary" onclick="initMem()">🔄</button>`}
     let md={cards:[],flipped:[],matched:[],score:0,locked:false};
-    function initMem(){const e=['🌸','🌟','🎈','💎','🔥','🍀','🦋','🎵'];md={cards:[...e,...e].sort(()=>Math.random()-0.5),flipped:[],matched:[],score:0,locked:false};document.getElementById('ms').textContent='0';document.getElementById('mg').innerHTML=md.cards.map((e,i)=>`<div class="memory-card" onclick="flipM(${i},this)"><span style="visibility:hidden;">${e}</span></div>`).join('');}
-    function flipM(i,el){if(md.locked||md.flipped.includes(i)||md.matched.includes(i))return;el.classList.add('flipped');el.querySelector('span').style.visibility='visible';md.flipped.push(i);if(md.flipped.length===2){md.locked=true;const[a,b]=md.flipped;if(md.cards[a]===md.cards[b]){md.matched.push(a,b);md.score+=10;document.getElementById('ms').textContent=md.score;md.flipped=[];md.locked=false;if(md.matched.length===md.cards.length)setTimeout(()=>alert('🎉'),400);}else{setTimeout(()=>{document.querySelectorAll('.memory-card')[a].classList.remove('flipped');document.querySelectorAll('.memory-card')[a].querySelector('span').style.visibility='hidden';document.querySelectorAll('.memory-card')[b].classList.remove('flipped');document.querySelectorAll('.memory-card')[b].querySelector('span').style.visibility='hidden';md.flipped=[];md.locked=false;},700);}}}
+    function initMem(){const e=['🌸','🌟','🎈','💎','🔥','🍀','🦋','🎵'];md={cards:[...e,...e].sort(()=>Math.random()-0.5),flipped:[],matched:[],score:0,locked:false};document.getElementById('ms').textContent='0';document.getElementById('mg').innerHTML=md.cards.map((e,i)=>`<div class="memory-card" onclick="flipM(${i},this)"><span style="visibility:hidden">${e}</span></div>`).join('')}
+    function flipM(i,el){if(md.locked||md.flipped.includes(i)||md.matched.includes(i))return;el.classList.add('flipped');el.querySelector('span').style.visibility='visible';md.flipped.push(i);if(md.flipped.length===2){md.locked=true;const[a,b]=md.flipped;if(md.cards[a]===md.cards[b]){md.matched.push(a,b);md.score+=10;document.getElementById('ms').textContent=md.score;md.flipped=[];md.locked=false;if(md.matched.length===md.cards.length)setTimeout(()=>alert('🎉'),400)}else{setTimeout(()=>{document.querySelectorAll('.memory-card')[a].classList.remove('flipped');document.querySelectorAll('.memory-card')[a].querySelector('span').style.visibility='hidden';document.querySelectorAll('.memory-card')[b].classList.remove('flipped');document.querySelectorAll('.memory-card')[b].querySelector('span').style.visibility='hidden';md.flipped=[];md.locked=false},700)}}}
 
-    // Word Guess
-    const wds=['برنامه','کامپیوتر','هوشمند','خلاقیت','آرامش','ستاره','پروانه'];
+    const wds=['برنامه','کامپیوتر','هوشمند','خلاقیت','آرامش','ستاره'];
     let wg={word:'',guessed:[],wrongs:0};
-    function bWG(){return`<h2>📝 حدس کلمه</h2><p>اشتباه: <strong id="ww">0</strong>/6</p><div class="word-display" id="wd"></div><div class="keyboard" id="wk"></div><button class="btn btn-sm btn-primary" onclick="initWG()">🔄</button>`;}
-    function initWG(){wg={word:wds[Math.floor(Math.random()*wds.length)],guessed:[],wrongs:0};document.getElementById('ww').textContent='0';rWG();}
-    function rWG(){document.getElementById('wd').innerHTML=wg.word.split('').map(c=>`<span>${wg.guessed.includes(c)?c:'_'}</span>`).join('');document.getElementById('wk').innerHTML='آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی'.split('').map(l=>`<button class="${wg.guessed.includes(l)?'used':''}" onclick="gWG('${l}')">${l}</button>`).join('');if(wg.word.split('').every(c=>wg.guessed.includes(c)))setTimeout(()=>alert('🎉'),300);}
-    function gWG(l){if(wg.guessed.includes(l))return;wg.guessed.push(l);if(!wg.word.includes(l)){wg.wrongs++;document.getElementById('ww').textContent=wg.wrongs;}rWG();if(wg.wrongs>=6){alert('😢 کلمه: '+wg.word);document.querySelectorAll('#wk button').forEach(b=>b.disabled=true);}}
+    function bWG(){return`<h2>📝 حدس کلمه</h2><p>اشتباه: <strong id="ww">0</strong>/6</p><div class="word-display" id="wd"></div><div class="keyboard" id="wk"></div><button class="btn btn-sm btn-primary" onclick="initWG()">🔄</button>`}
+    function initWG(){wg={word:wds[Math.floor(Math.random()*wds.length)],guessed:[],wrongs:0};document.getElementById('ww').textContent='0';rWG()}
+    function rWG(){document.getElementById('wd').innerHTML=wg.word.split('').map(c=>`<span>${wg.guessed.includes(c)?c:'_'}</span>`).join('');document.getElementById('wk').innerHTML='آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی'.split('').map(l=>`<button class="${wg.guessed.includes(l)?'used':''}" onclick="gWG('${l}')">${l}</button>`).join('');if(wg.word.split('').every(c=>wg.guessed.includes(c)))setTimeout(()=>alert('🎉'),300)}
+    function gWG(l){if(wg.guessed.includes(l))return;wg.guessed.push(l);if(!wg.word.includes(l)){wg.wrongs++;document.getElementById('ww').textContent=wg.wrongs}rWG();if(wg.wrongs>=6){alert('😢 کلمه: '+wg.word);document.querySelectorAll('#wk button').forEach(b=>b.disabled=true)}}
 
-    // Shooting
-    function bSh(){return`<h2>🎯 تیراندازی</h2><p>امتیاز: <strong id="ss">0</strong> | زمان: <strong id="st">30</strong></p><div class="shooting-area" id="sa"></div><button class="btn btn-sm btn-primary" onclick="initSh()">🔄</button>`;}
+    function bSh(){return`<h2>🎯 تیراندازی</h2><p>امتیاز: <strong id="ss">0</strong> | زمان: <strong id="st">30</strong></p><div class="shooting-area" id="sa"></div><button class="btn btn-sm btn-primary" onclick="initSh()">🔄</button>`}
     let sh={score:0,time:30,active:false};
-    function initSh(){sh={score:0,time:30,active:true};document.getElementById('ss').textContent='0';document.getElementById('st').textContent='30';document.getElementById('sa').innerHTML='';C.intervals.forEach(i=>clearInterval(i));C.intervals=[];C.intervals.push(setInterval(()=>{sh.time--;document.getElementById('st').textContent=sh.time;if(sh.time<=0){clearInterval(C.intervals[0]);sh.active=false;alert('⏰ امتیاز: '+sh.score);}},1000));C.intervals.push(setInterval(()=>{if(!sh.active)return;const a=document.getElementById('sa');if(!a)return;const t=document.createElement('div');t.className='shooting-target';t.style.left=Math.random()*(a.clientWidth-50)+'px';t.style.top=Math.random()*(a.clientHeight-50)+'px';t.textContent='🎯';t.onclick=function(e){e.stopPropagation();sh.score+=5;document.getElementById('ss').textContent=sh.score;t.remove();};a.appendChild(t);setTimeout(()=>{if(t.parentNode)t.remove();},2000);},800));}
+    function initSh(){sh={score:0,time:30,active:true};document.getElementById('ss').textContent='0';document.getElementById('st').textContent='30';document.getElementById('sa').innerHTML='';C.intervals.forEach(i=>clearInterval(i));C.intervals=[setInterval(()=>{sh.time--;document.getElementById('st').textContent=sh.time;if(sh.time<=0){clearInterval(C.intervals[0]);sh.active=false;alert('⏰ امتیاز: '+sh.score)}},1000),setInterval(()=>{if(!sh.active)return;const a=document.getElementById('sa');const t=document.createElement('div');t.className='shooting-target';t.style.left=Math.random()*(a.clientWidth-50)+'px';t.style.top=Math.random()*(a.clientHeight-50)+'px';t.textContent='🎯';t.onclick=function(e){e.stopPropagation();sh.score+=5;document.getElementById('ss').textContent=sh.score;t.remove()};a.appendChild(t);setTimeout(()=>{if(t.parentNode)t.remove()},2000)},800)]}
 
-    // Puzzle
-    function bPuz(){return`<h2>🧩 پازل ۴×۴</h2><p>حرکات: <strong id="pm">0</strong></p><div class="puzzle-grid" id="pg"></div><button class="btn btn-sm btn-primary" onclick="initPuz()">🔄</button>`;}
+    function bPuz(){return`<h2>🧩 پازل</h2><p>حرکات: <strong id="pm">0</strong></p><div class="puzzle-grid" id="pg"></div><button class="btn btn-sm btn-primary" onclick="initPuz()">🔄</button>`}
     let pz={tiles:[],empty:15,moves:0};
-    function initPuz(){pz={tiles:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,null],empty:15,moves:0};for(let i=0;i<30;i++){const n=getN(pz.empty);const r=n[Math.floor(Math.random()*n.length)];[pz.tiles[pz.empty],pz.tiles[r]]=[pz.tiles[r],pz.tiles[pz.empty]];pz.empty=r;}document.getElementById('pm').textContent='0';rPuz();}
-    function getN(i){const n=[],r=Math.floor(i/4),c=i%4;if(r>0)n.push(i-4);if(r<3)n.push(i+4);if(c>0)n.push(i-1);if(c<3)n.push(i+1);return n;}
-    function rPuz(){document.getElementById('pg').innerHTML=pz.tiles.map((t,i)=>t===null?'<div class="puzzle-tile empty"></div>':`<div class="puzzle-tile" onclick="mvPuz(${i})">${t}</div>`).join('');if(pz.tiles.slice(0,15).every((t,i)=>t===i+1)&&pz.tiles[15]===null)setTimeout(()=>alert('🎉'),300);}
-    function mvPuz(i){const n=getN(pz.empty);if(n.includes(i)){[pz.tiles[i],pz.tiles[pz.empty]]=[pz.tiles[pz.empty],pz.tiles[i]];pz.empty=i;pz.moves++;document.getElementById('pm').textContent=pz.moves;rPuz();}}
+    function initPuz(){pz={tiles:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,null],empty:15,moves:0};for(let i=0;i<30;i++){const n=getN(pz.empty);const r=n[Math.floor(Math.random()*n.length)];[pz.tiles[pz.empty],pz.tiles[r]]=[pz.tiles[r],pz.tiles[pz.empty]];pz.empty=r}document.getElementById('pm').textContent='0';rPuz()}
+    function getN(i){const n=[],r=Math.floor(i/4),c=i%4;if(r>0)n.push(i-4);if(r<3)n.push(i+4);if(c>0)n.push(i-1);if(c<3)n.push(i+1);return n}
+    function rPuz(){document.getElementById('pg').innerHTML=pz.tiles.map((t,i)=>t===null?'<div class="puzzle-tile empty"></div>':`<div class="puzzle-tile" onclick="mvPuz(${i})">${t}</div>`).join('');if(pz.tiles.slice(0,15).every((t,i)=>t===i+1)&&pz.tiles[15]===null)setTimeout(()=>alert('🎉'),300)}
+    function mvPuz(i){const n=getN(pz.empty);if(n.includes(i)){[pz.tiles[i],pz.tiles[pz.empty]]=[pz.tiles[pz.empty],pz.tiles[i]];pz.empty=i;pz.moves++;document.getElementById('pm').textContent=pz.moves;rPuz()}}
 
-    // XO
-    function bXO(){return`<h2>⭕ دوز</h2><div class="xo-grid" id="xo"></div><p id="xt"></p><button class="btn btn-sm btn-primary" onclick="initXO()">🔄</button>`;}
+    function bXO(){return`<h2>⭕ دوز</h2><div class="xo-grid" id="xo"></div><p id="xt"></p><button class="btn btn-sm btn-primary" onclick="initXO()">🔄</button>`}
     let xo={board:Array(9).fill(null),turn:'X',winner:null};
-    function initXO(){xo={board:Array(9).fill(null),turn:'X',winner:null};document.getElementById('xt').textContent='نوبت: X';rXO();}
-    function rXO(){document.getElementById('xo').innerHTML=xo.board.map((v,i)=>`<div class="xo-cell" onclick="plXO(${i})">${v||''}</div>`).join('');}
-    function plXO(i){if(xo.board[i]||xo.winner)return;xo.board[i]=xo.turn;const w=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];if(w.some(w=>w.every(c=>xo.board[c]===xo.turn))){xo.winner=xo.turn;alert('🎉 '+xo.turn+' برد!');}else if(xo.board.every(v=>v)){xo.winner='draw';alert('🤝 مساوی');}xo.turn=xo.turn==='X'?'O':'X';document.getElementById('xt').textContent='نوبت: '+xo.turn;rXO();}
+    function initXO(){xo={board:Array(9).fill(null),turn:'X',winner:null};document.getElementById('xt').textContent='نوبت: X';rXO()}
+    function rXO(){document.getElementById('xo').innerHTML=xo.board.map((v,i)=>`<div class="xo-cell" onclick="plXO(${i})">${v||''}</div>`).join('')}
+    function plXO(i){if(xo.board[i]||xo.winner)return;xo.board[i]=xo.turn;const w=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];if(w.some(w=>w.every(c=>xo.board[c]===xo.turn))){xo.winner=xo.turn;alert('🎉 '+xo.turn+' برد!')}else if(xo.board.every(v=>v)){xo.winner='draw';alert('🤝 مساوی')}xo.turn=xo.turn==='X'?'O':'X';document.getElementById('xt').textContent='نوبت: '+xo.turn;rXO()}
 
-    // Snake Ladder
-    function bSL(){return`<h2>🐍 مار و پله</h2><p>ب۱: <strong id="p1">1</strong> | ب۲: <strong id="p2">1</strong></p><p id="slt">نوبت: ۱</p><div class="snake-ladder-board" id="slb"></div><button class="btn btn-sm btn-primary" onclick="rollD()">🎲 تاس</button><button class="btn btn-sm btn-outline" onclick="initSL()">🔄</button>`;}
-    let sl={p1:1,p2:1,turn:1,snakes:{16:6,47:26,49:11,56:53,62:19,64:60,87:24,93:73,95:75,98:78},ladders:{1:38,4:14,9:31,21:42,28:84,36:44,51:67,71:91,80:100}};
-    function initSL(){sl.p1=1;sl.p2=1;sl.turn=1;updSL();}
-    function updSL(){document.getElementById('p1').textContent=sl.p1;document.getElementById('p2').textContent=sl.p2;document.getElementById('slt').textContent='نوبت: '+sl.turn;const b=document.getElementById('slb');if(!b)return;let h='';for(let r=9;r>=0;r--)for(let c=0;c<10;c++){const n=r*10+c+1;let cls='snake-ladder-cell';if(n===sl.p1)cls+=' player1';if(n===sl.p2)cls+=' player2';h+=`<div class="${cls}">${n}</div>`;}b.innerHTML=h;}
-    function rollD(){const d=Math.floor(Math.random()*6)+1;let p=sl.turn===1?sl.p1:sl.p2;p=Math.min(p+d,100);if(sl.snakes[p])p=sl.snakes[p];if(sl.ladders[p])p=sl.ladders[p];if(sl.turn===1)sl.p1=p;else sl.p2=p;if(p===100){alert('🎉 بازیکن '+sl.turn+' برد!');initSL();return;}sl.turn=sl.turn===1?2:1;updSL();}
+    function bSL(){return`<h2>🐍 مار و پله</h2><p>ب۱: <strong id="p1">1</strong> | ب۲: <strong id="p2">1</strong></p><p id="slt">نوبت: ۱</p><div class="snake-ladder-board" id="slb"></div><button class="btn btn-sm btn-primary" onclick="rollD()">🎲</button><button class="btn btn-sm btn-outline" onclick="initSL()">🔄</button>`}
+    let sl={p1:1,p2:1,turn:1,snakes:{16:6,47:26,49:11,56:53,62:19,87:24,93:73,95:75,98:78},ladders:{1:38,4:14,9:31,21:42,28:84,36:44,51:67,71:91,80:100}};
+    function initSL(){sl.p1=1;sl.p2=1;sl.turn=1;updSL()}
+    function updSL(){document.getElementById('p1').textContent=sl.p1;document.getElementById('p2').textContent=sl.p2;document.getElementById('slt').textContent='نوبت: '+sl.turn;const b=document.getElementById('slb');let h='';for(let r=9;r>=0;r--)for(let c=0;c<10;c++){const n=r*10+c+1;let cls='snake-ladder-cell';if(n===sl.p1)cls+=' player1';if(n===sl.p2)cls+=' player2';h+=`<div class="${cls}">${n}</div>`}b.innerHTML=h}
+    function rollD(){const d=Math.floor(Math.random()*6)+1;let p=sl.turn===1?sl.p1:sl.p2;p=Math.min(p+d,100);if(sl.snakes[p])p=sl.snakes[p];if(sl.ladders[p])p=sl.ladders[p];if(sl.turn===1)sl.p1=p;else sl.p2=p;if(p===100){alert('🎉 بازیکن '+sl.turn+' برد!');initSL();return}sl.turn=sl.turn===1?2:1;updSL()}
 
-    // Snake
-    function bSn(){return`<h2>🐍 هزارپا</h2><canvas id="snC" width="300" height="300" style="background:var(--bg-secondary);border-radius:12px;display:block;margin:0 auto;"></canvas><p>امتیاز: <strong id="snS">0</strong></p><div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;"><button class="btn btn-sm btn-primary" onclick="snD(0,-1)">⬆️</button><button class="btn btn-sm btn-primary" onclick="snD(0,1)">⬇️</button><button class="btn btn-sm btn-primary" onclick="snD(-1,0)">⬅️</button><button class="btn btn-sm btn-primary" onclick="snD(1,0)">➡️</button></div><button class="btn btn-sm btn-primary" onclick="initSn()">🔄</button>`;}
+    function bSn(){return`<h2>🐍 هزارپا</h2><canvas id="snC" width="300" height="300" style="background:var(--bg-secondary);border-radius:12px;"></canvas><p>امتیاز: <strong id="snS">0</strong></p><button class="btn btn-sm btn-primary" onclick="snD(0,-1)">⬆️</button><button class="btn btn-sm btn-primary" onclick="snD(0,1)">⬇️</button><button class="btn btn-sm btn-primary" onclick="snD(-1,0)">⬅️</button><button class="btn btn-sm btn-primary" onclick="snD(1,0)">➡️</button><button class="btn btn-sm btn-primary" onclick="initSn()">🔄</button>`}
     let sn={body:[{x:10,y:10}],food:{x:15,y:15},dir:{x:1,y:0},score:0};
-    function initSn(){sn={body:[{x:10,y:10}],food:{x:15,y:15},dir:{x:1,y:0},score:0};document.getElementById('snS').textContent='0';C.intervals.forEach(i=>clearInterval(i));C.intervals=[];const c=document.getElementById('snC'),ctx=c.getContext('2d');C.intervals.push(setInterval(()=>{const h={x:sn.body[0].x+sn.dir.x,y:sn.body[0].y+sn.dir.y};if(h.x<0||h.x>=30||h.y<0||h.y>=30||sn.body.some(s=>s.x===h.x&&s.y===h.y)){clearInterval(C.intervals[0]);alert('😢 امتیاز: '+sn.score);return;}sn.body.unshift(h);if(h.x===sn.food.x&&h.y===sn.food.y){sn.score+=10;document.getElementById('snS').textContent=sn.score;sn.food={x:Math.floor(Math.random()*30),y:Math.floor(Math.random()*30)};}else sn.body.pop();ctx.clearRect(0,0,300,300);ctx.fillStyle='#667eea';sn.body.forEach(s=>ctx.fillRect(s.x*10,s.y*10,10,10));ctx.fillStyle='red';ctx.fillRect(sn.food.x*10,sn.food.y*10,10,10);},150));}
-    function snD(x,y){if((x!==0&&sn.dir.x!==-x)||(y!==0&&sn.dir.y!==-y))sn.dir={x,y};}
+    function initSn(){sn={body:[{x:10,y:10}],food:{x:15,y:15},dir:{x:1,y:0},score:0};document.getElementById('snS').textContent='0';C.intervals.forEach(i=>clearInterval(i));const c=document.getElementById('snC'),ctx=c.getContext('2d');C.intervals=[setInterval(()=>{const h={x:sn.body[0].x+sn.dir.x,y:sn.body[0].y+sn.dir.y};if(h.x<0||h.x>=30||h.y<0||h.y>=30||sn.body.some(s=>s.x===h.x&&s.y===h.y)){clearInterval(C.intervals[0]);alert('😢 امتیاز: '+sn.score);return}sn.body.unshift(h);if(h.x===sn.food.x&&h.y===sn.food.y){sn.score+=10;document.getElementById('snS').textContent=sn.score;sn.food={x:Math.floor(Math.random()*30),y:Math.floor(Math.random()*30)}}else sn.body.pop();ctx.clearRect(0,0,300,300);ctx.fillStyle='#667eea';sn.body.forEach(s=>ctx.fillRect(s.x*10,s.y*10,10,10));ctx.fillStyle='red';ctx.fillRect(sn.food.x*10,sn.food.y*10,10,10)},150)]}
+    function snD(x,y){if((x!==0&&sn.dir.x!==-x)||(y!==0&&sn.dir.y!==-y))sn.dir={x,y}}
 
-    // RPS
-    function bRPS(){return`<h2>✂️ سنگ کاغذ قیچی</h2><div style="display:flex;gap:12px;justify-content:center;"><button class="btn btn-primary" onclick="plRPS('rock')">🪨</button><button class="btn btn-primary" onclick="plRPS('paper')">📄</button><button class="btn btn-primary" onclick="plRPS('scissors')">✂️</button></div><p id="rpsRes" style="text-align:center;">انتخاب کن!</p>`;}
-    function plRPS(p){const ch=['rock','paper','scissors'],bot=ch[Math.floor(Math.random()*3)],m={rock:'🪨',paper:'📄',scissors:'✂️'};let r='';if(p===bot)r='🤝 مساوی';else if((p==='rock'&&bot==='scissors')||(p==='paper'&&bot==='rock')||(p==='scissors'&&bot==='paper'))r='🎉 بردی';else r='😢 باختی';document.getElementById('rpsRes').textContent=`تو: ${m[p]} | کامپیوتر: ${m[bot]} → ${r}`;}
+    function bRPS(){return`<h2>✂️ سنگ کاغذ قیچی</h2><button class="btn btn-primary" onclick="plRPS('rock')">🪨</button><button class="btn btn-primary" onclick="plRPS('paper')">📄</button><button class="btn btn-primary" onclick="plRPS('scissors')">✂️</button><p id="rpsRes"></p>`}
+    function plRPS(p){const ch=['rock','paper','scissors'],bot=ch[Math.floor(Math.random()*3)],m={rock:'🪨',paper:'📄',scissors:'✂️'};let r='';if(p===bot)r='🤝 مساوی';else if((p==='rock'&&bot==='scissors')||(p==='paper'&&bot==='rock')||(p==='scissors'&&bot==='paper'))r='🎉 بردی';else r='😢 باختی';document.getElementById('rpsRes').textContent=`تو: ${m[p]} | کامپیوتر: ${m[bot]} → ${r}`}
 
-    // ==================== FAB ====================
-    function toggleFabPanel(){document.getElementById('fabPanel').classList.toggle('open');}
-    function cycleTheme(){const t=['theme-purple','theme-dark','theme-ocean'],n=['بنفش','تاریک','اقیانوس'];const c=document.body.getAttribute('data-theme')||'theme-purple';const i=(t.indexOf(c)+1)%t.length;document.body.setAttribute('data-theme',t[i]);document.getElementById('themeName').textContent=n[i];}
-    function cycleFont(){const f=["'Vazir','Tahoma',sans-serif","'Tahoma','Vazir',sans-serif","'Arial','Vazir',sans-serif"],n=['وزیر','تاهوما','Arial'];const c=document.body.style.getPropertyValue('--font-family')||f[0];const i=(f.indexOf(c)+1)%f.length;document.body.style.setProperty('--font-family',f[i]);document.getElementById('fontName').textContent=n[i];}
-    function toggleLang(){if(C.currentLang==='fa'){C.currentLang='en';document.getElementById('langName').textContent='English';document.querySelector('.logo').textContent='✨ Roozik';}else{C.currentLang='fa';document.getElementById('langName').textContent='فارسی';document.querySelector('.logo').textContent='✨ روزیک';}}
+    // ========== FAB ==========
+    function toggleFabPanel(){document.getElementById('fabPanel').classList.toggle('open')}
+    function cycleTheme(){const t=['theme-purple','theme-dark','theme-ocean'],n=['بنفش','تاریک','اقیانوس'];const c=document.body.getAttribute('data-theme')||'theme-purple';const i=(t.indexOf(c)+1)%t.length;document.body.setAttribute('data-theme',t[i]);document.getElementById('themeName').textContent=n[i]}
+    function cycleFont(){const f=["'Vazir','Tahoma',sans-serif","'Tahoma','Vazir',sans-serif","'Arial','Vazir',sans-serif"],n=['وزیر','تاهوما','Arial'];const c=document.body.style.getPropertyValue('--font-family')||f[0];const i=(f.indexOf(c)+1)%f.length;document.body.style.setProperty('--font-family',f[i]);document.getElementById('fontName').textContent=n[i]}
+    function toggleLang(){if(C.currentLang==='fa'){C.currentLang='en';document.getElementById('langName').textContent='English';document.querySelector('.logo').textContent='✨ Roozik'}else{C.currentLang='fa';document.getElementById('langName').textContent='فارسی';document.querySelector('.logo').textContent='✨ روزیک'}}
 
-    // ==================== UI ====================
+    // ========== UI ==========
     function updateAllUI(){
-        document.getElementById('totalVisits').textContent=(C.db.siteInfo?.totalVisits||0).toLocaleString('fa-IR');
+        document.getElementById('totalVisits').textContent=(parseInt(localStorage.getItem('rz_total_visits')||'0')).toLocaleString('fa-IR');
         document.getElementById('totalUsers').textContent=(C.db.users?.length||0).toLocaleString('fa-IR');
-        document.getElementById('onlineCount').textContent=(C.db.siteInfo?.onlineUsers||0).toLocaleString('fa-IR');
+        document.getElementById('onlineCount').textContent=(parseInt(localStorage.getItem('rz_online')||'0')).toLocaleString('fa-IR');
         if(C.currentUser)document.getElementById('homeCtaBtn').style.display='none';
         if(C.db.socialLinks?.telegram)document.getElementById('footerTelegram').href=C.db.socialLinks.telegram;
         if(C.db.socialLinks?.rubika)document.getElementById('footerRubika').href=C.db.socialLinks.rubika;
         updateHeader();updateCommentUI();renderNews();
     }
 
-    // ==================== START ====================
     window.addEventListener('DOMContentLoaded',init);
-    document.addEventListener('click',function(e){if(!document.getElementById('fabContainer').contains(e.target))document.getElementById('fabPanel').classList.remove('open');});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeGameModal();closeChatModal();closeAdminModal();}});
+    document.addEventListener('click',e=>{if(!document.getElementById('fabContainer').contains(e.target))document.getElementById('fabPanel').classList.remove('open')});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeGameModal();closeChatModal();closeAdminModal()}});
     </script>
 </body>
 </html>
