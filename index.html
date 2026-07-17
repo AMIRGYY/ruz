@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>روزیک | Roozik - فضای امن و شاد شما</title>
     <link href="https://cdn.jsdelivr.net/npm/vazir-font@latest/dist/font-face.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/moment-jalaali@0.9.6/build/moment-jalaali.min.js"></script>
     <style>
         :root {
             --bg-primary:#f0f2f8;--bg-secondary:#fff;--bg-glass:rgba(255,255,255,0.55);--bg-glass-strong:rgba(255,255,255,0.78);
@@ -37,11 +36,8 @@
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:var(--font-family);background:var(--bg-primary);color:var(--text-primary);min-height:100vh;overflow-x:hidden;transition:all var(--transition-speed);line-height:1.8}
         #particleCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
-        
-        /* هدر */
         .header{position:sticky;top:0;z-index:100;background:var(--header-bg);backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);border-bottom:var(--border-glass);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 2px 20px rgba(0,0,0,0.06)}
-        .logo{font-size:1.8em;font-weight:900;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;cursor:pointer;user-select:none;transition:all 0.3s}
-        .logo:hover{transform:scale(1.05)}
+        .logo{font-size:1.8em;font-weight:900;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;cursor:pointer}
         .nav{display:flex;gap:8px;flex-wrap:wrap}
         .nav a{text-decoration:none;color:var(--text-secondary);padding:10px 18px;border-radius:30px;font-size:0.9em;font-weight:500;cursor:pointer;white-space:nowrap;transition:all 0.3s}
         .nav a:hover{background:var(--nav-active-bg);color:var(--accent);transform:translateY(-2px)}
@@ -49,40 +45,24 @@
         .header-profile{display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 18px;border-radius:40px;background:var(--card-bg);border:var(--border-glass);backdrop-filter:blur(10px);transition:all 0.3s;box-shadow:var(--shadow-soft)}
         .header-profile:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}
         .header-profile img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--accent)}
-        
-        /* محتوا */
         .main-container{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:24px;min-height:70vh}
-        .section{display:none;animation:fadeSlideIn 0.5s ease forwards}
-        .section.active{display:block}
+        .section{display:none;animation:fadeSlideIn 0.5s ease forwards}.section.active{display:block}
         @keyframes fadeSlideIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-        
-        /* کارت‌ها */
         .glass-card{background:var(--card-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:var(--border-glass);border-radius:24px;padding:28px;margin-bottom:20px;box-shadow:var(--shadow-soft);transition:all 0.4s}
         .glass-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-4px)}
-        
-        /* دکمه‌ها */
         .btn{display:inline-block;padding:14px 32px;border-radius:40px;font-family:var(--font-family);font-weight:600;font-size:0.95em;cursor:pointer;border:none;transition:all 0.35s;text-decoration:none}
-        .btn-primary{background:var(--gradient-primary);color:#fff;box-shadow:0 8px 25px rgba(102,126,234,0.4)}
-        .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 35px rgba(102,126,234,0.5)}
-        .btn-outline{background:transparent;border:2px solid var(--accent);color:var(--accent)}
-        .btn-outline:hover{background:var(--accent);color:#fff}
-        .btn-sm{padding:8px 20px;font-size:0.82em;border-radius:25px}
-        .btn-danger{background:var(--danger);color:#fff}.btn-success{background:var(--success);color:#fff}.btn-warning{background:var(--warning);color:#fff}
+        .btn-primary{background:var(--gradient-primary);color:#fff;box-shadow:0 8px 25px rgba(102,126,234,0.4)}.btn-primary:hover{transform:translateY(-3px)}
+        .btn-outline{background:transparent;border:2px solid var(--accent);color:var(--accent)}.btn-outline:hover{background:var(--accent);color:#fff}
+        .btn-sm{padding:8px 20px;font-size:0.82em;border-radius:25px}.btn-danger{background:var(--danger);color:#fff}.btn-success{background:var(--success);color:#fff}.btn-warning{background:var(--warning);color:#fff}
         .btn-cta{background:var(--gradient-primary);color:#fff;font-size:1.2em;padding:18px 44px;border-radius:50px;box-shadow:0 10px 35px rgba(102,126,234,0.5);animation:wavePulse 2.5s ease-in-out infinite}
         @keyframes wavePulse{0%,100%{box-shadow:0 10px 35px rgba(102,126,234,0.5)}50%{box-shadow:0 10px 35px rgba(102,126,234,0.5),0 0 0 25px rgba(102,126,234,0.15)}}
-        
-        /* فرم‌ها */
-        input,textarea,select{font-family:var(--font-family);padding:14px 18px;border-radius:14px;border:var(--border-glass);background:var(--input-bg);color:var(--text-primary);font-size:0.9em;width:100%;margin-bottom:10px;outline:none;transition:all 0.3s}
+        input,textarea,select{font-family:var(--font-family);padding:14px 18px;border-radius:14px;border:var(--border-glass);background:var(--input-bg);color:var(--text-primary);font-size:0.9em;width:100%;margin-bottom:10px;outline:none}
         input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(102,126,234,0.1)}
         .form-group{margin-bottom:18px}.form-group label{display:block;margin-bottom:6px;font-weight:600;font-size:0.85em;color:var(--text-secondary)}
-        
-        /* مودال */
         .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--modal-overlay);z-index:200;display:flex;align-items:center;justify-content:center}
         .modal{background:var(--bg-glass-strong);backdrop-filter:blur(30px);border-radius:24px;padding:30px;width:90%;max-width:700px;max-height:85vh;overflow-y:auto;box-shadow:0 25px 60px rgba(0,0,0,0.3);border:var(--border-glass);position:relative}
         .modal-close{position:absolute;top:16px;left:20px;background:var(--card-bg);border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1.3em;color:var(--text-primary);display:flex;align-items:center;justify-content:center;z-index:10;transition:all 0.3s}
         .modal-close:hover{background:var(--danger);color:#fff;transform:rotate(90deg)}
-        
-        /* FAB */
         .fab-container{position:fixed;bottom:30px;left:30px;z-index:150;display:flex;flex-direction:column;align-items:center;gap:10px}
         .fab-main{width:58px;height:58px;border-radius:50%;background:var(--card-bg);backdrop-filter:blur(16px);border:var(--border-glass);box-shadow:var(--shadow-soft);cursor:pointer;font-size:1.5em;display:flex;align-items:center;justify-content:center;color:var(--accent);animation:floatBubble 3s ease-in-out infinite}
         @keyframes floatBubble{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
@@ -90,91 +70,34 @@
         .fab-panel.open{display:flex}
         .fab-option{display:flex;align-items:center;justify-content:space-between;padding:12px;border-radius:12px;cursor:pointer;font-size:0.85em;background:transparent;border:none;font-family:var(--font-family);width:100%;color:var(--text-primary)}
         .fab-option:hover{background:var(--nav-active-bg)}
-        
-        /* تب‌ها */
-        .content-tabs{display:flex;gap:8px;margin-bottom:24px}
-        .content-tab{padding:12px 28px;border-radius:30px;cursor:pointer;font-weight:600;border:2px solid transparent;background:var(--card-bg);color:var(--text-secondary);transition:all 0.3s}
-        .content-tab.active-tab{background:var(--gradient-primary);color:#fff}
-        
-        /* مقاله */
-        .article-card{background:var(--card-bg);backdrop-filter:blur(12px);border-radius:20px;overflow:hidden;border:var(--border-glass);box-shadow:var(--shadow-soft);cursor:pointer;transition:all 0.35s}
-        .article-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover)}
-        .article-body{padding:20px}
-        
-        /* بازی */
-        .game-card{background:var(--card-bg);backdrop-filter:blur(12px);border-radius:20px;padding:24px;border:var(--border-glass);box-shadow:var(--shadow-soft);cursor:pointer;text-align:center;transition:all 0.35s}
-        .game-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover)}
-        .game-icon{font-size:3.5em;margin-bottom:12px}
-        
-        /* تایمر */
+        .content-tabs{display:flex;gap:8px;margin-bottom:24px}.content-tab{padding:12px 28px;border-radius:30px;cursor:pointer;font-weight:600;border:2px solid transparent;background:var(--card-bg);color:var(--text-secondary)}.content-tab.active-tab{background:var(--gradient-primary);color:#fff}
+        .article-card{background:var(--card-bg);backdrop-filter:blur(12px);border-radius:20px;overflow:hidden;border:var(--border-glass);box-shadow:var(--shadow-soft);cursor:pointer;transition:all 0.35s}.article-card:hover{transform:translateY(-5px)}.article-body{padding:20px}
+        .game-card{background:var(--card-bg);backdrop-filter:blur(12px);border-radius:20px;padding:24px;border:var(--border-glass);box-shadow:var(--shadow-soft);cursor:pointer;text-align:center;transition:all 0.35s}.game-card:hover{transform:translateY(-5px)}.game-icon{font-size:3.5em;margin-bottom:12px}
         .live-timer{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:20px 0}
-        .timer-unit{background:var(--card-bg);border-radius:18px;padding:16px 20px;text-align:center;min-width:70px;box-shadow:var(--shadow-soft);border:var(--border-glass)}
-        .timer-value{font-size:2em;font-weight:900;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .timer-label{font-size:0.7em;color:var(--text-muted);margin-top:4px}
-        
-        /* فوتر */
+        .timer-unit{background:var(--card-bg);border-radius:18px;padding:16px 20px;text-align:center;min-width:70px;box-shadow:var(--shadow-soft);border:var(--border-glass)}.timer-value{font-size:2em;font-weight:900;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.timer-label{font-size:0.7em;color:var(--text-muted);margin-top:4px}
         .footer{position:relative;z-index:1;background:var(--bg-glass-strong);backdrop-filter:blur(20px);border-top:var(--border-glass);padding:30px 20px;text-align:center;margin-top:40px}
         .footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
-        .footer-link-btn{display:inline-block;padding:12px 24px;border-radius:30px;background:var(--card-bg);border:2px dashed var(--text-muted);color:var(--text-muted);font-size:0.85em;cursor:pointer;transition:all 0.3s;text-decoration:none}
-        .footer-link-btn:hover{border-color:var(--accent);color:var(--accent)}
+        .footer-link-btn{display:inline-block;padding:12px 24px;border-radius:30px;background:var(--card-bg);border:2px dashed var(--text-muted);color:var(--text-muted);font-size:0.85em;cursor:pointer;transition:all 0.3s;text-decoration:none}.footer-link-btn:hover{border-color:var(--accent);color:var(--accent)}
         .footer-banner{max-width:500px;height:80px;margin:16px auto;background:var(--card-bg);border-radius:16px;border:2px dashed var(--text-muted);display:flex;align-items:center;justify-content:center;color:var(--text-muted)}
         .copyright{color:var(--text-muted);font-size:0.8em;margin-top:10px}
-        
-        /* چت */
         .chat-container{max-height:400px;overflow-y:auto;padding:12px;background:var(--bg-secondary);border-radius:16px;margin:10px 0}
-        .chat-message{margin:10px 0;padding:12px 16px;border-radius:20px;max-width:75%;word-wrap:break-word}
-        .chat-message.sent{background:var(--gradient-primary);color:#fff;margin-right:auto;border-bottom-left-radius:4px}
-        .chat-message.received{background:var(--card-bg);margin-left:auto;border:var(--border-glass);border-bottom-right-radius:4px}
+        .chat-message{margin:10px 0;padding:12px 16px;border-radius:20px;max-width:75%;word-wrap:break-word}.chat-message.sent{background:var(--gradient-primary);color:#fff;margin-right:auto}.chat-message.received{background:var(--card-bg);margin-left:auto;border:var(--border-glass)}
         .chat-message img,.chat-message video{max-width:200px;border-radius:12px;margin-top:8px}
-        
-        /* بازی‌ها */
-        .memory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:380px;margin:0 auto}
-        .memory-card{aspect-ratio:1;background:var(--gradient-primary);border-radius:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:2em;transition:all 0.4s}
-        .memory-card.flipped{background:var(--bg-glass-strong);transform:rotateY(180deg)}
-        .memory-card.matched{background:var(--success);pointer-events:none;opacity:0.7}
-        .shooting-area{position:relative;width:100%;height:350px;background:var(--bg-secondary);border-radius:18px;overflow:hidden;cursor:crosshair;border:var(--border-glass)}
-        .shooting-target{position:absolute;width:50px;height:50px;background:var(--danger);border-radius:50%;cursor:pointer;animation:targetPop 0.3s ease;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.2em;box-shadow:0 0 20px rgba(239,68,68,0.5)}
-        @keyframes targetPop{from{transform:scale(0)}to{transform:scale(1)}}
-        .puzzle-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-width:340px;margin:0 auto}
-        .puzzle-tile{aspect-ratio:1;background:var(--gradient-primary);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4em;font-weight:700;color:#fff;cursor:pointer;transition:all 0.2s}
-        .puzzle-tile:hover{transform:scale(1.05)}
-        .puzzle-tile.empty{background:transparent;border:2px dashed var(--text-muted);opacity:0.5;cursor:default}
-        .xo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:260px;margin:0 auto}
-        .xo-cell{aspect-ratio:1;background:var(--card-bg);border-radius:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:2.8em;font-weight:700;border:var(--border-glass);transition:all 0.3s}
-        .xo-cell:hover{background:var(--nav-active-bg)}
-        .snake-ladder-board{display:grid;grid-template-columns:repeat(10,1fr);gap:2px;max-width:420px;margin:10px auto}
-        .snake-ladder-cell{aspect-ratio:1;background:var(--card-bg);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.65em;border:1px solid var(--divider);font-weight:600}
-        .snake-ladder-cell.player1{background:var(--accent);color:#fff}.snake-ladder-cell.player2{background:var(--danger);color:#fff}.snake-ladder-cell.both{background:var(--warning);color:#fff}
-        
-        /* اعلان VPN */
-        .vpn-notification{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--warning);color:#000;text-align:center;padding:12px;font-weight:600;font-size:0.9em;display:none;animation:slideDown 0.5s ease}
-        @keyframes slideDown{from{transform:translateY(-100%)}to{transform:translateY(0)}}
-        
-        .search-result-item{padding:14px;margin:10px 0;border-radius:16px;background:var(--card-bg);border:var(--border-glass)}
-        .search-result-item iframe{width:100%;height:200px;border-radius:12px;border:none;margin:8px 0}
-        
-        /* پروفایل جذاب */
-        .profile-header-card{text-align:center;position:relative;overflow:hidden}
-        .profile-header-card::before{content:'';position:absolute;top:-50px;left:-50px;width:150px;height:150px;background:var(--accent);opacity:0.1;border-radius:50%}
-        .profile-header-card::after{content:'';position:absolute;bottom:-50px;right:-50px;width:150px;height:150px;background:var(--accent2);opacity:0.1;border-radius:50%}
+        .memory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:380px;margin:0 auto}.memory-card{aspect-ratio:1;background:var(--gradient-primary);border-radius:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:2em;transition:all 0.4s}.memory-card.flipped{background:var(--bg-glass-strong)}.memory-card.matched{background:var(--success);pointer-events:none;opacity:0.7}
+        .shooting-area{position:relative;width:100%;height:350px;background:var(--bg-secondary);border-radius:18px;overflow:hidden;cursor:crosshair;border:var(--border-glass)}.shooting-target{position:absolute;width:50px;height:50px;background:var(--danger);border-radius:50%;cursor:pointer;animation:targetPop 0.3s ease;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}@keyframes targetPop{from{transform:scale(0)}to{transform:scale(1)}}
+        .puzzle-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-width:340px;margin:0 auto}.puzzle-tile{aspect-ratio:1;background:var(--gradient-primary);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4em;font-weight:700;color:#fff;cursor:pointer}.puzzle-tile.empty{background:transparent;border:2px dashed var(--text-muted);opacity:0.5;cursor:default}
+        .xo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:260px;margin:0 auto}.xo-cell{aspect-ratio:1;background:var(--card-bg);border-radius:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:2.8em;font-weight:700;border:var(--border-glass)}
+        .snake-ladder-board{display:grid;grid-template-columns:repeat(10,1fr);gap:2px;max-width:420px;margin:10px auto}.snake-ladder-cell{aspect-ratio:1;background:var(--card-bg);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.65em;border:1px solid var(--divider)}.snake-ladder-cell.player1{background:var(--accent);color:#fff}.snake-ladder-cell.player2{background:var(--danger);color:#fff}
+        .search-result-item{padding:14px;margin:10px 0;border-radius:16px;background:var(--card-bg);border:var(--border-glass)}.search-result-item iframe{width:100%;height:200px;border-radius:12px;border:none;margin:8px 0}
+        .profile-header-card{text-align:center;position:relative;overflow:hidden}.profile-header-card::before{content:'';position:absolute;top:-50px;left:-50px;width:150px;height:150px;background:var(--accent);opacity:0.1;border-radius:50%}.profile-header-card::after{content:'';position:absolute;bottom:-50px;right:-50px;width:150px;height:150px;background:var(--accent2);opacity:0.1;border-radius:50%}
         .profile-avatar-large{width:120px;height:120px;border-radius:50%;object-fit:cover;border:5px solid var(--accent);box-shadow:0 10px 30px rgba(102,126,234,0.3);position:relative;z-index:1}
-        .profile-badge{display:inline-block;padding:6px 16px;border-radius:20px;font-size:0.8em;font-weight:600;margin:4px}
-        .profile-badge.admin{background:var(--warning);color:#000}
-        .profile-badge.user{background:var(--tag-bg);color:var(--accent)}
-        
+        .profile-badge{display:inline-block;padding:6px 16px;border-radius:20px;font-size:0.8em;font-weight:600;margin:4px}.profile-badge.admin{background:var(--warning);color:#000}.profile-badge.user{background:var(--tag-bg);color:var(--accent)}
         ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:10px}
         @media(max-width:768px){.header{padding:8px 12px}.nav a{padding:7px 12px;font-size:0.75em}.modal{width:95%;padding:16px}.fab-container{bottom:20px;left:16px}.snake-ladder-board{max-width:320px}.shooting-area{height:250px}}
     </style>
 </head>
 <body data-theme="theme-purple">
-
     <canvas id="particleCanvas"></canvas>
-    
-    <!-- اعلان VPN -->
-    <div class="vpn-notification" id="vpnNotification">
-        💡 برای تجربه بهتر و دسترسی به همه امکانات، استفاده از <strong>VPN</strong> توصیه می‌شود
-    </div>
-
     <header class="header">
         <div class="logo" onclick="navigateTo('home')">✨ روزیک</div>
         <nav class="nav" id="mainNav">
@@ -186,748 +109,330 @@
             <a onclick="navigateTo('search')" data-page="search">🔍 سرچ</a>
         </nav>
         <div class="header-profile" id="headerProfile" onclick="navigateTo('profile')">
-            <span style="font-size:1.5em;">👤</span>
-            <span class="hp-name" id="headerProfileName">میهمان عزیز</span>
-            <img id="headerProfileImg" src="" alt="آواتار" style="display:none;">
+            <span style="font-size:1.5em;">👤</span><span id="headerProfileName">میهمان عزیز</span>
+            <img id="headerProfileImg" src="" style="display:none;">
         </div>
     </header>
-
     <main class="main-container">
         <section class="section active" id="section-home">
             <div class="glass-card" style="text-align:center;padding:50px 30px;">
-                <h1 style="font-size:2.5em;margin-bottom:15px;">🌟 سلام! به <span style="background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">روزیک</span> خوش اومدی</h1>
-                <p style="font-size:1.2em;color:var(--text-secondary);margin-bottom:8px;">اینجا یه <strong>فضای امن، شاد و دوست‌داشتنی</strong> برای یادگیری، بازی و گپ‌وگفته 💜</p>
-                <p style="color:var(--text-muted);margin:15px 0;">
-                    👀 تا الان <strong id="totalVisits">0</strong> نفر مهمونمون بودن | 
-                    👥 <strong id="totalUsers">0</strong> تا کاربر | 
-                    🟢 الان <strong id="onlineCount">0</strong> نفر آنلاینه
-                </p>
-                <div class="glass-card" style="display:inline-block;padding:12px 24px;margin:10px;">
-                    🕐 ایران: <strong id="iranTime">--:--:--</strong> | 🌍 جهانی: <strong id="worldTime">--:--:--</strong>
-                </div>
-                <br>
-                <button class="btn btn-cta" onclick="navigateTo('profile')" id="homeCtaBtn" style="margin:15px;">🚀 همین حالا پروفایلت رو بساز!</button>
+                <h1 style="font-size:2.5em;">🌟 سلام! به <span style="background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">روزیک</span> خوش اومدی</h1>
+                <p style="font-size:1.2em;color:var(--text-secondary);">اینجا یه <strong>فضای امن، شاد و دوست‌داشتنی</strong> برای یادگیری، بازی و گپ‌وگفته 💜</p>
+                <p style="color:var(--text-muted);margin:15px 0;">👀 <strong id="totalVisits">0</strong> نفر مهمونمون بودن | 👥 <strong id="totalUsers">0</strong> کاربر | 🟢 <strong id="onlineCount">0</strong> آنلاین</p>
+                <div class="glass-card" style="display:inline-block;padding:12px 24px;">🕐 ایران: <strong id="iranTime"></strong> | 🌍 <strong id="worldTime"></strong></div>
+                <br><button class="btn btn-cta" onclick="navigateTo('profile')" id="homeCtaBtn">🚀 همین حالا پروفایلت رو بساز!</button>
             </div>
-
-            <div class="glass-card" style="text-align:center;">
-                <h2 style="margin-bottom:12px;">👨‍💻 سازنده روزیک</h2>
-                <p style="font-size:1.3em;font-weight:700;color:var(--accent);">امیر وای‌زد (Amir YZ)</p>
-                <p style="color:var(--text-secondary);margin-bottom:15px;">با کلی عشق و انرژی برات ساختمش 💪</p>
-                <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-                    <a href="https://t.me/@amiro_m202" target="_blank" class="btn btn-outline btn-sm">✈️ تلگرام</a>
-                    <a href="https://rubika.ir/@amiro_m202" target="_blank" class="btn btn-outline btn-sm">📱 روبیکا</a>
-                    <a href="https://splus.ir/@amiro_m202" target="_blank" class="btn btn-outline btn-sm">💬 سروش‌پلاس</a>
-                    <a href="https://instagram.com/@amiro_m202" target="_blank" class="btn btn-outline btn-sm">📷 اینستاگرام</a>
-                </div>
+            <div class="glass-card" style="text-align:center;"><h2>👨‍💻 امیر وای‌زد</h2><p>@amiro_m2026</p>
+                <a href="https://t.me/@amiro_m202" target="_blank" class="btn btn-outline btn-sm">✈️ تلگرام</a>
+                <a href="https://rubika.ir/@amiro_m202" target="_blank" class="btn btn-outline btn-sm">📱 روبیکا</a>
+                <a href="https://splus.ir/@amiro_m202" target="_blank" class="btn btn-outline btn-sm">💬 سروش‌پلاس</a>
+                <a href="https://instagram.com/@amiro_m202" target="_blank" class="btn btn-outline btn-sm">📷 اینستاگرام</a>
             </div>
-
-            <div class="glass-card"><h3 style="text-align:center;">💱 قیمت لحظه‌ای ارز (ریال)</h3><div id="currencyRates" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:10px;"></div></div>
-            <div class="glass-card" style="text-align:center;"><h3>📅 امروز</h3><p style="font-size:1.3em;font-weight:700;" id="todayDate">---</p></div>
-            <div class="glass-card"><h3 style="text-align:center;">📰 آخرین خبرهای روزیک</h3><div id="latestNews"></div></div>
+            <div class="glass-card"><h3>💱 قیمت لحظه‌ای ارز (ریال)</h3><div id="currencyRates" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;"></div></div>
+            <div class="glass-card" style="text-align:center;"><h3>📅 امروز</h3><p style="font-size:1.3em;font-weight:700;" id="todayDate"></p></div>
+            <div class="glass-card"><h3>📰 آخرین خبرها</h3><div id="latestNews"></div></div>
         </section>
-
         <section class="section" id="section-content">
-            <div class="content-tabs">
-                <button class="content-tab active-tab" onclick="filterContent('girl',this)">🌸 دخترونه</button>
-                <button class="content-tab" onclick="filterContent('boy',this)">🚀 پسرونه</button>
-            </div>
+            <div class="content-tabs"><button class="content-tab active-tab" onclick="filterContent('girl',this)">🌸 دخترونه</button><button class="content-tab" onclick="filterContent('boy',this)">🚀 پسرونه</button></div>
             <div id="articlesContainer" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;"></div>
         </section>
-
-        <section class="section" id="section-news"><h2 style="text-align:center;margin-bottom:20px;">📰 خبرنامه روزیک</h2><div id="newsContainer" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;"></div></section>
-
-        <section class="section" id="section-games"><h2 style="text-align:center;margin-bottom:20px;">🎮 بازی‌های باحال</h2><div id="gamesGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;"></div></section>
-
+        <section class="section" id="section-news"><h2>📰 خبرنامه</h2><div id="newsContainer" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;"></div></section>
+        <section class="section" id="section-games"><h2>🎮 بازی‌ها</h2><div id="gamesGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;"></div></section>
         <section class="section" id="section-profile">
             <div id="profileNotLoggedIn" style="max-width:500px;margin:0 auto;">
-                <div class="glass-card" id="registerCard">
-                    <h2 style="text-align:center;margin-bottom:20px;">🔐 به جمع ما بپیوند!</h2>
-                    <p style="text-align:center;color:var(--text-muted);margin-bottom:20px;">ثبت‌نام کن و کلی امکانات باحال رو تجربه کن 😍</p>
+                <div class="glass-card" id="registerCard"><h2>🔐 به جمع ما بپیوند!</h2>
                     <form onsubmit="handleRegister(event)">
-                        <div class="form-group"><label>اسم کاملت</label><input type="text" id="regFullName" placeholder="مثلاً: علی محمدی" required></div>
-                        <div class="form-group"><label>یه نام کاربری باحال (انگلیسی)</label><input type="text" id="regUsername" placeholder="username" minlength="3" pattern="[a-zA-Z0-9_]+" required></div>
-                        <div class="form-group"><label>رمز عبور (حداقل ۶ تا، ترکیب حروف و عدد)</label><input type="password" id="regPassword" placeholder="******" minlength="6" required></div>
-                        <div class="form-group"><label>دوباره رمز رو بزن</label><input type="password" id="regPasswordConfirm" placeholder="******" minlength="6" required></div>
-                        <div class="form-group"><label>عکس پروفایل (دلخواه)</label><input type="file" id="regAvatar" accept="image/*" onchange="previewAvatar(this)"><img id="avatarPreview" style="width:90px;height:90px;border-radius:50%;object-fit:cover;display:none;margin-top:10px;border:3px solid var(--accent);"></div>
-                        <p id="regError" style="color:var(--danger);display:none;text-align:center;margin:10px 0;"></p>
-                        <button type="submit" class="btn btn-primary" style="width:100%;font-size:1.1em;">✨ بزن بریم!</button>
+                        <div class="form-group"><label>اسم کاملت</label><input type="text" id="regFullName" required></div>
+                        <div class="form-group"><label>نام کاربری (انگلیسی)</label><input type="text" id="regUsername" required></div>
+                        <div class="form-group"><label>رمز عبور</label><input type="password" id="regPassword" required></div>
+                        <div class="form-group"><label>تکرار رمز</label><input type="password" id="regPasswordConfirm" required></div>
+                        <div class="form-group"><label>عکس (دلخواه)</label><input type="file" id="regAvatar" accept="image/*" onchange="previewAvatar(this)"><img id="avatarPreview" style="width:90px;height:90px;border-radius:50%;display:none;margin-top:10px;"></div>
+                        <p id="regError" style="color:var(--danger);display:none;"></p>
+                        <button type="submit" class="btn btn-primary" style="width:100%;">✨ بزن بریم!</button>
                     </form>
-                    <p style="text-align:center;margin-top:15px;">قبلاً عضو شدی؟ <a onclick="showLoginForm()" style="color:var(--accent);cursor:pointer;font-weight:600;">وارد شو</a></p>
+                    <p style="text-align:center;margin-top:15px;"><a onclick="showLoginForm()" style="color:var(--accent);cursor:pointer;">وارد شو</a></p>
                 </div>
-                <div class="glass-card" id="loginCard" style="display:none;">
-                    <h2 style="text-align:center;">🔑 خوش برگشتی!</h2>
+                <div class="glass-card" id="loginCard" style="display:none;"><h2>🔑 خوش برگشتی!</h2>
                     <form onsubmit="handleLogin(event)">
                         <div class="form-group"><label>نام کاربری</label><input type="text" id="loginUsername" required></div>
                         <div class="form-group"><label>رمز عبور</label><input type="password" id="loginPassword" required></div>
-                        <p id="loginError" style="color:var(--danger);display:none;text-align:center;"></p>
+                        <p id="loginError" style="color:var(--danger);display:none;"></p>
                         <button type="submit" class="btn btn-primary" style="width:100%;">🚀 ورود</button>
                     </form>
-                    <p style="text-align:center;margin-top:15px;"><a onclick="showRegisterForm()" style="color:var(--accent);cursor:pointer;">هنوز عضو نیستی؟ ثبت‌نام کن</a></p>
+                    <p style="text-align:center;"><a onclick="showRegisterForm()" style="color:var(--accent);cursor:pointer;">ثبت‌نام کن</a></p>
                 </div>
             </div>
             <div id="profileLoggedIn" style="display:none;max-width:600px;margin:0 auto;"></div>
         </section>
-
         <section class="section" id="section-search">
-            <div class="glass-card">
-                <h2 style="text-align:center;">🔍 هر چی می‌خوای پیدا کن!</h2>
-                <p style="text-align:center;color:var(--text-muted);font-size:0.9em;">نتایج از آپارات (ایرانی)، iTunes (آهنگ) و Dailymotion (خارجی) میاد</p>
-                <div style="display:flex;gap:10px;max-width:750px;margin:20px auto;flex-wrap:wrap;">
-                    <input type="text" id="searchInput" placeholder="اسم آهنگ، ویدیو، خواننده..." style="flex:1;min-width:200px;" onkeydown="if(event.key==='Enter')performSearch()">
-                    <select id="searchType" style="width:auto;padding:14px;border-radius:14px;"><option value="all">همه</option><option value="persian">🇮🇷 ایرانی</option><option value="music">🎵 آهنگ</option><option value="video">🎬 ویدیو خارجی</option></select>
-                    <button class="btn btn-primary" onclick="performSearch()">🔍 بگرد</button>
-                </div>
+            <div class="glass-card"><h2>🔍 جستجو</h2><p style="text-align:center;color:var(--text-muted);">نتایج از آپارات، iTunes و Dailymotion</p>
+                <div style="display:flex;gap:10px;"><input type="text" id="searchInput" placeholder="چی می‌خوای؟" style="flex:1;" onkeydown="if(event.key==='Enter')performSearch()"><select id="searchType"><option value="all">همه</option><option value="persian">🇮🇷 ایرانی</option><option value="music">🎵 آهنگ</option><option value="video">🎬 ویدیو</option></select><button class="btn btn-primary" onclick="performSearch()">🔍</button></div>
                 <div id="searchResults"></div>
             </div>
-            <div class="glass-card"><h3 style="text-align:center;">🌤️ هوای شهرت رو ببین</h3><div style="display:flex;gap:10px;max-width:400px;margin:15px auto;"><input type="text" id="cityInput" placeholder="اسم شهر..."><button class="btn btn-sm btn-primary" onclick="getWeather()">بررسی</button></div><div id="weatherResult" style="text-align:center;margin-top:10px;"></div></div>
+            <div class="glass-card"><h3>🌤️ آب و هوا</h3><input type="text" id="cityInput" placeholder="نام شهر"><button class="btn btn-sm btn-primary" onclick="getWeather()">بررسی</button><div id="weatherResult"></div></div>
         </section>
     </main>
-
     <footer class="footer">
-        <div class="footer-links">
-            <a class="footer-link-btn" href="#" id="footerTelegram" target="_blank">✈️ تلگرام</a>
-            <a class="footer-link-btn" href="#" id="footerRubika" target="_blank">📱 روبیکا</a>
-            <a class="footer-link-btn" href="#" id="footerAdRegister" style="border-color:var(--accent);color:var(--accent);">📢 ثبت تبلیغات</a>
-        </div>
+        <div class="footer-links"><a class="footer-link-btn" href="#" id="footerTelegram">✈️ تلگرام</a><a class="footer-link-btn" href="#" id="footerRubika">📱 روبیکا</a><a class="footer-link-btn" href="#" id="footerAdRegister" style="border-color:var(--accent);">📢 ثبت تبلیغات</a></div>
         <div class="footer-banner">🖼️ بنر تبلیغاتی</div>
-        <div class="glass-card" style="max-width:650px;margin:20px auto;">
-            <h4 style="text-align:center;">💬 نظرت رو برامون بنویس!</h4>
-            <div id="commentsList" style="max-height:280px;overflow-y:auto;margin:10px 0;"></div>
-            <div id="commentFormArea" style="display:none;"><textarea id="commentInput" placeholder="چی تو دلت هست؟..." rows="2"></textarea><button class="btn btn-sm btn-primary" onclick="submitComment()" style="margin-top:8px;">📩 ارسال</button></div>
-            <p id="commentLoginMsg" style="text-align:center;color:var(--text-muted);">برای نظر دادن <a onclick="navigateTo('profile')" style="color:var(--accent);cursor:pointer;">وارد حساب</a> شو</p>
-        </div>
-        <p class="copyright">© ۲۰۲۶ روزیک | ساخته شده با ❤️ توسط امیر وای‌زد</p>
+        <div class="glass-card" style="max-width:650px;margin:20px auto;"><h4>💬 نظرات</h4><div id="commentsList" style="max-height:280px;overflow-y:auto;"></div><div id="commentFormArea" style="display:none;"><textarea id="commentInput" rows="2"></textarea><button class="btn btn-sm btn-primary" onclick="submitComment()">📩</button></div><p id="commentLoginMsg">برای نظر <a onclick="navigateTo('profile')" style="color:var(--accent);cursor:pointer;">وارد شو</a></p></div>
+        <div class="glass-card" style="max-width:650px;margin:20px auto;text-align:center;"><h4>📊 نظرسنجی</h4><p id="pollQuestion"></p><div id="pollOptions"></div><p id="pollTotal"></p></div>
+        <p class="copyright">© ۲۰۲۶ روزیک | ❤️ امیر وای‌زد</p>
     </footer>
-
     <div class="fab-container"><div class="fab-panel" id="fabPanel">
         <button class="fab-option" onclick="cycleTheme()">🎨 تم: <span id="themeName">بنفش</span></button>
         <button class="fab-option" onclick="cycleFont()">🔤 فونت: <span id="fontName">وزیر</span></button>
         <button class="fab-option" onclick="toggleLang()">🌐 زبان: <span id="langName">فارسی</span></button>
     </div><button class="fab-main" onclick="toggleFabPanel()">⚡</button></div>
-
     <div class="modal-overlay" id="gameModalOverlay" style="display:none;" onclick="closeGameModal(event)"><div class="modal" onclick="event.stopPropagation()"><button class="modal-close" onclick="closeGameModal()">✕</button><div id="gameModalContent"></div></div></div>
     <div class="modal-overlay" id="chatModalOverlay" style="display:none;" onclick="closeChatModal(event)"><div class="modal" onclick="event.stopPropagation()"><button class="modal-close" onclick="closeChatModal()">✕</button><div id="chatModalContent"></div></div></div>
     <div class="modal-overlay" id="adminModalOverlay" style="display:none;" onclick="closeAdminModal(event)"><div class="modal" onclick="event.stopPropagation()"><button class="modal-close" onclick="closeAdminModal()">✕</button><div id="adminModalContent"></div></div></div>
 
-    <script>
-    // ==================== CONFIG ====================
-    const CFG={dbUrl:'https://jsonkeeper.com/b/AXWI9',currencyKey:'6bd355b3fb83d20667879502',weatherKey:'252f978480e8588821137342cbd19701',adminUser:'amiro_m2026',currentUser:null,db:null,intervals:[],lang:'fa'};
+<script>
+// ==================== CONFIG ====================
+const C={dbUrl:'https://jsonkeeper.com/b/AXWI9',weatherKey:'252f978480e8588821137342cbd19701',adminUser:'amiro_m2026',currentUser:null,db:null,intervals:[],lang:'fa'};
 
-    // ==================== DATABASE ====================
-    async function loadDb(){
-        try{const r=await fetch(CFG.dbUrl);if(!r.ok)throw new Error('err');CFG.db=await r.json()}catch(e){CFG.db=defDb()}
-        if(!CFG.db.users)CFG.db.users=[];if(!CFG.db.articles)CFG.db.articles=[];
-        if(!CFG.db.news)CFG.db.news=[];if(!CFG.db.comments)CFG.db.comments=[];
-        if(!CFG.db.friendRequests)CFG.db.friendRequests=[];if(!CFG.db.chats)CFG.db.chats=[];
-        if(!CFG.db.polls)CFG.db.polls=[{id:1,question:'کدوم بخش رو بیشتر دوست داری؟',options:['بازی‌ها 🎮','مقالات 📚','پروفایل 👤','سرچ 🔍'],votes:[0,0,0,0],voters:[]}];
-        if(!CFG.db.socialLinks)CFG.db.socialLinks={telegram:'https://t.me/@amiro_m202',rubika:'https://rubika.ir/@amiro_m202'};
-        if(!CFG.db.siteInfo)CFG.db.siteInfo={totalVisits:0,onlineUsers:0};
-    }
-    function defDb(){return{users:[],articles:[{id:1,title:'۱۰ راز یادگیری برنامه‌نویسی',category:'boy',content:'تمرین روزانه کلید موفقیته...',author:'امیر وای‌زد',date:'۱۴۰۴/۰۴/۲۵',tags:[]},{id:2,title:'مدیریت استرس',category:'girl',content:'تکنیک‌های تنفس عمیق...',author:'امیر وای‌زد',date:'۱۴۰۴/۰۴/۲۰',tags:[]}],news:[],comments:[],friendRequests:[],chats:[],polls:[{id:1,question:'کدوم بخش رو بیشتر دوست داری؟',options:['بازی‌ها 🎮','مقالات 📚','پروفایل 👤','سرچ 🔍'],votes:[0,0,0,0],voters:[]}],socialLinks:{telegram:'https://t.me/@amiro_m202',rubika:'https://rubika.ir/@amiro_m202'},siteInfo:{totalVisits:0,onlineUsers:0}}}
-    async function saveDb(){try{await fetch(CFG.dbUrl,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(CFG.db)})}catch(e){alert('⚠️ نتونستم دیتابیس رو ذخیره کنم! لطفاً VPN رو روشن کن و دوباره تلاش کن.')}}
+// ==================== DATABASE (محلی + آنلاین) ====================
+function getLocalDb(){try{return JSON.parse(localStorage.getItem('roozik_local')||'{}')}catch(e){return{}}}
+function setLocalDb(data){localStorage.setItem('roozik_local',JSON.stringify(data))}
+function getLocalUsers(){const d=getLocalDb();return d.users||[]}
+function saveLocalUser(user){const d=getLocalDb();if(!d.users)d.users=[];const idx=d.users.findIndex(u=>u.username===user.username);if(idx>=0)d.users[idx]=user;else d.users.push(user);setLocalDb(d)}
 
-    // ==================== VPN CHECK ====================
-    async function checkVPN(){
-        try{
-            const test=await fetch('https://www.google.com/favicon.ico',{mode:'no-cors'});
-            document.getElementById('vpnNotification').style.display='none';
-        }catch(e){
-            // احتمالاً VPN خاموشه
-            try{
-                const test2=await fetch(CFG.dbUrl);
-                document.getElementById('vpnNotification').style.display='none';
-            }catch(e2){
-                document.getElementById('vpnNotification').style.display='block';
-                setTimeout(()=>{document.getElementById('vpnNotification').style.display='none'},8000);
-            }
-        }
-    }
+async function loadOnlineDb(){try{const r=await fetch(C.dbUrl);if(!r.ok)throw new Error('err');C.db=await r.json()}catch(e){C.db=defDb()};if(!C.db.users)C.db.users=[];if(!C.db.articles)C.db.articles=[];if(!C.db.news)C.db.news=[];if(!C.db.comments)C.db.comments=[];if(!C.db.friendRequests)C.db.friendRequests=[];if(!C.db.chats)C.db.chats=[];if(!C.db.polls)C.db.polls=[{id:1,question:'کدوم بخش رو بیشتر دوست داری؟',options:['بازی 🎮','مقاله 📚','پروفایل 👤','سرچ 🔍'],votes:[0,0,0,0],voters:[]}];if(!C.db.socialLinks)C.db.socialLinks={telegram:'https://t.me/@amiro_m202',rubika:'https://rubika.ir/@amiro_m202'};if(!C.db.siteInfo)C.db.siteInfo={totalVisits:0,onlineUsers:0}}
+function defDb(){return{users:[],articles:[{id:1,title:'آموزش برنامه‌نویسی',category:'boy',content:'تمرین روزانه...',author:'امیر',date:'۱۴۰۴/۰۱/۰۱',tags:[]},{id:2,title:'مدیریت استرس',category:'girl',content:'تکنیک‌های تنفس...',author:'امیر',date:'۱۴۰۴/۰۱/۰۱',tags:[]}],news:[],comments:[],friendRequests:[],chats:[],polls:[{id:1,question:'کدوم بخش؟',options:['بازی','مقاله','پروفایل','سرچ'],votes:[0,0,0,0],voters:[]}],socialLinks:{telegram:'https://t.me/@amiro_m202',rubika:'https://rubika.ir/@amiro_m202'},siteInfo:{totalVisits:0,onlineUsers:0}}}
+async function saveOnlineDb(){try{await fetch(C.dbUrl,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(C.db)})}catch(e){console.log('ذخیره آنلاین نشد')}}
 
-    // ==================== INIT ====================
-    async function init(){
-        await loadDb();
-        checkVPN();
-        
-        let visits=parseInt(localStorage.getItem('rz_visits')||'0');
-        let online=parseInt(localStorage.getItem('rz_online')||'0');
-        visits++;online++;
-        localStorage.setItem('rz_visits',visits);localStorage.setItem('rz_online',online);
-        CFG.db.siteInfo.totalVisits=visits;CFG.db.siteInfo.onlineUsers=online;
-        await saveDb();
-        
-        const saved=sessionStorage.getItem('rz_sess');
-        if(saved&&CFG.db.users){const u=CFG.db.users.find(x=>x.username===saved);if(u){CFG.currentUser=u;showProfileUI();document.getElementById('homeCtaBtn').style.display='none'}}
-        
-        initParticles();startClocks();updateAllUI();loadCurrency();updateDate();
-        renderArticles('girl');renderGames();renderNews();loadComments();loadPoll();updateCommentUI();
-        
-        setInterval(async()=>{await loadDb();updateAllUI()},20000);
-        window.addEventListener('beforeunload',()=>{let o=parseInt(localStorage.getItem('rz_online')||'1');o=Math.max(0,o-1);localStorage.setItem('rz_online',o)});
-    }
+// ذخیره دوگانه
+async function saveDual(userData){
+    saveLocalUser(userData);
+    const idx=(C.db.users||[]).findIndex(u=>u.username===userData.username);
+    if(idx>=0)C.db.users[idx]=userData;else C.db.users.push(userData);
+    await saveOnlineDb();
+}
 
-    // ==================== NAVIGATION ====================
-    function navigateTo(p){
-        document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-        const t=document.getElementById('section-'+p);if(t)t.classList.add('active');
-        document.querySelectorAll('#mainNav a').forEach(a=>{a.classList.remove('active');if(a.getAttribute('data-page')===p)a.classList.add('active')});
-        if(p==='content')renderArticles('girl');if(p==='news')renderNews();if(p==='games')renderGames();
-        if(p==='home'){loadCurrency();updateDate()}
-    }
-
-    // ==================== PARTICLES ====================
-    function initParticles(){const c=document.getElementById('particleCanvas'),ctx=c.getContext('2d');let ps=[];function rz(){c.width=innerWidth;c.height=innerHeight}rz();window.addEventListener('resize',()=>{rz();ps=[];for(let i=0;i<60;i++)ps.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*3+1.5,dx:(Math.random()-0.5)*0.5,dy:(Math.random()-0.5)*0.5})});for(let i=0;i<60;i++)ps.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*3+1.5,dx:(Math.random()-0.5)*0.5,dy:(Math.random()-0.5)*0.5});function an(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{p.x+=p.dx;p.y+=p.dy;if(p.x<0)p.x=c.width;if(p.x>c.width)p.x=0;if(p.y<0)p.y=c.height;if(p.y>c.height)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(102,126,234,0.18)';ctx.fill()});requestAnimationFrame(an)}an()}
-
-    // ==================== CLOCKS ====================
-    function startClocks(){function up(){const n=new Date();document.getElementById('iranTime').textContent=n.toLocaleTimeString('fa-IR',{timeZone:'Asia/Tehran'});document.getElementById('worldTime').textContent=n.toLocaleTimeString('fa-IR',{timeZone:'UTC'})}up();setInterval(up,1000)}
-    function updateDate(){try{document.getElementById('todayDate').textContent=moment().format('dddd، jD jMMMM jYYYY')}catch(e){}}
-
-    // ==================== CURRENCY (ریال واقعی) ====================
-    async function loadCurrency(){
-        const el=document.getElementById('currencyRates');if(!el)return;
-        try{
-            const r=await fetch(`https://v6.exchangerate-api.com/v6/${CFG.currencyKey}/latest/USD`);
-            const d=await r.json();
-            const irr=d.conversion_rates.IRR||420000;
-            const cur=[{c:'USD',n:'دلار'},{c:'EUR',n:'یورو'},{c:'GBP',n:'پوند'},{c:'TRY',n:'لیر'},{c:'AED',n:'درهم'},{c:'CNY',n:'یوان'}];
-            el.innerHTML=cur.map(x=>{const v=Math.round(d.conversion_rates[x.c]*irr);return`<span style="padding:10px 18px;background:var(--tag-bg);border-radius:20px;font-size:0.85em;">${x.n}: <strong>${v.toLocaleString('fa-IR')} ﷼</strong></span>`}).join('');
-        }catch(e){el.innerHTML='<span style="color:var(--danger);">⚠️ خطا در دریافت قیمت ارز - VPN نیاز است</span>'}
-    }
-
-    // ==================== WEATHER ====================
-    async function getWeather(){
-        const city=document.getElementById('cityInput').value.trim();
-        const r=document.getElementById('weatherResult');if(!city)return;
-        r.innerHTML='⏳';
-        try{
-            const res=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${CFG.weatherKey}&units=metric&lang=fa`);
-            const d=await res.json();
-            r.innerHTML=d.cod===200?`<strong>${d.name}</strong>: ${Math.round(d.main.temp)}°C | ${d.weather[0].description} | 💧${d.main.humidity}%`:'❌ شهر پیدا نشد';
-        }catch(e){r.innerHTML='⚠️ خطا - VPN رو روشن کن'}
-    }
-
-    // ==================== SEARCH ====================
-    async function performSearch(){
-        const q=document.getElementById('searchInput').value.trim(),type=document.getElementById('searchType').value,div=document.getElementById('searchResults');
-        if(!q){div.innerHTML='<p>یه چیزی بنویس تا بگردم! 🔍</p>';return}
-        div.innerHTML='<p>⏳ دارم می‌گردم...</p>';let h='';
-        
-        if(type==='all'||type==='persian'){try{const r=await fetch(`https://www.aparat.com/api/fa/v1/video/video/search/text/${encodeURIComponent(q)}?per_page=6`);const d=await r.json();if(d.data?.videos?.length){h+='<h4>🇮🇷 آپارات</h4>';d.data.videos.forEach(v=>{h+=`<div class="search-result-item"><strong>${v.title}</strong><iframe src="https://www.aparat.com/embed/${v.uid}" allowfullscreen></iframe><a href="https://www.aparat.com/v/${v.uid}" target="_blank" class="btn btn-sm btn-outline">▶️ تماشا</a></div>`})}}catch(e){}}
-        if(type==='all'||type==='persian'||type==='music'){try{const r=await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&limit=10`);const d=await r.json();if(d.results?.length){h+='<h4>🎵 آهنگ‌ها</h4>';d.results.forEach(i=>{h+=`<div class="search-result-item"><strong>${i.trackName}</strong> - ${i.artistName}${i.previewUrl?`<audio controls style="width:100%"><source src="${i.previewUrl}"></audio>`:''}<a href="${i.trackViewUrl}" target="_blank" class="btn btn-sm btn-outline">🎧</a>${i.previewUrl?`<a href="${i.previewUrl}" download class="btn btn-sm btn-primary">📥</a>`:''}</div>`})}}catch(e){}}
-        if(type==='all'||type==='video'){try{const r=await fetch(`https://api.dailymotion.com/videos?search=${encodeURIComponent(q)}&limit=5`);const d=await r.json();if(d.list?.length){h+='<h4>🎬 Dailymotion</h4>';d.list.forEach(i=>{h+=`<div class="search-result-item"><strong>${i.title}</strong><iframe src="https://www.dailymotion.com/embed/video/${i.id}" allowfullscreen></iframe><a href="https://www.dailymotion.com/video/${i.id}" target="_blank" class="btn btn-sm btn-outline">▶️</a></div>`})}}catch(e){}}
-        
-        div.innerHTML=h||'<p>❌ چیزی پیدا نشد! یه عبارت دیگه رو امتحان کن 🤗</p>';
-    }
-
-    // ==================== PROFILE ====================
-    function handleRegister(e){
-        e.preventDefault();
-        const name=document.getElementById('regFullName').value.trim();
-        const user=document.getElementById('regUsername').value.trim().toLowerCase();
-        const pass=document.getElementById('regPassword').value;
-        const pass2=document.getElementById('regPasswordConfirm').value;
-        const err=document.getElementById('regError');err.style.display='none';
-        if(!name){err.textContent='اسمت رو که نگفتی! 😊';err.style.display='block';return}
-        if(user.length<3||!/^[a-zA-Z0-9_]+$/.test(user)){err.textContent='نام کاربری باید حداقل ۳ کاراکتر و فقط انگلیسی باشه';err.style.display='block';return}
-        if(pass.length<6||!/[a-zA-Z]/.test(pass)||!/[0-9]/.test(pass)){err.textContent='رمز باید حداقل ۶ کاراکتر و ترکیبی از حروف و عدد باشه';err.style.display='block';return}
-        if(pass!==pass2){err.textContent='رمزها با هم یکی نیستن! دوباره چک کن';err.style.display='block';return}
-        if(CFG.db.users.find(u=>u.username.toLowerCase()===user.toLowerCase())){err.textContent='❌ این نام کاربری قبلاً انتخاب شده! یه نام دیگه انتخاب کن یا وارد شو';err.style.display='block';return}
-        
-        const avInput=document.getElementById('regAvatar');
-        const save=(av)=>{
-            const nu={username:user,password:btoa(pass),fullName:name,avatar:av||'',role:user===CFG.adminUser?'admin':'user',joinDate:new Date().toLocaleDateString('fa-IR',{year:'numeric',month:'long',day:'numeric'}),joinTimestamp:new Date().toISOString(),friends:[],friendRequests:[],settings:{}};
-            CFG.db.users.push(nu);
-            let v=parseInt(localStorage.getItem('rz_visits')||'0');v++;localStorage.setItem('rz_visits',v);
-            CFG.db.siteInfo.totalVisits=v;
-            saveDb().then(()=>{CFG.currentUser=nu;sessionStorage.setItem('rz_sess',user);showProfileUI();document.getElementById('homeCtaBtn').style.display='none';document.getElementById('registerForm').reset();document.getElementById('avatarPreview').style.display='none';updateAllUI();alert('🎉 به خانواده روزیک خوش اومدی! کلی خوشحالیم که هستی 💜')}).catch(()=>alert('⚠️ ذخیره نشد! VPN رو روشن کن'));
-        };
-        if(avInput.files?.[0]){const r=new FileReader();r.onload=e=>save(e.target.result);r.readAsDataURL(avInput.files[0])}else save('');
-    }
-
-    function handleLogin(e){
-        e.preventDefault();
-        const user=document.getElementById('loginUsername').value.trim().toLowerCase();
-        const pass=document.getElementById('loginPassword').value;
-        const err=document.getElementById('loginError');err.style.display='none';
-        const u=CFG.db.users.find(x=>x.username.toLowerCase()===user.toLowerCase());
-        if(!u){err.textContent='کاربری با این نام پیدا نشد 🤔';err.style.display='block';return}
-        if(u.password!==btoa(pass)){err.textContent='رمز عبور اشتباهه! دوباره تلاش کن';err.style.display='block';return}
-        CFG.currentUser=u;sessionStorage.setItem('rz_sess',u.username);showProfileUI();document.getElementById('homeCtaBtn').style.display='none';updateCommentUI();
-    }
-
-    function showProfileUI(){
-        document.getElementById('profileNotLoggedIn').style.display='none';
-        document.getElementById('registerCard').style.display='block';document.getElementById('loginCard').style.display='none';
-        const d=document.getElementById('profileLoggedIn');d.style.display='block';const u=CFG.currentUser;if(!u)return;
-        d.innerHTML=`<div class="glass-card profile-header-card" style="padding:40px 30px;">
-            <img src="${u.avatar||'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22><circle cx=%2260%22 cy=%2260%22 r=%2260%22 fill=%22%23ddd%22/><text x=%2260%22 y=%2275%22 text-anchor=%22middle%22 font-size=%2250%22>👤</text></svg>'}" class="profile-avatar-large" alt="آواتار">
-            <h2 style="margin-top:16px;">${u.fullName}</h2>
-            <p style="color:var(--accent);font-size:1.1em;">@${u.username}</p>
-            <span class="profile-badge ${u.role==='admin'?'admin':'user'}">${u.role==='admin'?'👑 ادمین سایت':'👤 کاربر عادی'}</span>
-            <p style="margin-top:10px;">📅 از ${u.joinDate} با ما هستی</p>
-            <div class="live-timer" id="profileLiveTimer"></div>
-            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
-                <button class="btn btn-outline btn-sm" onclick="openFriendsSection()">👥 دوستان (${(u.friends||[]).length})</button>
-                ${u.role==='admin'?'<button class="btn btn-warning btn-sm" onclick="openAdminPanel()">⚙️ مدیریت</button>':''}
-                <button class="btn btn-danger btn-sm" onclick="logoutUser()">🚪 خروج</button>
-            </div></div>`;
-        startTimer();updateHeader();updateCommentUI();
-    }
-
-    function startTimer(){if(!CFG.currentUser?.joinTimestamp)return;setInterval(()=>{const el=document.getElementById('profileLiveTimer');if(!el)return;const diff=Date.now()-new Date(CFG.currentUser.joinTimestamp).getTime();el.innerHTML=[{v:Math.floor(diff/86400000),l:'روز'},{v:Math.floor((diff%86400000)/3600000),l:'ساعت'},{v:Math.floor((diff%3600000)/60000),l:'دقیقه'},{v:Math.floor((diff%60000)/1000),l:'ثانیه'}].map(x=>`<div class="timer-unit"><div class="timer-value">${x.v}</div><div class="timer-label">${x.l}</div></div>`).join('')},1000)}
-    function updateHeader(){const n=document.getElementById('headerProfileName'),i=document.getElementById('headerProfileImg');if(CFG.currentUser){n.textContent=CFG.currentUser.fullName.split(' ')[0];if(CFG.currentUser.avatar){i.src=CFG.currentUser.avatar;i.style.display='inline-block'}}else{n.textContent='میهمان عزیز';i.style.display='none'}}
-    function logoutUser(){if(confirm('می‌خوای بری؟ دلمون برات تنگ میشه 🥺')){CFG.currentUser=null;sessionStorage.removeItem('rz_sess');document.getElementById('profileLoggedIn').style.display='none';document.getElementById('profileNotLoggedIn').style.display='block';document.getElementById('homeCtaBtn').style.display='inline-block';updateHeader();updateCommentUI()}}
-    function showLoginForm(){document.getElementById('registerCard').style.display='none';document.getElementById('loginCard').style.display='block'}
-    function showRegisterForm(){document.getElementById('registerCard').style.display='block';document.getElementById('loginCard').style.display='none'}
-    function previewAvatar(i){const p=document.getElementById('avatarPreview');if(i.files?.[0]){const r=new FileReader();r.onload=e=>{p.src=e.target.result;p.style.display='inline-block'};r.readAsDataURL(i.files[0])}}
-
-        // ==================== ادامه از بخش ۱ ====================
+// ==================== INIT ====================
+async function init(){
+    await loadOnlineDb();
+    let visits=parseInt(localStorage.getItem('rz_visits')||'0');visits++;localStorage.setItem('rz_visits',visits);
+    let online=parseInt(localStorage.getItem('rz_online')||'0');online++;localStorage.setItem('rz_online',online);
+    C.db.siteInfo.totalVisits=visits;C.db.siteInfo.onlineUsers=online;await saveOnlineDb();
     
-    // ==================== FRIENDS & CHAT ====================
-    function openFriendsSection(){
-        document.getElementById('chatModalOverlay').style.display='flex';
-        const c=document.getElementById('chatModalContent');
-        c.innerHTML=`<h3 style="text-align:center;">👥 دوست‌یابی</h3>
-            <p style="text-align:center;color:var(--text-muted);">اینجا می‌تونی دوستای جدید پیدا کنی و باهاشون چت کنی!</p>
-            <div style="display:flex;gap:8px;margin:12px 0;"><input type="text" id="friendSearchInput" placeholder="نام کاربری رو جستجو کن..." style="flex:1;"><button class="btn btn-sm btn-primary" onclick="searchNewFriend()">🔍 پیدا کن</button></div>
-            <div id="friendSearchResult"></div>
-            <h4 style="margin-top:20px;color:var(--accent);">📩 درخواست‌های دوستی در انتظار</h4>
-            <div id="pendingRequests" style="max-height:200px;overflow-y:auto;"></div>
-            <h4 style="margin-top:20px;color:var(--success);">👫 دوستان من</h4>
-            <div id="myFriendsList" style="max-height:200px;overflow-y:auto;"></div>`;
-        updateFriendsList();
-    }
-
-    function searchNewFriend(){
-        const q=document.getElementById('friendSearchInput').value.trim().toLowerCase();
-        const d=document.getElementById('friendSearchResult');
-        if(!q){d.innerHTML='';return}
-        const f=(CFG.db.users||[]).find(u=>u.username.toLowerCase()===q&&u.username!==CFG.currentUser.username);
-        if(f){
-            const alreadyFriend=(CFG.currentUser.friends||[]).includes(f.username);
-            const alreadyRequested=(CFG.db.friendRequests||[]).find(r=>r.from===CFG.currentUser.username&&r.to===f.username&&r.status==='pending');
-            if(alreadyFriend)d.innerHTML=`<div class="glass-card" style="padding:12px;text-align:center;"><p style="color:var(--success);">✅ ${f.fullName} قبلاً دوست شماست! 🎉</p></div>`;
-            else if(alreadyRequested)d.innerHTML=`<div class="glass-card" style="padding:12px;text-align:center;"><p style="color:var(--warning);">⏳ قبلاً به ${f.fullName} درخواست دوستی دادی</p></div>`;
-            else d.innerHTML=`<div class="glass-card" style="padding:15px;text-align:center;"><strong>${f.fullName}</strong> (@${f.username})<br><button class="btn btn-sm btn-primary" onclick="sendFriendRequest('${f.username}')" style="margin-top:8px;">➕ ارسال درخواست دوستی</button></div>`;
-        }else d.innerHTML='<p style="text-align:center;color:var(--text-muted);">❌ کاربری با این نام پیدا نشد</p>';
-    }
-
-    function sendFriendRequest(to){
-        if(!CFG.db.friendRequests)CFG.db.friendRequests=[];
-        if(CFG.db.friendRequests.find(r=>r.from===CFG.currentUser.username&&r.to===to&&r.status==='pending')){alert('قبلاً درخواست دادی! صبر کن تا قبول کنه 😊');return}
-        CFG.db.friendRequests.push({from:CFG.currentUser.username,to,status:'pending',date:new Date().toISOString()});
-        saveDb().then(()=>{alert('✅ درخواست دوستی با موفقیت ارسال شد! منتظر جواب باش 🤞');updateFriendsList();searchNewFriend();}).catch(()=>alert('⚠️ ذخیره نشد! VPN رو چک کن'));
-    }
-
-    function updateFriendsList(){
-        const rl=document.getElementById('pendingRequests'),fl=document.getElementById('myFriendsList');
-        if(!rl||!fl)return;
-        const reqs=(CFG.db.friendRequests||[]).filter(r=>r.to===CFG.currentUser.username&&r.status==='pending');
-        rl.innerHTML=reqs.length?reqs.map(r=>`<div class="glass-card" style="padding:12px;margin:8px 0;text-align:center;"><strong>${r.from}</strong> می‌خواد باهات دوست بشه!<br><button class="btn btn-sm btn-success" onclick="acceptFriend('${r.from}')" style="margin:4px;">✅ قبول</button><button class="btn btn-sm btn-danger" onclick="rejectFriend('${r.from}')" style="margin:4px;">❌ رد</button></div>`).join(''):'<p style="text-align:center;color:var(--text-muted);">درخواست جدیدی نداری</p>';
-        const frs=CFG.currentUser.friends||[];
-        fl.innerHTML=frs.length?frs.map(f=>`<div class="glass-card" style="padding:12px;margin:8px 0;display:flex;justify-content:space-between;align-items:center;"><span>👤 <strong>${f}</strong></span><button class="btn btn-sm btn-outline" onclick="openChatWith('${f}')">💬 چت</button></div>`).join(''):'<p style="text-align:center;color:var(--text-muted);">هنوز دوستی نداری! برو دوست پیدا کن 🤗</p>';
-    }
-
-    function acceptFriend(from){
-        if(!CFG.currentUser.friends)CFG.currentUser.friends=[];
-        CFG.currentUser.friends.push(from);
-        const fu=(CFG.db.users||[]).find(u=>u.username===from);
-        if(fu){if(!fu.friends)fu.friends=[];fu.friends.push(CFG.currentUser.username)}
-        CFG.db.friendRequests=(CFG.db.friendRequests||[]).filter(r=>!(r.from===from&&r.to===CFG.currentUser.username));
-        saveDb().then(()=>{alert('🎉 حالا با هم دوست هستید! می‌تونید چت کنید 💬');updateFriendsList();}).catch(()=>alert('⚠️ ذخیره نشد'));
-    }
-
-    function rejectFriend(from){
-        CFG.db.friendRequests=(CFG.db.friendRequests||[]).filter(r=>!(r.from===from&&r.to===CFG.currentUser.username));
-        saveDb().then(()=>updateFriendsList()).catch(()=>alert('⚠️ ذخیره نشد'));
-    }
-
-    function openChatWith(friend){
-        const c=document.getElementById('chatModalContent');
-        c.innerHTML=`<h3 style="text-align:center;">💬 چت با ${friend}</h3>
-            <div class="chat-container" id="chatMessagesContainer"></div>
-            <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;">
-                <input type="text" id="chatMessageInput" placeholder="پیامت رو بنویس..." style="flex:1;min-width:150px;" onkeydown="if(event.key==='Enter')sendChatMsg('${friend}')">
-                <input type="file" id="chatFileInput" accept="image/*,video/*" style="display:none;" onchange="sendChatFile('${friend}')">
-                <button class="btn btn-sm btn-outline" onclick="document.getElementById('chatFileInput').click()">📎 عکس/فیلم</button>
-                <button class="btn btn-sm btn-primary" onclick="sendChatMsg('${friend}')">📩 ارسال</button>
-            </div>`;
-        loadChatMsgs(friend);
-    }
-
-    function loadChatMsgs(friend){
-        const key=[CFG.currentUser.username,friend].sort().join('_');
-        const msgs=(CFG.db.chats||[]).filter(m=>m.chatKey===key);
-        const d=document.getElementById('chatMessagesContainer');
-        if(d){d.innerHTML=msgs.length?msgs.map(m=>`<div class="chat-message ${m.from===CFG.currentUser.username?'sent':'received'}"><small style="opacity:0.7;">${m.from}</small><br>${m.text||''}${m.file?(m.fileType==='image'?`<img src="${m.file}" alt="عکس">`:`<video src="${m.file}" controls width="200"></video>`):''}</div>`).join(''):'<p style="text-align:center;color:var(--text-muted);">هنوز پیامی رد و بدل نشده! اولین پیام رو تو بفرست 💬</p>';d.scrollTop=d.scrollHeight}
-    }
-
-    function sendChatMsg(friend){
-        const i=document.getElementById('chatMessageInput');if(!i||!i.value.trim())return;
-        const key=[CFG.currentUser.username,friend].sort().join('_');
-        if(!CFG.db.chats)CFG.db.chats=[];
-        CFG.db.chats.push({chatKey:key,from:CFG.currentUser.username,to:friend,text:i.value.trim(),file:null,fileType:null,timestamp:Date.now()});
-        i.value='';saveDb().then(()=>loadChatMsgs(friend)).catch(()=>alert('⚠️ پیام ذخیره نشد'));
-    }
-
-    function sendChatFile(friend){
-        const fi=document.getElementById('chatFileInput');if(!fi||!fi.files?.[0])return;
-        const r=new FileReader();r.onload=function(e){
-            const key=[CFG.currentUser.username,friend].sort().join('_');
-            if(!CFG.db.chats)CFG.db.chats=[];
-            CFG.db.chats.push({chatKey:key,from:CFG.currentUser.username,to:friend,text:'',file:e.target.result,fileType:fi.files[0].type.startsWith('image/')?'image':'video',timestamp:Date.now()});
-            fi.value='';saveDb().then(()=>loadChatMsgs(friend)).catch(()=>alert('⚠️ فایل ذخیره نشد'));
-        };r.readAsDataURL(fi.files[0]);
-    }
-
-    function closeChatModal(e){if(e&&e.target!==document.getElementById('chatModalOverlay'))return;document.getElementById('chatModalOverlay').style.display='none';}
-
-    // ==================== ADMIN PANEL ====================
-    function openAdminPanel(){
-        if(!CFG.currentUser||CFG.currentUser.role!=='admin'){alert('⛔ این بخش فقط مخصوص ادمینه!');return}
-        document.getElementById('adminModalOverlay').style.display='flex';
-        const c=document.getElementById('adminModalContent');
-        const totalVisits=parseInt(localStorage.getItem('rz_visits')||'0');
-        const totalOnline=parseInt(localStorage.getItem('rz_online')||'0');
-        c.innerHTML=`<h3 style="text-align:center;">👑 پنل مدیریت روزیک</h3>
-            <div class="glass-card" style="margin:10px 0;text-align:center;">
-                <p>👥 کل کاربران: <strong>${(CFG.db.users||[]).length}</strong> | 👀 کل بازدید: <strong>${totalVisits.toLocaleString('fa-IR')}</strong> | 🟢 آنلاین: <strong>${totalOnline}</strong></p>
-            </div>
-            <h4>👤 تمام پروفایل‌های ثبت‌شده</h4>
-            <div style="max-height:300px;overflow-y:auto;">${(CFG.db.users||[]).map(u=>`<div class="glass-card" style="padding:10px;margin:4px 0;"><strong>${u.fullName}</strong> (@${u.username}) | ${u.role} | 📅 ${u.joinDate} | دوستان: ${(u.friends||[]).length}</div>`).join('')||'<p>هنوز کاربری ثبت‌نام نکرده</p>'}</div>
-            <h4 style="margin-top:16px;">📝 مقالات</h4>
-            <div style="max-height:200px;overflow-y:auto;">${(CFG.db.articles||[]).map(a=>`<div class="glass-card" style="padding:8px;margin:4px 0;">📄 ${a.title} (${a.category}) <button class="btn btn-sm btn-danger" onclick="deleteArticle(${a.id})" style="float:left;">❌ حذف</button></div>`).join('')||'<p>مقاله‌ای نیست</p>'}</div>
-            <button class="btn btn-sm btn-primary" onclick="showAddArticle()" style="margin:8px;">➕ افزودن مقاله</button>
-            <h4 style="margin-top:16px;">📰 خبرنامه</h4>
-            <div style="max-height:200px;overflow-y:auto;">${(CFG.db.news||[]).map(n=>`<div class="glass-card" style="padding:8px;margin:4px 0;">📰 ${n.title} <button class="btn btn-sm btn-danger" onclick="deleteNews(${n.id})" style="float:left;">❌ حذف</button></div>`).join('')||'<p>خبری نیست</p>'}</div>
-            <button class="btn btn-sm btn-primary" onclick="showAddNews()" style="margin:8px;">➕ افزودن خبر</button>
-            <div id="adminFormArea" style="margin-top:12px;"></div>`;
-    }
-
-    function showAddArticle(){
-        document.getElementById('adminFormArea').innerHTML=`<div class="glass-card">
-            <input type="text" id="aTitle" placeholder="عنوان مقاله">
-            <select id="aCat"><option value="girl">🌸 دخترونه</option><option value="boy">🚀 پسرونه</option></select>
-            <textarea id="aContent" placeholder="متن کامل مقاله..." rows="4"></textarea>
-            <input type="text" id="aTags" placeholder="برچسب‌ها (با کاما جدا کن)">
-            <button class="btn btn-sm btn-success" onclick="saveArticle()">💾 ذخیره مقاله</button>
-        </div>`;
-    }
-
-    function saveArticle(){
-        const t=document.getElementById('aTitle').value.trim();
-        const cat=document.getElementById('aCat').value;
-        const cn=document.getElementById('aContent').value.trim();
-        const tags=(document.getElementById('aTags').value||'').split(',').map(x=>x.trim()).filter(x=>x);
-        if(!t||!cn){alert('عنوان و متن رو پر کن!');return}
-        if(!CFG.db.articles)CFG.db.articles=[];
-        CFG.db.articles.push({id:Date.now(),title:t,category:cat,content:cn,author:CFG.currentUser.fullName,date:new Date().toLocaleDateString('fa-IR'),tags,image:'',views:0});
-        saveDb().then(()=>{alert('✅ مقاله با موفقیت ذخیره شد!');openAdminPanel();}).catch(()=>alert('⚠️ ذخیره نشد - VPN رو چک کن'));
-    }
-
-    function deleteArticle(id){
-        if(!confirm('مطمئنی می‌خوای حذف کنی؟'))return;
-        CFG.db.articles=(CFG.db.articles||[]).filter(a=>a.id!==id);
-        saveDb().then(()=>openAdminPanel()).catch(()=>alert('⚠️ حذف نشد'));
-    }
-
-    function showAddNews(){
-        document.getElementById('adminFormArea').innerHTML=`<div class="glass-card">
-            <input type="text" id="nTitle" placeholder="عنوان خبر">
-            <textarea id="nContent" placeholder="متن کامل خبر..." rows="4"></textarea>
-            <button class="btn btn-sm btn-success" onclick="saveNews()">💾 ذخیره خبر</button>
-        </div>`;
-    }
-
-    function saveNews(){
-        const t=document.getElementById('nTitle').value.trim();
-        const cn=document.getElementById('nContent').value.trim();
-        if(!t||!cn){alert('عنوان و متن رو پر کن!');return}
-        if(!CFG.db.news)CFG.db.news=[];
-        CFG.db.news.push({id:Date.now(),title:t,content:cn,author:CFG.currentUser.fullName,date:new Date().toLocaleDateString('fa-IR')});
-        saveDb().then(()=>{alert('✅ خبر با موفقیت ذخیره شد!');openAdminPanel();}).catch(()=>alert('⚠️ ذخیره نشد - VPN رو چک کن'));
-    }
-
-    function deleteNews(id){
-        if(!confirm('مطمئنی؟'))return;
-        CFG.db.news=(CFG.db.news||[]).filter(n=>n.id!==id);
-        saveDb().then(()=>openAdminPanel()).catch(()=>alert('⚠️ حذف نشد'));
-    }
-
-    function closeAdminModal(e){if(e&&e.target!==document.getElementById('adminModalOverlay'))return;document.getElementById('adminModalOverlay').style.display='none';}
-
-    // ==================== COMMENTS ====================
-    function updateCommentUI(){
-        const f=document.getElementById('commentFormArea'),l=document.getElementById('commentLoginMsg');
-        if(CFG.currentUser){f.style.display='block';l.style.display='none';}else{f.style.display='none';l.style.display='block';}
-    }
-
-    function loadComments(){
-        const d=document.getElementById('commentsList');
-        if(!d)return;
-        const comments=(CFG.db.comments||[]).slice(-40).reverse();
-        d.innerHTML=comments.length?comments.map(c=>`<div class="glass-card" style="padding:10px;margin:6px 0;"><strong>${c.fullName}</strong> <small style="color:var(--text-muted);">@${c.username}</small><p style="margin:4px 0;">${c.text}</p><small style="color:var(--text-muted);">📅 ${c.date}</small></div>`).join(''):'<p style="text-align:center;color:var(--text-muted);">هنوز نظری ثبت نشده! اولین نفر باش 💬</p>';
-    }
-
-    function submitComment(){
-        if(!CFG.currentUser){alert('برای ثبت نظر باید وارد حساب بشی! 🥺');return}
-        const t=document.getElementById('commentInput').value.trim();
-        if(!t){alert('نظرت رو بنویس!');return}
-        if(!CFG.db.comments)CFG.db.comments=[];
-        CFG.db.comments.push({username:CFG.currentUser.username,fullName:CFG.currentUser.fullName,text:t,date:new Date().toLocaleDateString('fa-IR')});
-        document.getElementById('commentInput').value='';
-        saveDb().then(()=>{loadComments();alert('✅ نظرت با موفقیت ثبت شد! ممنون ازت 💜')}).catch(()=>alert('⚠️ نظر ذخیره نشد - VPN رو چک کن'));
-    }
-
-    // ==================== POLL ====================
-    function loadPoll(){
-        const p=(CFG.db.polls||[])[0];if(!p)return;
-        document.getElementById('pollQuestion')?.textContent&&(document.getElementById('pollQuestion').textContent=p.question);
-        const tv=p.votes.reduce((a,b)=>a+b,0);
-        const el=document.getElementById('pollOptions');if(!el)return;
-        el.innerHTML=p.options.map((o,i)=>{const pct=tv>0?Math.round((p.votes[i]/tv)*100):0;return`<button class="btn btn-sm btn-outline" onclick="votePoll(${i})" style="margin:4px;">${o} (${p.votes[i]})<div style="height:4px;background:var(--gradient-primary);width:${pct}%;border-radius:2px;margin-top:4px;transition:all 0.5s;"></div></button>`}).join('');
-    }
-
-    function votePoll(i){
-        const p=(CFG.db.polls||[])[0];if(!p)return;
-        const k=CFG.currentUser?CFG.currentUser.username:'guest_'+Date.now();
-        if((p.voters||[]).includes(k)){alert('قبلاً رأی دادی! 😊');return}
-        if(!p.voters)p.voters=[];
-        p.voters.push(k);p.votes[i]++;
-        saveDb().then(()=>loadPoll()).catch(()=>alert('⚠️ رأی ذخیره نشد'));
-    }
-
-    // ==================== ARTICLES ====================
-    function renderArticles(cat){
-        const c=document.getElementById('articlesContainer');if(!c)return;
-        const a=(CFG.db.articles||[]).filter(x=>x.category===cat);
-        c.innerHTML=a.length?a.map(x=>`<div class="article-card" onclick="alert('📖 ${x.title}\\n\\n${x.content}\\n\\n✍️ ${x.author} | 📅 ${x.date}')"><div style="height:150px;background:var(--gradient-primary);display:flex;align-items:center;justify-content:center;font-size:3.5em;color:#fff;">📄</div><div class="article-body"><small style="color:var(--text-muted);">📅 ${x.date} | ✍️ ${x.author}</small><h3>${x.title}</h3><p style="color:var(--text-secondary);">${x.content.substring(0,80)}...</p>${(x.tags||[]).map(t=>`<span style="background:var(--tag-bg);padding:3px 10px;border-radius:15px;font-size:0.7em;margin:2px;">#${t}</span>`).join('')}</div></div>`).join(''):'<p style="text-align:center;color:var(--text-muted);grid-column:1/-1;">هنوز مقاله‌ای در این بخش منتشر نشده</p>';
-    }
-
-    function filterContent(cat,tab){document.querySelectorAll('.content-tab').forEach(t=>t.classList.remove('active-tab'));if(tab)tab.classList.add('active-tab');renderArticles(cat);}
-
-    // ==================== NEWS ====================
-    function renderNews(){
-        const c=document.getElementById('newsContainer'),l=document.getElementById('latestNews');
-        const n=(CFG.db.news||[]).slice().reverse();
-        if(c)c.innerHTML=n.length?n.map(x=>`<div class="glass-card"><h3>📰 ${x.title}</h3><p>${x.content}</p><small style="color:var(--text-muted);">✍️ ${x.author} | 📅 ${x.date}</small></div>`).join(''):'<p style="text-align:center;color:var(--text-muted);">هنوز خبری منتشر نشده</p>';
-        if(l)l.innerHTML=n.slice(0,3).map(x=>`<p style="margin:4px 0;">📰 <strong>${x.title}</strong> - ${x.date}</p>`).join('')||'<p style="color:var(--text-muted);">خبری نیست</p>';
-    }
-
-    // ==================== GAMES RENDER ====================
-    const gamesList=[{id:'memory',name:'بازی حافظه',icon:'🧠',desc:'کارت‌ها رو جفت کن'},{id:'wordguess',name:'حدس کلمه فارسی',icon:'📝',desc:'کلمه رو حدس بزن'},{id:'shooting',name:'تیراندازی',icon:'🎯',desc:'هدف‌ها رو بزن'},{id:'puzzle',name:'پازل ۴×۴',icon:'🧩',desc:'اعداد رو مرتب کن'},{id:'xo',name:'دوز (XO)',icon:'⭕',desc:'با دوستت بازی کن'},{id:'snakeladder',name:'مار و پله',icon:'🐍',desc:'شانست رو امتحان کن'},{id:'snake',name:'هزارپا',icon:'🐍',desc:'مار رو هدایت کن'},{id:'rps',name:'سنگ کاغذ قیچی',icon:'✂️',desc:'با کامپیوتر رقابت کن'}];
-    function renderGames(){const g=document.getElementById('gamesGrid');if(g)g.innerHTML=gamesList.map(x=>`<div class="game-card" onclick="openGame('${x.id}')"><div class="game-icon">${x.icon}</div><h3>${x.name}</h3><p style="font-size:0.8em;color:var(--text-muted);">${x.desc}</p><span class="btn btn-sm btn-primary" style="margin-top:8px;">▶️ بازی کن</span></div>`).join('');}
-
-    // ادامه در بخش ۳...    // ==================== ادامه از بخش ۲ ====================
+    // بازیابی خودکار کاربر از localStorage
+    const saved=localStorage.getItem('roozik_current_user');
+    if(saved){const u=JSON.parse(saved);C.currentUser=u;showProfileUI();document.getElementById('homeCtaBtn').style.display='none'}
     
-    // ==================== GAME OPENER ====================
-    function openGame(t){
-        document.getElementById('gameModalOverlay').style.display='flex';
-        const c=document.getElementById('gameModalContent');
-        switch(t){
-            case'memory':c.innerHTML=bMem();initMem();break;
-            case'wordguess':c.innerHTML=bWG();initWG();break;
-            case'shooting':c.innerHTML=bSh();initSh();break;
-            case'puzzle':c.innerHTML=bPuz();initPuz();break;
-            case'xo':c.innerHTML=bXO();initXO();break;
-            case'snakeladder':c.innerHTML=bSL();initSL();break;
-            case'snake':c.innerHTML=bSn();initSn();break;
-            case'rps':c.innerHTML=bRPS();break;
+    initParticles();startClocks();updateAllUI();loadCurrency();updateDate();
+    renderArticles('girl');renderGames();renderNews();loadComments();loadPoll();updateCommentUI();
+    setInterval(async()=>{await loadOnlineDb();updateAllUI()},20000);
+    window.addEventListener('beforeunload',()=>{let o=parseInt(localStorage.getItem('rz_online')||'1');o=Math.max(0,o-1);localStorage.setItem('rz_online',o)});
+}
+
+// ==================== NAVIGATION ====================
+function navigateTo(p){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));const t=document.getElementById('section-'+p);if(t)t.classList.add('active');document.querySelectorAll('#mainNav a').forEach(a=>{a.classList.remove('active');if(a.getAttribute('data-page')===p)a.classList.add('active')});if(p==='content')renderArticles('girl');if(p==='news')renderNews();if(p==='games')renderGames();if(p==='home'){loadCurrency();updateDate()}}
+
+function initParticles(){const c=document.getElementById('particleCanvas'),ctx=c.getContext('2d');let ps=[];function rz(){c.width=innerWidth;c.height=innerHeight}rz();window.addEventListener('resize',()=>{rz();ps=[];for(let i=0;i<60;i++)ps.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*3+1,dx:(Math.random()-0.5)*0.5,dy:(Math.random()-0.5)*0.5})});for(let i=0;i<60;i++)ps.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*3+1,dx:(Math.random()-0.5)*0.5,dy:(Math.random()-0.5)*0.5});function an(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{p.x+=p.dx;p.y+=p.dy;if(p.x<0)p.x=c.width;if(p.x>c.width)p.x=0;if(p.y<0)p.y=c.height;if(p.y>c.height)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(102,126,234,0.18)';ctx.fill()});requestAnimationFrame(an)}an()}
+
+function startClocks(){function up(){const n=new Date();document.getElementById('iranTime').textContent=n.toLocaleTimeString('fa-IR',{timeZone:'Asia/Tehran'});document.getElementById('worldTime').textContent=n.toLocaleTimeString('fa-IR',{timeZone:'UTC'})}up();setInterval(up,1000)}
+
+// ==================== تاریخ شمسی ====================
+function updateDate(){
+    try{
+        const d=new Date();
+        const jd=new Intl.DateTimeFormat('fa-IR',{year:'numeric',month:'long',day:'numeric',weekday:'long'}).format(d);
+        document.getElementById('todayDate').textContent=jd;
+    }catch(e){document.getElementById('todayDate').textContent=new Date().toLocaleDateString('fa-IR')}
+}
+
+// ==================== قیمت ارز از tgju.org ====================
+async function loadCurrency(){
+    const el=document.getElementById('currencyRates');if(!el)return;
+    try{
+        // استفاده از API tgju.org برای قیمت لحظه‌ای
+        const r=await fetch('https://api.tgju.org/v1/market/indicator/summary/price_dollar_rl,price_eur,price_gbp,price_try,price_aed,price_cny');
+        const d=await r.json();
+        if(d.success){
+            const items=[
+                {key:'price_dollar_rl',name:'دلار',unit:'ریال'},
+                {key:'price_eur',name:'یورو',unit:'ریال'},
+                {key:'price_gbp',name:'پوند',unit:'ریال'},
+                {key:'price_try',name:'لیر',unit:'تومان'},
+                {key:'price_aed',name:'درهم',unit:'تومان'},
+                {key:'price_cny',name:'یوان',unit:'تومان'}
+            ];
+            el.innerHTML=items.map(i=>{
+                const val=d.data[i.key]?.p||0;
+                const display=i.unit==='تومان'?Math.round(val/10).toLocaleString('fa-IR'):Math.round(val).toLocaleString('fa-IR');
+                return`<span style="padding:10px 18px;background:var(--tag-bg);border-radius:20px;font-size:0.85em;">${i.name}: <strong>${display} ${i.unit}</strong></span>`;
+            }).join('');
         }
+    }catch(e){
+        // فال‌بک به exchangerate-api
+        try{
+            const r=await fetch('https://v6.exchangerate-api.com/v6/6bd355b3fb83d20667879502/latest/USD');
+            const d=await r.json();const irr=d.conversion_rates.IRR||420000;
+            const cur=[{c:'USD',n:'دلار'},{c:'EUR',n:'یورو'},{c:'GBP',n:'پوند'}];
+            el.innerHTML=cur.map(x=>{const v=Math.round(d.conversion_rates[x.c]*irr);return`<span style="padding:10px 18px;background:var(--tag-bg);border-radius:20px;">${x.n}: <strong>${v.toLocaleString('fa-IR')} ریال</strong></span>`}).join('');
+        }catch(e2){el.innerHTML='<span style="color:var(--danger);">⚠️ خطا</span>'}
     }
+}
 
-    function closeGameModal(e){
-        if(e&&e.target!==document.getElementById('gameModalOverlay'))return;
-        document.getElementById('gameModalOverlay').style.display='none';
-        CFG.intervals.forEach(i=>clearInterval(i));
-        CFG.intervals=[];
-    }
+// ==================== آب و هوا ====================
+async function getWeather(){const city=document.getElementById('cityInput').value.trim();const r=document.getElementById('weatherResult');if(!city)return;r.innerHTML='⏳';try{const res=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${C.weatherKey}&units=metric&lang=fa`);const d=await res.json();r.innerHTML=d.cod===200?`<strong>${d.name}</strong>: ${Math.round(d.main.temp)}°C | ${d.weather[0].description}`:'❌ پیدا نشد'}catch(e){r.innerHTML='⚠️ خطا'}}
 
-    // ==================== MEMORY GAME ====================
-    function bMem(){return`<h2 style="text-align:center;">🧠 بازی حافظه</h2><p style="text-align:center;">امتیاز: <strong id="ms">0</strong> | حرکت: <strong id="mm">0</strong></p><div class="memory-grid" id="mg"></div><div style="text-align:center;margin-top:15px;"><button class="btn btn-sm btn-primary" onclick="initMem()">🔄 شروع دوباره</button></div>`}
-    let md={cards:[],flipped:[],matched:[],score:0,moves:0,locked:false};
-    function initMem(){
-        const e=['🌸','🌟','🎈','💎','🔥','🍀','🦋','🎵'];
-        md={cards:[...e,...e].sort(()=>Math.random()-0.5),flipped:[],matched:[],score:0,moves:0,locked:false};
-        document.getElementById('ms').textContent='0';document.getElementById('mm').textContent='0';
-        document.getElementById('mg').innerHTML=md.cards.map((e,i)=>`<div class="memory-card" onclick="flipM(${i},this)"><span style="visibility:hidden;">${e}</span></div>`).join('');
-    }
-    function flipM(i,el){
-        if(md.locked||md.flipped.includes(i)||md.matched.includes(i))return;
-        el.classList.add('flipped');el.querySelector('span').style.visibility='visible';
-        md.flipped.push(i);
-        if(md.flipped.length===2){
-            md.moves++;document.getElementById('mm').textContent=md.moves;
-            md.locked=true;const[a,b]=md.flipped;
-            if(md.cards[a]===md.cards[b]){
-                md.matched.push(a,b);md.score+=10;document.getElementById('ms').textContent=md.score;
-                md.flipped=[];md.locked=false;
-                if(md.matched.length===md.cards.length)setTimeout(()=>alert('🎉 تبریک! همه کارت‌ها رو جفت کردی! امتیاز: '+md.score),400);
-            }else{
-                setTimeout(()=>{
-                    document.querySelectorAll('.memory-card')[a].classList.remove('flipped');
-                    document.querySelectorAll('.memory-card')[a].querySelector('span').style.visibility='hidden';
-                    document.querySelectorAll('.memory-card')[b].classList.remove('flipped');
-                    document.querySelectorAll('.memory-card')[b].querySelector('span').style.visibility='hidden';
-                    md.flipped=[];md.locked=false;
-                },700);
-            }
-        }
-    }
+// ==================== SEARCH ====================
+async function performSearch(){const q=document.getElementById('searchInput').value.trim(),type=document.getElementById('searchType').value,div=document.getElementById('searchResults');if(!q){div.innerHTML='<p>یه چیزی بنویس!</p>';return}div.innerHTML='<p>⏳</p>';let h='';if(type==='all'||type==='persian'){try{const r=await fetch(`https://www.aparat.com/api/fa/v1/video/video/search/text/${encodeURIComponent(q)}?per_page=6`);const d=await r.json();if(d.data?.videos?.length){h+='<h4>🇮🇷 آپارات</h4>';d.data.videos.forEach(v=>{h+=`<div class="search-result-item"><strong>${v.title}</strong><iframe src="https://www.aparat.com/embed/${v.uid}" allowfullscreen></iframe><a href="https://www.aparat.com/v/${v.uid}" target="_blank" class="btn btn-sm btn-outline">▶️</a></div>`})}}catch(e){}}
+if(type==='all'||type==='persian'||type==='music'){try{const r=await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&limit=10`);const d=await r.json();if(d.results?.length){h+='<h4>🎵 آهنگ</h4>';d.results.forEach(i=>{h+=`<div class="search-result-item"><strong>${i.trackName}</strong> - ${i.artistName}${i.previewUrl?`<audio controls style="width:100%"><source src="${i.previewUrl}"></audio>`:''}<a href="${i.trackViewUrl}" target="_blank" class="btn btn-sm btn-outline">🎧</a>${i.previewUrl?`<a href="${i.previewUrl}" download class="btn btn-sm btn-primary">📥</a>`:''}</div>`})}}catch(e){}}
+if(type==='all'||type==='video'){try{const r=await fetch(`https://api.dailymotion.com/videos?search=${encodeURIComponent(q)}&limit=5`);const d=await r.json();if(d.list?.length){h+='<h4>🎬 Dailymotion</h4>';d.list.forEach(i=>{h+=`<div class="search-result-item"><strong>${i.title}</strong><iframe src="https://www.dailymotion.com/embed/video/${i.id}" allowfullscreen></iframe><a href="https://www.dailymotion.com/video/${i.id}" target="_blank" class="btn btn-sm btn-outline">▶️</a></div>`})}}catch(e){}}
+div.innerHTML=h||'<p>❌ چیزی پیدا نشد!</p>'}
 
-    // ==================== WORD GUESS ====================
-    const wds=['برنامه','کامپیوتر','هوشمند','خلاقیت','آرامش','ستاره','دلفین','پروانه','کوهستان','چشمه','رنگین','آسمان'];
-    let wg={word:'',guessed:[],wrongs:0};
-    function bWG(){return`<h2 style="text-align:center;">📝 حدس کلمه فارسی</h2><p style="text-align:center;">اشتباه: <strong id="ww">0</strong> از ۶</p><div class="word-display" id="wd"></div><div class="keyboard" id="wk"></div><div style="text-align:center;margin-top:15px;"><button class="btn btn-sm btn-primary" onclick="initWG()">🔄 کلمه جدید</button></div>`}
-    function initWG(){wg={word:wds[Math.floor(Math.random()*wds.length)],guessed:[],wrongs:0};document.getElementById('ww').textContent='0';rWG();}
-    function rWG(){
-        document.getElementById('wd').innerHTML=wg.word.split('').map(c=>`<span>${wg.guessed.includes(c)?c:'_'}</span>`).join('');
-        const letters='آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی';
-        document.getElementById('wk').innerHTML=letters.split('').map(l=>`<button class="${wg.guessed.includes(l)?'used':''}" onclick="gWG('${l}')">${l}</button>`).join('');
-        if(wg.word.split('').every(c=>wg.guessed.includes(c)))setTimeout(()=>alert('🎉 آفرین! کلمه رو حدس زدی: '+wg.word),300);
-    }
-    function gWG(l){
-        if(wg.guessed.includes(l))return;
-        wg.guessed.push(l);
-        if(!wg.word.includes(l)){wg.wrongs++;document.getElementById('ww').textContent=wg.wrongs;}
-        rWG();
-        if(wg.wrongs>=6){alert('😢 باختی! کلمه این بود: '+wg.word);document.querySelectorAll('#wk button').forEach(b=>b.disabled=true);}
-    }
+// ==================== PROFILE ====================
+function handleRegister(e){
+    e.preventDefault();
+    const name=document.getElementById('regFullName').value.trim();
+    const user=document.getElementById('regUsername').value.trim().toLowerCase();
+    const pass=document.getElementById('regPassword').value;
+    const pass2=document.getElementById('regPasswordConfirm').value;
+    const err=document.getElementById('regError');err.style.display='none';
+    if(!name||user.length<3||!/^[a-zA-Z0-9_]+$/.test(user)){err.textContent='نام کاربری نامعتبر';err.style.display='block';return}
+    if(pass.length<6||!/[a-zA-Z]/.test(pass)||!/[0-9]/.test(pass)){err.textContent='رمز باید ۶ کاراکتر و ترکیب حروف و عدد باشد';err.style.display='block';return}
+    if(pass!==pass2){err.textContent='رمزها مطابقت ندارند';err.style.display='block';return}
+    if(C.db.users.find(u=>u.username.toLowerCase()===user.toLowerCase())){err.textContent='❌ این نام کاربری قبلاً ثبت شده! لطفاً وارد شوید';err.style.display='block';return}
+    const avInput=document.getElementById('regAvatar');
+    const save=(av)=>{
+        const nu={username:user,password:btoa(pass),fullName:name,avatar:av||'',role:user===C.adminUser?'admin':'user',joinDate:new Date().toLocaleDateString('fa-IR',{year:'numeric',month:'long',day:'numeric'}),joinTimestamp:new Date().toISOString(),friends:[],friendRequests:[],settings:{}};
+        saveDual(nu).then(()=>{C.currentUser=nu;localStorage.setItem('roozik_current_user',JSON.stringify(nu));showProfileUI();document.getElementById('homeCtaBtn').style.display='none';updateAllUI();alert('🎉 خوش اومدی!')});
+    };
+    if(avInput.files?.[0]){const r=new FileReader();r.onload=e=>save(e.target.result);r.readAsDataURL(avInput.files[0])}else save('');
+}
 
-    // ==================== SHOOTING ====================
-    function bSh(){return`<h2 style="text-align:center;">🎯 تیراندازی</h2><p style="text-align:center;">امتیاز: <strong id="ss">0</strong> | زمان: <strong id="st">30</strong> ثانیه</p><div class="shooting-area" id="sa"></div><div style="text-align:center;margin-top:15px;"><button class="btn btn-sm btn-primary" onclick="initSh()">🔄 شروع دوباره</button></div>`}
-    let sh={score:0,time:30,active:false};
-    function initSh(){
-        sh={score:0,time:30,active:true};
-        document.getElementById('ss').textContent='0';document.getElementById('st').textContent='30';
-        document.getElementById('sa').innerHTML='';
-        CFG.intervals.forEach(i=>clearInterval(i));CFG.intervals=[];
-        CFG.intervals.push(setInterval(()=>{
-            sh.time--;document.getElementById('st').textContent=sh.time;
-            if(sh.time<=0){clearInterval(CFG.intervals[0]);sh.active=false;alert('⏰ زمان تموم شد! امتیاز نهایی: '+sh.score);}
-        },1000));
-        CFG.intervals.push(setInterval(()=>{
-            if(!sh.active)return;const a=document.getElementById('sa');if(!a)return;
-            const t=document.createElement('div');t.className='shooting-target';
-            t.style.left=Math.random()*(a.clientWidth-55)+'px';
-            t.style.top=Math.random()*(a.clientHeight-55)+'px';
-            t.textContent='🎯';
-            t.onclick=function(e){e.stopPropagation();sh.score+=5;document.getElementById('ss').textContent=sh.score;t.remove();};
-            a.appendChild(t);setTimeout(()=>{if(t.parentNode)t.remove();},2200);
-        },900));
-    }
+function handleLogin(e){
+    e.preventDefault();
+    const user=document.getElementById('loginUsername').value.trim().toLowerCase();
+    const pass=document.getElementById('loginPassword').value;
+    // جستجو در localStorage و آنلاین
+    let u=getLocalUsers().find(x=>x.username.toLowerCase()===user.toLowerCase());
+    if(!u)u=C.db.users.find(x=>x.username.toLowerCase()===user.toLowerCase());
+    if(!u){document.getElementById('loginError').textContent='کاربری یافت نشد';document.getElementById('loginError').style.display='block';return}
+    if(u.password!==btoa(pass)){document.getElementById('loginError').textContent='رمز اشتباه';document.getElementById('loginError').style.display='block';return}
+    C.currentUser=u;localStorage.setItem('roozik_current_user',JSON.stringify(u));showProfileUI();document.getElementById('homeCtaBtn').style.display='none';updateCommentUI();
+}
 
-    // ==================== PUZZLE ====================
-    function bPuz(){return`<h2 style="text-align:center;">🧩 پازل ۴×۴</h2><p style="text-align:center;">حرکات: <strong id="pm">0</strong></p><div class="puzzle-grid" id="pg"></div><div style="text-align:center;margin-top:15px;"><button class="btn btn-sm btn-primary" onclick="initPuz()">🔄 بر زدن</button></div>`}
-    let pz={tiles:[],empty:15,moves:0};
-    function initPuz(){
-        pz={tiles:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,null],empty:15,moves:0};
-        for(let i=0;i<40;i++){const n=getNeighbors(pz.empty);const r=n[Math.floor(Math.random()*n.length)];[pz.tiles[pz.empty],pz.tiles[r]]=[pz.tiles[r],pz.tiles[pz.empty]];pz.empty=r;}
-        document.getElementById('pm').textContent='0';rPuz();
-    }
-    function getNeighbors(i){const n=[],r=Math.floor(i/4),c=i%4;if(r>0)n.push(i-4);if(r<3)n.push(i+4);if(c>0)n.push(i-1);if(c<3)n.push(i+1);return n;}
-    function rPuz(){
-        document.getElementById('pg').innerHTML=pz.tiles.map((t,i)=>t===null?'<div class="puzzle-tile empty"></div>':`<div class="puzzle-tile" onclick="mvPuz(${i})">${t}</div>`).join('');
-        if(pz.tiles.slice(0,15).every((t,i)=>t===i+1)&&pz.tiles[15]===null)setTimeout(()=>alert('🎉 تبریک! پازل رو کامل کردی! حرکات: '+pz.moves),300);
-    }
-    function mvPuz(i){const n=getNeighbors(pz.empty);if(n.includes(i)){[pz.tiles[i],pz.tiles[pz.empty]]=[pz.tiles[pz.empty],pz.tiles[i]];pz.empty=i;pz.moves++;document.getElementById('pm').textContent=pz.moves;rPuz();}}
+function showProfileUI(){
+    document.getElementById('profileNotLoggedIn').style.display='none';document.getElementById('profileLoggedIn').style.display='block';
+    const u=C.currentUser;if(!u)return;
+    document.getElementById('profileLoggedIn').innerHTML=`<div class="glass-card profile-header-card" style="padding:40px;"><img src="${u.avatar||'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22><circle cx=%2260%22 cy=%2260%22 r=%2260%22 fill=%22%23ddd%22/><text x=%2260%22 y=%2275%22 text-anchor=%22middle%22 font-size=%2250%22>👤</text></svg>'}" class="profile-avatar-large"><h2>${u.fullName}</h2><p>@${u.username}</p><span class="profile-badge ${u.role==='admin'?'admin':'user'}">${u.role==='admin'?'👑 ادمین':'👤 کاربر'}</span><p>📅 ${u.joinDate}</p><div class="live-timer" id="profileLiveTimer"></div>
+    <button class="btn btn-outline btn-sm" onclick="openFriends()">👥 دوستان (${(u.friends||[]).length})</button>
+    ${u.role==='admin'?'<button class="btn btn-warning btn-sm" onclick="openAdmin()">⚙️ مدیریت</button>':''}
+    <button class="btn btn-danger btn-sm" onclick="logout()">🚪 خروج</button></div>`;
+    startTimer();updateHeader();updateCommentUI();
+}
 
-    // ==================== XO ====================
-    function bXO(){return`<h2 style="text-align:center;">⭕ دوز (XO)</h2><p style="text-align:center;" id="xt">نوبت: بازیکن X</p><div class="xo-grid" id="xo"></div><div style="text-align:center;margin-top:15px;"><button class="btn btn-sm btn-primary" onclick="initXO()">🔄 بازی جدید</button></div>`}
-    let xo={board:Array(9).fill(null),turn:'X',winner:null};
-    function initXO(){xo={board:Array(9).fill(null),turn:'X',winner:null};document.getElementById('xt').textContent='نوبت: بازیکن X';rXO();}
-    function rXO(){document.getElementById('xo').innerHTML=xo.board.map((v,i)=>`<div class="xo-cell" onclick="plXO(${i})">${v||''}</div>`).join('');}
-    function plXO(i){
-        if(xo.board[i]||xo.winner)return;xo.board[i]=xo.turn;
-        const w=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-        if(w.some(w=>w.every(c=>xo.board[c]===xo.turn))){xo.winner=xo.turn;alert('🎉 بازیکن '+xo.turn+' برنده شد!');}
-        else if(xo.board.every(v=>v)){xo.winner='draw';alert('🤝 بازی مساوی شد!');}
-        xo.turn=xo.turn==='X'?'O':'X';document.getElementById('xt').textContent='نوبت: بازیکن '+xo.turn;rXO();
-    }
+function startTimer(){if(!C.currentUser?.joinTimestamp)return;setInterval(()=>{const el=document.getElementById('profileLiveTimer');if(!el)return;const diff=Date.now()-new Date(C.currentUser.joinTimestamp).getTime();el.innerHTML=[{v:Math.floor(diff/86400000),l:'روز'},{v:Math.floor((diff%86400000)/3600000),l:'ساعت'},{v:Math.floor((diff%3600000)/60000),l:'دقیقه'},{v:Math.floor((diff%60000)/1000),l:'ثانیه'}].map(x=>`<div class="timer-unit"><div class="timer-value">${x.v}</div><div class="timer-label">${x.l}</div></div>`).join('')},1000)}
+function updateHeader(){const n=document.getElementById('headerProfileName'),i=document.getElementById('headerProfileImg');if(C.currentUser){n.textContent=C.currentUser.fullName.split(' ')[0];if(C.currentUser.avatar){i.src=C.currentUser.avatar;i.style.display='inline-block'}}else{n.textContent='میهمان عزیز';i.style.display='none'}}
+function logout(){C.currentUser=null;localStorage.removeItem('roozik_current_user');document.getElementById('profileLoggedIn').style.display='none';document.getElementById('profileNotLoggedIn').style.display='block';document.getElementById('homeCtaBtn').style.display='inline-block';updateHeader();updateCommentUI()}
+function showLoginForm(){document.getElementById('registerCard').style.display='none';document.getElementById('loginCard').style.display='block'}
+function showRegisterForm(){document.getElementById('registerCard').style.display='block';document.getElementById('loginCard').style.display='none'}
+function previewAvatar(i){const p=document.getElementById('avatarPreview');if(i.files?.[0]){const r=new FileReader();r.onload=e=>{p.src=e.target.result;p.style.display='inline-block'};r.readAsDataURL(i.files[0])}}
 
-    // ==================== SNAKE & LADDER ====================
-    function bSL(){return`<h2 style="text-align:center;">🐍 مار و پله</h2><p style="text-align:center;">بازیکن ۱: <strong id="p1">1</strong> | بازیکن ۲: <strong id="p2">1</strong></p><p style="text-align:center;" id="slt">نوبت: بازیکن ۱</p><div class="snake-ladder-board" id="slb"></div><div style="text-align:center;margin-top:15px;"><button class="btn btn-sm btn-primary" onclick="rollD()">🎲 تاس بنداز</button> <button class="btn btn-sm btn-outline" onclick="initSL()">🔄 جدید</button></div>`}
-    let sl={p1:1,p2:1,turn:1,snakes:{16:6,47:26,49:11,56:53,62:19,64:60,87:24,93:73,95:75,98:78},ladders:{1:38,4:14,9:31,21:42,28:84,36:44,51:67,71:91,80:100}};
-    function initSL(){sl.p1=1;sl.p2=1;sl.turn=1;updSL();}
-    function updSL(){
-        document.getElementById('p1').textContent=sl.p1;document.getElementById('p2').textContent=sl.p2;
-        document.getElementById('slt').textContent='نوبت: بازیکن '+sl.turn;
-        const b=document.getElementById('slb');if(!b)return;
-        let h='';for(let r=9;r>=0;r--)for(let c=0;c<10;c++){const n=r*10+c+1;let cls='snake-ladder-cell';if(n===sl.p1&&n===sl.p2)cls+=' both';else if(n===sl.p1)cls+=' player1';else if(n===sl.p2)cls+=' player2';h+=`<div class="${cls}">${n}</div>`;}b.innerHTML=h;
-    }
-    function rollD(){
-        const d=Math.floor(Math.random()*6)+1;let p=sl.turn===1?sl.p1:sl.p2;
-        p=Math.min(p+d,100);if(sl.snakes[p])p=sl.snakes[p];if(sl.ladders[p])p=sl.ladders[p];
-        if(sl.turn===1)sl.p1=p;else sl.p2=p;
-        if(p===100){alert('🎉 بازیکن '+sl.turn+' برنده شد! 🏆');initSL();return;}
-        sl.turn=sl.turn===1?2:1;updSL();
-    }
+// ==================== FRIENDS ====================
+function openFriends(){document.getElementById('chatModalOverlay').style.display='flex';const c=document.getElementById('chatModalContent');c.innerHTML=`<h3>👥 دوستان</h3><div style="display:flex;gap:8px;"><input type="text" id="fsInput" placeholder="نام کاربری..."><button class="btn btn-sm btn-primary" onclick="searchFriend()">🔍</button></div><div id="fsResult"></div><h4>📩 درخواست‌ها</h4><div id="reqList"></div><h4>👫 دوستان</h4><div id="friendList"></div>`;updateFriendsUI()}
+function searchFriend(){const q=document.getElementById('fsInput').value.trim().toLowerCase();const d=document.getElementById('fsResult');const allUsers=[...getLocalUsers(),...(C.db.users||[])];const f=allUsers.find(u=>u.username.toLowerCase()===q&&u.username!==C.currentUser.username);if(f){const af=(C.currentUser.friends||[]).includes(f.username);d.innerHTML=af?`<p>✅ ${f.fullName} دوست شماست</p>`:`<div class="glass-card"><strong>${f.fullName}</strong> (@${f.username}) <button class="btn btn-sm btn-primary" onclick="sendReq('${f.username}')">➕</button></div>`}else d.innerHTML='<p>❌ پیدا نشد</p>'}
+function sendReq(to){if(!C.db.friendRequests)C.db.friendRequests=[];if(C.db.friendRequests.find(r=>r.from===C.currentUser.username&&r.to===to)){alert('قبلاً درخواست دادی');return}C.db.friendRequests.push({from:C.currentUser.username,to,status:'pending'});saveOnlineDb().then(()=>{alert('✅ ارسال شد');updateFriendsUI()})}
+function updateFriendsUI(){const rl=document.getElementById('reqList'),fl=document.getElementById('friendList');if(!rl||!fl)return;const reqs=(C.db.friendRequests||[]).filter(r=>r.to===C.currentUser.username&&r.status==='pending');rl.innerHTML=reqs.length?reqs.map(r=>`<div class="glass-card">${r.from} می‌خواد دوست بشه <button class="btn btn-sm btn-success" onclick="accReq('${r.from}')">✅</button><button class="btn btn-sm btn-danger" onclick="rejReq('${r.from}')">❌</button></div>`).join(''):'<p>درخواستی نیست</p>';const frs=C.currentUser.friends||[];fl.innerHTML=frs.length?frs.map(f=>`<div class="glass-card" style="cursor:pointer;" onclick="openChat('${f}')">👤 ${f} 💬</div>`).join(''):'<p>دوستی نداری</p>'}
+function accReq(from){if(!C.currentUser.friends)C.currentUser.friends=[];C.currentUser.friends.push(from);const fu=C.db.users.find(u=>u.username===from);if(fu){if(!fu.friends)fu.friends=[];fu.friends.push(C.currentUser.username)}C.db.friendRequests=C.db.friendRequests.filter(r=>!(r.from===from&&r.to===C.currentUser.username));saveDual(C.currentUser).then(()=>{saveOnlineDb().then(()=>updateFriendsUI())})}
+function rejReq(from){C.db.friendRequests=C.db.friendRequests.filter(r=>!(r.from===from&&r.to===C.currentUser.username));saveOnlineDb().then(()=>updateFriendsUI())}
+function openChat(friend){document.getElementById('chatModalContent').innerHTML=`<h3>💬 ${friend}</h3><div class="chat-container" id="chatMsgs"></div><div style="display:flex;gap:8px;"><input type="text" id="chatInput" onkeydown="if(event.key==='Enter')sendCM('${friend}')"><input type="file" id="chatFile" accept="image/*,video/*" onchange="sendCF('${friend}')"><button class="btn btn-sm btn-primary" onclick="sendCM('${friend}')">📩</button></div>`;loadChat(friend)}
+function loadChat(friend){const key=[C.currentUser.username,friend].sort().join('_');const msgs=(C.db.chats||[]).filter(m=>m.chatKey===key);const d=document.getElementById('chatMsgs');if(d)d.innerHTML=msgs.map(m=>`<div class="chat-message ${m.from===C.currentUser.username?'sent':'received'}"><small>${m.from}</small><br>${m.text||''}${m.file?(m.fileType==='image'?`<img src="${m.file}">`:`<video src="${m.file}" controls width="200"></video>`):''}</div>`).join('')||'<p>پیامی نیست</p>'}
+function sendCM(friend){const i=document.getElementById('chatInput');if(!i.value.trim())return;const key=[C.currentUser.username,friend].sort().join('_');C.db.chats.push({chatKey:key,from:C.currentUser.username,to:friend,text:i.value.trim()});i.value='';saveOnlineDb().then(()=>loadChat(friend))}
+function sendCF(friend){const fi=document.getElementById('chatFile');if(!fi.files?.[0])return;const r=new FileReader();r.onload=function(e){const key=[C.currentUser.username,friend].sort().join('_');C.db.chats.push({chatKey:key,from:C.currentUser.username,to:friend,file:e.target.result,fileType:fi.files[0].type.startsWith('image/')?'image':'video'});fi.value='';saveOnlineDb().then(()=>loadChat(friend))};r.readAsDataURL(fi.files[0])}
+function closeChatModal(e){if(e&&e.target!==document.getElementById('chatModalOverlay'))return;document.getElementById('chatModalOverlay').style.display='none'}
 
-    // ==================== SNAKE ====================
-    function bSn(){return`<h2 style="text-align:center;">🐍 هزارپا</h2><canvas id="snC" width="300" height="300" style="background:var(--bg-secondary);border-radius:16px;display:block;margin:0 auto;"></canvas><p style="text-align:center;">امتیاز: <strong id="snS">0</strong></p><div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:10px;"><button class="btn btn-sm btn-primary" onclick="snD(0,-1)">⬆️ بالا</button><button class="btn btn-sm btn-primary" onclick="snD(0,1)">⬇️ پایین</button><button class="btn btn-sm btn-primary" onclick="snD(-1,0)">⬅️ چپ</button><button class="btn btn-sm btn-primary" onclick="snD(1,0)">➡️ راست</button></div><div style="text-align:center;"><button class="btn btn-sm btn-primary" onclick="initSn()">🔄 شروع دوباره</button></div>`}
-    let sn={body:[{x:10,y:10}],food:{x:15,y:15},dir:{x:1,y:0},score:0};
-    function initSn(){
-        sn={body:[{x:10,y:10}],food:{x:15,y:15},dir:{x:1,y:0},score:0};
-        document.getElementById('snS').textContent='0';
-        CFG.intervals.forEach(i=>clearInterval(i));CFG.intervals=[];
-        const c=document.getElementById('snC'),ctx=c.getContext('2d');
-        CFG.intervals.push(setInterval(()=>{
-            const h={x:sn.body[0].x+sn.dir.x,y:sn.body[0].y+sn.dir.y};
-            if(h.x<0||h.x>=30||h.y<0||h.y>=30||sn.body.some(s=>s.x===h.x&&s.y===h.y)){clearInterval(CFG.intervals[0]);alert('😢 باختی! امتیاز: '+sn.score);return;}
-            sn.body.unshift(h);
-            if(h.x===sn.food.x&&h.y===sn.food.y){sn.score+=10;document.getElementById('snS').textContent=sn.score;sn.food={x:Math.floor(Math.random()*30),y:Math.floor(Math.random()*30)};}else sn.body.pop();
-            ctx.clearRect(0,0,300,300);ctx.fillStyle='#667eea';sn.body.forEach(s=>ctx.fillRect(s.x*10,s.y*10,10,10));ctx.fillStyle='#ef4444';ctx.fillRect(sn.food.x*10,sn.food.y*10,10,10);
-        },150));
-    }
-    function snD(x,y){if((x!==0&&sn.dir.x!==-x)||(y!==0&&sn.dir.y!==-y))sn.dir={x,y};}
+// ==================== ADMIN ====================
+function openAdmin(){if(!C.currentUser||C.currentUser.role!=='admin')return;document.getElementById('adminModalOverlay').style.display='flex';const c=document.getElementById('adminModalContent');c.innerHTML=`<h3>👑 مدیریت</h3><p>کاربران: ${C.db.users.length} | بازدید: ${localStorage.getItem('rz_visits')||0}</p><h4>👤 پروفایل‌ها</h4>${C.db.users.map(u=>`<p>👤 ${u.fullName} (@${u.username}) - ${u.role} <button class="btn btn-sm btn-danger" onclick="delUser('${u.username}')">❌</button></p>`).join('')}<h4>📝 مقالات</h4>${(C.db.articles||[]).map(a=>`<p>📄 ${a.title} <button class="btn btn-sm btn-danger" onclick="delArt(${a.id})">❌</button></p>`).join('')}<button class="btn btn-sm btn-primary" onclick="addArt()">➕ مقاله</button><h4>📰 خبرها</h4>${(C.db.news||[]).map(n=>`<p>📰 ${n.title} <button class="btn btn-sm btn-danger" onclick="delNews(${n.id})">❌</button></p>`).join('')}<button class="btn btn-sm btn-primary" onclick="addNews()">➕ خبر</button><h4>💬 نظرات</h4>${(C.db.comments||[]).map(c=>`<p>💬 ${c.text} - ${c.fullName} <button class="btn btn-sm btn-danger" onclick="delComment('${c.username}','${c.date}')">❌</button></p>`).join('')}<div id="adminForm"></div>`}
+function delUser(u){C.db.users=C.db.users.filter(x=>x.username!==u);saveOnlineDb().then(()=>openAdmin())}
+function addArt(){document.getElementById('adminForm').innerHTML=`<input id="aTitle" placeholder="عنوان"><select id="aCat"><option value="girl">دخترونه</option><option value="boy">پسرونه</option></select><textarea id="aContent" placeholder="متن"></textarea><button class="btn btn-sm btn-success" onclick="saveArt()">💾</button>`}
+function saveArt(){const t=document.getElementById('aTitle').value,cat=document.getElementById('aCat').value,cn=document.getElementById('aContent').value;if(!t||!cn)return;C.db.articles.push({id:Date.now(),title:t,category:cat,content:cn,author:C.currentUser.fullName,date:new Date().toLocaleDateString('fa-IR'),tags:[]});saveOnlineDb().then(()=>{alert('✅ ذخیره شد');openAdmin()})}
+function delArt(id){C.db.articles=C.db.articles.filter(a=>a.id!==id);saveOnlineDb().then(()=>openAdmin())}
+function addNews(){document.getElementById('adminForm').innerHTML=`<input id="nTitle" placeholder="عنوان"><textarea id="nContent" placeholder="متن"></textarea><button class="btn btn-sm btn-success" onclick="saveNews()">💾</button>`}
+function saveNews(){const t=document.getElementById('nTitle').value,cn=document.getElementById('nContent').value;if(!t||!cn)return;C.db.news.push({id:Date.now(),title:t,content:cn,author:C.currentUser.fullName,date:new Date().toLocaleDateString('fa-IR')});saveOnlineDb().then(()=>{alert('✅ ذخیره شد');openAdmin()})}
+function delNews(id){C.db.news=C.db.news.filter(n=>n.id!==id);saveOnlineDb().then(()=>openAdmin())}
+function delComment(user,date){C.db.comments=C.db.comments.filter(c=>!(c.username===user&&c.date===date));saveOnlineDb().then(()=>openAdmin())}
+function closeAdminModal(e){if(e&&e.target!==document.getElementById('adminModalOverlay'))return;document.getElementById('adminModalOverlay').style.display='none'}
 
-    // ==================== RPS ====================
-    function bRPS(){return`<h2 style="text-align:center;">✂️ سنگ کاغذ قیچی</h2><div style="display:flex;gap:16px;justify-content:center;margin:20px;"><button class="btn btn-primary" onclick="plRPS('rock')" style="font-size:2em;">🪨</button><button class="btn btn-primary" onclick="plRPS('paper')" style="font-size:2em;">📄</button><button class="btn btn-primary" onclick="plRPS('scissors')" style="font-size:2em;">✂️</button></div><p style="text-align:center;font-size:1.2em;" id="rpsRes">یکی رو انتخاب کن!</p>`}
-    function plRPS(p){
-        const ch=['rock','paper','scissors'],bot=ch[Math.floor(Math.random()*3)],m={rock:'🪨',paper:'📄',scissors:'✂️'};
-        let r='';if(p===bot)r='🤝 مساوی!';else if((p==='rock'&&bot==='scissors')||(p==='paper'&&bot==='rock')||(p==='scissors'&&bot==='paper'))r='🎉 تو بردی!';else r='😢 کامپیوتر برد!';
-        document.getElementById('rpsRes').textContent=`تو: ${m[p]} | کامپیوتر: ${m[bot]} → ${r}`;
-    }
+// ==================== COMMENTS ====================
+function updateCommentUI(){document.getElementById('commentFormArea').style.display=C.currentUser?'block':'none';document.getElementById('commentLoginMsg').style.display=C.currentUser?'none':'block'}
+function loadComments(){const d=document.getElementById('commentsList');if(d)d.innerHTML=((C.db.comments||[]).slice(-40).reverse()).map(c=>`<div class="glass-card"><strong>${c.fullName}</strong> (@${c.username}): ${c.text}<br><small>${c.date}</small></div>`).join('')||'<p>نظری نیست</p>'}
+function submitComment(){if(!C.currentUser)return;const t=document.getElementById('commentInput').value.trim();if(!t)return;C.db.comments.push({username:C.currentUser.username,fullName:C.currentUser.fullName,text:t,date:new Date().toLocaleDateString('fa-IR')});document.getElementById('commentInput').value='';saveOnlineDb().then(()=>loadComments())}
 
-    // ==================== FAB SETTINGS ====================
-    function toggleFabPanel(){document.getElementById('fabPanel').classList.toggle('open');}
-    function cycleTheme(){
-        const t=['theme-purple','theme-dark','theme-ocean'],n=['بنفش رویایی','تاریک شب','اقیانوس آبی'];
-        const c=document.body.getAttribute('data-theme')||'theme-purple';
-        const i=(t.indexOf(c)+1)%t.length;
-        document.body.setAttribute('data-theme',t[i]);
-        document.getElementById('themeName').textContent=n[i];
-    }
-    function cycleFont(){
-        const f=["'Vazir','Tahoma',sans-serif","'Tahoma','Vazir',sans-serif","'Arial','Vazir',sans-serif"],n=['وزیر','تاهوما','Arial'];
-        const c=document.body.style.getPropertyValue('--font-family')||f[0];
-        const i=(f.indexOf(c)+1)%f.length;
-        document.body.style.setProperty('--font-family',f[i]);
-        document.getElementById('fontName').textContent=n[i];
-    }
-    function toggleLang(){
-        if(CFG.lang==='fa'){CFG.lang='en';document.getElementById('langName').textContent='English';document.querySelector('.logo').textContent='✨ Roozik';}
-        else{CFG.lang='fa';document.getElementById('langName').textContent='فارسی';document.querySelector('.logo').textContent='✨ روزیک';}
-    }
+// ==================== POLL ====================
+function loadPoll(){const p=(C.db.polls||[])[0];if(!p)return;document.getElementById('pollQuestion').textContent=p.question;const tv=p.votes.reduce((a,b)=>a+b,0);document.getElementById('pollTotal').textContent=`کل آرا: ${tv}`;document.getElementById('pollOptions').innerHTML=p.options.map((o,i)=>{const pct=tv>0?Math.round((p.votes[i]/tv)*100):0;return`<button class="btn btn-sm btn-outline" onclick="votePoll(${i})">${o} (${p.votes[i]})<div style="height:4px;background:var(--gradient-primary);width:${pct}%;margin-top:4px;"></div></button>`}).join('')}
+function votePoll(i){const p=(C.db.polls||[])[0];if(!p)return;const k=C.currentUser?C.currentUser.username:'guest_'+Date.now();if((p.voters||[]).includes(k)){alert('قبلاً رأی دادی');return}p.voters.push(k);p.votes[i]++;saveOnlineDb().then(()=>loadPoll())}
 
-    // ==================== UI UPDATES ====================
-    function updateAllUI(){
-        document.getElementById('totalVisits').textContent=(parseInt(localStorage.getItem('rz_visits')||'0')).toLocaleString('fa-IR');
-        document.getElementById('totalUsers').textContent=(CFG.db.users?.length||0).toLocaleString('fa-IR');
-        document.getElementById('onlineCount').textContent=(parseInt(localStorage.getItem('rz_online')||'0')).toLocaleString('fa-IR');
-        if(CFG.currentUser)document.getElementById('homeCtaBtn').style.display='none';
-        if(CFG.db.socialLinks?.telegram)document.getElementById('footerTelegram').href=CFG.db.socialLinks.telegram;
-        if(CFG.db.socialLinks?.rubika)document.getElementById('footerRubika').href=CFG.db.socialLinks.rubika;
-        updateHeader();updateCommentUI();renderNews();
-    }
+// ==================== ARTICLES & NEWS ====================
+function renderArticles(cat){const c=document.getElementById('articlesContainer');if(!c)return;const a=(C.db.articles||[]).filter(x=>x.category===cat);c.innerHTML=a.length?a.map(x=>`<div class="article-card" onclick="alert('${x.title}\\n\\n${x.content}')"><div style="height:150px;background:var(--gradient-primary);display:flex;align-items:center;justify-content:center;font-size:3.5em;color:#fff;">📄</div><div class="article-body"><h3>${x.title}</h3><p>${x.content.substring(0,80)}...</p></div></div>`).join(''):'<p>مقاله‌ای نیست</p>'}
+function filterContent(cat,tab){document.querySelectorAll('.content-tab').forEach(t=>t.classList.remove('active-tab'));if(tab)tab.classList.add('active-tab');renderArticles(cat)}
+function renderNews(){const c=document.getElementById('newsContainer'),l=document.getElementById('latestNews');const n=(C.db.news||[]).slice().reverse();if(c)c.innerHTML=n.length?n.map(x=>`<div class="glass-card"><h3>📰 ${x.title}</h3><p>${x.content}</p><small>${x.date}</small></div>`).join(''):'<p>خبری نیست</p>';if(l)l.innerHTML=n.slice(0,3).map(x=>`<p>📰 ${x.title} - ${x.date}</p>`).join('')||'<p>خبری نیست</p>'}
 
-    // ==================== STARTUP ====================
-    window.addEventListener('DOMContentLoaded',init);
-    document.addEventListener('click',function(e){if(!document.getElementById('fabContainer').contains(e.target))document.getElementById('fabPanel').classList.remove('open');});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeGameModal();closeChatModal();closeAdminModal();}});
-    console.log('🌟 روزیک v5.0 - نهایی و کامل');
-    console.log('👑 ادمین: amiro_m2026');
-    console.log('💡 همه امکانات فعال: سرچ ایرانی، قیمت ارز ریالی، دوستان، چت، پنل مدیریت، ۸ بازی');
-    console.log('⚡ برای بهترین تجربه از VPN استفاده کن');
+// ==================== GAMES ====================
+const gamesList=[{id:'memory',name:'حافظه',icon:'🧠'},{id:'wordguess',name:'حدس کلمه',icon:'📝'},{id:'shooting',name:'تیراندازی',icon:'🎯'},{id:'puzzle',name:'پازل',icon:'🧩'},{id:'xo',name:'دوز',icon:'⭕'},{id:'snakeladder',name:'مار و پله',icon:'🐍'},{id:'snake',name:'هزارپا',icon:'🐍'},{id:'rps',name:'سنگ کاغذ قیچی',icon:'✂️'}];
+function renderGames(){const g=document.getElementById('gamesGrid');if(g)g.innerHTML=gamesList.map(x=>`<div class="game-card" onclick="openGame('${x.id}')"><div class="game-icon">${x.icon}</div><h3>${x.name}</h3><span class="btn btn-sm btn-primary">▶️</span></div>`).join('')}
+function openGame(t){document.getElementById('gameModalOverlay').style.display='flex';const c=document.getElementById('gameModalContent');switch(t){case'memory':c.innerHTML=bMem();initMem();break;case'wordguess':c.innerHTML=bWG();initWG();break;case'shooting':c.innerHTML=bSh();initSh();break;case'puzzle':c.innerHTML=bPuz();initPuz();break;case'xo':c.innerHTML=bXO();initXO();break;case'snakeladder':c.innerHTML=bSL();initSL();break;case'snake':c.innerHTML=bSn();initSn();break;case'rps':c.innerHTML=bRPS();break}}
+function closeGameModal(e){if(e&&e.target!==document.getElementById('gameModalOverlay'))return;document.getElementById('gameModalOverlay').style.display='none';C.intervals.forEach(i=>clearInterval(i))}
+
+function bMem(){return`<h2>🧠 حافظه</h2><p>امتیاز: <strong id="ms">0</strong></p><div class="memory-grid" id="mg"></div><button class="btn btn-sm btn-primary" onclick="initMem()">🔄</button>`}
+let md={cards:[],flipped:[],matched:[],score:0,locked:false};
+function initMem(){const e=['🌸','🌟','🎈','💎','🔥','🍀','🦋','🎵'];md={cards:[...e,...e].sort(()=>Math.random()-0.5),flipped:[],matched:[],score:0,locked:false};document.getElementById('ms').textContent='0';document.getElementById('mg').innerHTML=md.cards.map((e,i)=>`<div class="memory-card" onclick="flipM(${i},this)"><span style="visibility:hidden">${e}</span></div>`).join('')}
+function flipM(i,el){if(md.locked||md.flipped.includes(i)||md.matched.includes(i))return;el.classList.add('flipped');el.querySelector('span').style.visibility='visible';md.flipped.push(i);if(md.flipped.length===2){md.locked=true;const[a,b]=md.flipped;if(md.cards[a]===md.cards[b]){md.matched.push(a,b);md.score+=10;document.getElementById('ms').textContent=md.score;md.flipped=[];md.locked=false;if(md.matched.length===md.cards.length)setTimeout(()=>alert('🎉'),400)}else{setTimeout(()=>{document.querySelectorAll('.memory-card')[a].classList.remove('flipped');document.querySelectorAll('.memory-card')[a].querySelector('span').style.visibility='hidden';document.querySelectorAll('.memory-card')[b].classList.remove('flipped');document.querySelectorAll('.memory-card')[b].querySelector('span').style.visibility='hidden';md.flipped=[];md.locked=false},700)}}}
+
+const wds=['برنامه','کامپیوتر','هوشمند','خلاقیت','آرامش','ستاره','پروانه'];
+let wg={word:'',guessed:[],wrongs:0};
+function bWG(){return`<h2>📝 حدس کلمه</h2><p>اشتباه: <strong id="ww">0</strong>/6</p><div class="word-display" id="wd"></div><div class="keyboard" id="wk"></div><button class="btn btn-sm btn-primary" onclick="initWG()">🔄</button>`}
+function initWG(){wg={word:wds[Math.floor(Math.random()*wds.length)],guessed:[],wrongs:0};document.getElementById('ww').textContent='0';rWG()}
+function rWG(){document.getElementById('wd').innerHTML=wg.word.split('').map(c=>`<span>${wg.guessed.includes(c)?c:'_'}</span>`).join('');document.getElementById('wk').innerHTML='آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی'.split('').map(l=>`<button class="${wg.guessed.includes(l)?'used':''}" onclick="gWG('${l}')">${l}</button>`).join('');if(wg.word.split('').every(c=>wg.guessed.includes(c)))setTimeout(()=>alert('🎉'),300)}
+function gWG(l){if(wg.guessed.includes(l))return;wg.guessed.push(l);if(!wg.word.includes(l)){wg.wrongs++;document.getElementById('ww').textContent=wg.wrongs}rWG();if(wg.wrongs>=6){alert('😢 کلمه: '+wg.word);document.querySelectorAll('#wk button').forEach(b=>b.disabled=true)}}
+
+function bSh(){return`<h2>🎯 تیراندازی</h2><p>امتیاز: <strong id="ss">0</strong> | زمان: <strong id="st">30</strong></p><div class="shooting-area" id="sa"></div><button class="btn btn-sm btn-primary" onclick="initSh()">🔄</button>`}
+let sh={score:0,time:30,active:false};
+function initSh(){sh={score:0,time:30,active:true};document.getElementById('ss').textContent='0';document.getElementById('st').textContent='30';document.getElementById('sa').innerHTML='';C.intervals.forEach(i=>clearInterval(i));C.intervals=[setInterval(()=>{sh.time--;document.getElementById('st').textContent=sh.time;if(sh.time<=0){clearInterval(C.intervals[0]);sh.active=false;alert('⏰ '+sh.score)}},1000),setInterval(()=>{if(!sh.active)return;const a=document.getElementById('sa');const t=document.createElement('div');t.className='shooting-target';t.style.left=Math.random()*(a.clientWidth-50)+'px';t.style.top=Math.random()*(a.clientHeight-50)+'px';t.textContent='🎯';t.onclick=function(e){e.stopPropagation();sh.score+=5;document.getElementById('ss').textContent=sh.score;t.remove()};a.appendChild(t);setTimeout(()=>{if(t.parentNode)t.remove()},2000)},800)]}
+
+function bPuz(){return`<h2>🧩 پازل</h2><p>حرکات: <strong id="pm">0</strong></p><div class="puzzle-grid" id="pg"></div><button class="btn btn-sm btn-primary" onclick="initPuz()">🔄</button>`}
+let pz={tiles:[],empty:15,moves:0};
+function initPuz(){pz={tiles:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,null],empty:15,moves:0};for(let i=0;i<30;i++){const n=getN(pz.empty);const r=n[Math.floor(Math.random()*n.length)];[pz.tiles[pz.empty],pz.tiles[r]]=[pz.tiles[r],pz.tiles[pz.empty]];pz.empty=r}document.getElementById('pm').textContent='0';rPuz()}
+function getN(i){const n=[],r=Math.floor(i/4),c=i%4;if(r>0)n.push(i-4);if(r<3)n.push(i+4);if(c>0)n.push(i-1);if(c<3)n.push(i+1);return n}
+function rPuz(){document.getElementById('pg').innerHTML=pz.tiles.map((t,i)=>t===null?'<div class="puzzle-tile empty"></div>':`<div class="puzzle-tile" onclick="mvPuz(${i})">${t}</div>`).join('');if(pz.tiles.slice(0,15).every((t,i)=>t===i+1)&&pz.tiles[15]===null)setTimeout(()=>alert('🎉'),300)}
+function mvPuz(i){const n=getN(pz.empty);if(n.includes(i)){[pz.tiles[i],pz.tiles[pz.empty]]=[pz.tiles[pz.empty],pz.tiles[i]];pz.empty=i;pz.moves++;document.getElementById('pm').textContent=pz.moves;rPuz()}}
+
+function bXO(){return`<h2>⭕ دوز</h2><div class="xo-grid" id="xo"></div><p id="xt"></p><button class="btn btn-sm btn-primary" onclick="initXO()">🔄</button>`}
+let xo={board:Array(9).fill(null),turn:'X',winner:null};
+function initXO(){xo={board:Array(9).fill(null),turn:'X',winner:null};document.getElementById('xt').textContent='نوبت: X';rXO()}
+function rXO(){document.getElementById('xo').innerHTML=xo.board.map((v,i)=>`<div class="xo-cell" onclick="plXO(${i})">${v||''}</div>`).join('')}
+function plXO(i){if(xo.board[i]||xo.winner)return;xo.board[i]=xo.turn;const w=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];if(w.some(w=>w.every(c=>xo.board[c]===xo.turn))){xo.winner=xo.turn;alert('🎉 '+xo.turn+' برد!')}else if(xo.board.every(v=>v)){xo.winner='draw';alert('🤝 مساوی')}xo.turn=xo.turn==='X'?'O':'X';document.getElementById('xt').textContent='نوبت: '+xo.turn;rXO()}
+
+function bSL(){return`<h2>🐍 مار و پله</h2><p>ب۱: <strong id="p1">1</strong> | ب۲: <strong id="p2">1</strong></p><p id="slt">نوبت: ۱</p><div class="snake-ladder-board" id="slb"></div><button class="btn btn-sm btn-primary" onclick="rollD()">🎲</button><button class="btn btn-sm btn-outline" onclick="initSL()">🔄</button>`}
+let sl={p1:1,p2:1,turn:1,snakes:{16:6,47:26,49:11,56:53,62:19,64:60,87:24,93:73,95:75,98:78},ladders:{1:38,4:14,9:31,21:42,28:84,36:44,51:67,71:91,80:100}};
+function initSL(){sl.p1=1;sl.p2=1;sl.turn=1;updSL()}
+function updSL(){document.getElementById('p1').textContent=sl.p1;document.getElementById('p2').textContent=sl.p2;document.getElementById('slt').textContent='نوبت: '+sl.turn;const b=document.getElementById('slb');let h='';for(let r=9;r>=0;r--)for(let c=0;c<10;c++){const n=r*10+c+1;let cls='snake-ladder-cell';if(n===sl.p1)cls+=' player1';if(n===sl.p2)cls+=' player2';h+=`<div class="${cls}">${n}</div>`}b.innerHTML=h}
+function rollD(){const d=Math.floor(Math.random()*6)+1;let p=sl.turn===1?sl.p1:sl.p2;p=Math.min(p+d,100);if(sl.snakes[p])p=sl.snakes[p];if(sl.ladders[p])p=sl.ladders[p];if(sl.turn===1)sl.p1=p;else sl.p2=p;if(p===100){alert('🎉 بازیکن '+sl.turn+' برد!');initSL();return}sl.turn=sl.turn===1?2:1;updSL()}
+
+function bSn(){return`<h2>🐍 هزارپا</h2><canvas id="snC" width="300" height="300" style="background:var(--bg-secondary);border-radius:16px;"></canvas><p>امتیاز: <strong id="snS">0</strong></p><button class="btn btn-sm btn-primary" onclick="snD(0,-1)">⬆️</button><button class="btn btn-sm btn-primary" onclick="snD(0,1)">⬇️</button><button class="btn btn-sm btn-primary" onclick="snD(-1,0)">⬅️</button><button class="btn btn-sm btn-primary" onclick="snD(1,0)">➡️</button><button class="btn btn-sm btn-primary" onclick="initSn()">🔄</button>`}
+let sn={body:[{x:10,y:10}],food:{x:15,y:15},dir:{x:1,y:0},score:0};
+function initSn(){sn={body:[{x:10,y:10}],food:{x:15,y:15},dir:{x:1,y:0},score:0};document.getElementById('snS').textContent='0';C.intervals.forEach(i=>clearInterval(i));const c=document.getElementById('snC'),ctx=c.getContext('2d');C.intervals=[setInterval(()=>{const h={x:sn.body[0].x+sn.dir.x,y:sn.body[0].y+sn.dir.y};if(h.x<0||h.x>=30||h.y<0||h.y>=30||sn.body.some(s=>s.x===h.x&&s.y===h.y)){clearInterval(C.intervals[0]);alert('😢 '+sn.score);return}sn.body.unshift(h);if(h.x===sn.food.x&&h.y===sn.food.y){sn.score+=10;document.getElementById('snS').textContent=sn.score;sn.food={x:Math.floor(Math.random()*30),y:Math.floor(Math.random()*30)}}else sn.body.pop();ctx.clearRect(0,0,300,300);ctx.fillStyle='#667eea';sn.body.forEach(s=>ctx.fillRect(s.x*10,s.y*10,10,10));ctx.fillStyle='red';ctx.fillRect(sn.food.x*10,sn.food.y*10,10,10)},150)]}
+function snD(x,y){if((x!==0&&sn.dir.x!==-x)||(y!==0&&sn.dir.y!==-y))sn.dir={x,y}}
+
+function bRPS(){return`<h2>✂️ سنگ کاغذ قیچی</h2><button class="btn btn-primary" onclick="plRPS('rock')">🪨</button><button class="btn btn-primary" onclick="plRPS('paper')">📄</button><button class="btn btn-primary" onclick="plRPS('scissors')">✂️</button><p id="rpsRes"></p>`}
+function plRPS(p){const ch=['rock','paper','scissors'],bot=ch[Math.floor(Math.random()*3)],m={rock:'🪨',paper:'📄',scissors:'✂️'};let r='';if(p===bot)r='🤝';else if((p==='rock'&&bot==='scissors')||(p==='paper'&&bot==='rock')||(p==='scissors'&&bot==='paper'))r='🎉 بردی';else r='😢 باختی';document.getElementById('rpsRes').textContent=`تو: ${m[p]} | کامپیوتر: ${m[bot]} → ${r}`}
+
+// ==================== FAB ====================
+function toggleFabPanel(){document.getElementById('fabPanel').classList.toggle('open')}
+function cycleTheme(){const t=['theme-purple','theme-dark','theme-ocean'],n=['بنفش','تاریک','اقیانوس'];const c=document.body.getAttribute('data-theme')||'theme-purple';const i=(t.indexOf(c)+1)%t.length;document.body.setAttribute('data-theme',t[i]);document.getElementById('themeName').textContent=n[i]}
+function cycleFont(){const f=["'Vazir','Tahoma',sans-serif","'Tahoma','Vazir',sans-serif","'Arial','Vazir',sans-serif"],n=['وزیر','تاهوما','Arial'];const c=document.body.style.getPropertyValue('--font-family')||f[0];const i=(f.indexOf(c)+1)%f.length;document.body.style.setProperty('--font-family',f[i]);document.getElementById('fontName').textContent=n[i]}
+function toggleLang(){if(C.lang==='fa'){C.lang='en';document.getElementById('langName').textContent='English';document.querySelector('.logo').textContent='✨ Roozik'}else{C.lang='fa';document.getElementById('langName').textContent='فارسی';document.querySelector('.logo').textContent='✨ روزیک'}}
+
+function updateAllUI(){document.getElementById('totalVisits').textContent=(parseInt(localStorage.getItem('rz_visits')||'0')).toLocaleString('fa-IR');document.getElementById('totalUsers').textContent=(C.db.users?.length||0).toLocaleString('fa-IR');document.getElementById('onlineCount').textContent=(parseInt(localStorage.getItem('rz_online')||'0')).toLocaleString('fa-IR');if(C.currentUser)document.getElementById('homeCtaBtn').style.display='none';if(C.db.socialLinks?.telegram)document.getElementById('footerTelegram').href=C.db.socialLinks.telegram;if(C.db.socialLinks?.rubika)document.getElementById('footerRubika').href=C.db.socialLinks.rubika;updateHeader();updateCommentUI();renderNews()}
+
+window.addEventListener('DOMContentLoaded',init);
+document.addEventListener('click',e=>{if(!document.getElementById('fabContainer').contains(e.target))document.getElementById('fabPanel').classList.remove('open')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeGameModal();closeChatModal();closeAdminModal()}});
 </script>
 </body>
 </html>
